@@ -5,7 +5,7 @@
  * Created on 15 marzec 2012, 16:24
  */
 
-#include "../headers/Neuron.h"
+#include "Neuron.h"
 
 Neuron::Neuron()
 {
