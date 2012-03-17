@@ -8,9 +8,10 @@
 #ifndef NEURON_H
 #define	NEURON_H
 
-#include <vector>
+#include "Input.h"
+#include "Output.h"
 
-class Neuron
+template <class T> class Neuron : public Input<T>, public Output<T>
 {
 public:
   Neuron( );

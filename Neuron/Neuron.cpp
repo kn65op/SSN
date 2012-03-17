@@ -7,15 +7,15 @@
 
 #include "Neuron.h"
 
-Neuron::Neuron()
+template <class T> Neuron<T>::Neuron()
 {
 }
 
-Neuron::Neuron(const Neuron& orig)
+template <class T> Neuron<T>::Neuron(const Neuron& orig)
 {
 }
 
-Neuron::~Neuron()
+template <class T> Neuron<T>::~Neuron()
 {
 }
 
