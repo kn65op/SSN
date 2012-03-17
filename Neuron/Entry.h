@@ -16,9 +16,18 @@
 template <class T> class Entry: public Input<T>
 {
 public:
-  Entry();
-  Entry(const Entry& orig);
-  virtual ~Entry();
+  Entry()
+  {
+    
+  }
+  Entry(const Entry& orig)
+  {
+    
+  }
+  virtual ~Entry()
+  {
+    
+  }
   /**
    * Ustawia wejście na podaną wartość.
    * @param entry Żądana wartość.
@@ -26,6 +35,7 @@ public:
   void setEntry(T entry)
   {
     this->input_value = entry;
+    this->setValToAuts();
   }
 };
 

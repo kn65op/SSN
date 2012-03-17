@@ -16,16 +16,25 @@
 template <class T> class Exit: public Output<T>
 {
 public:
-  Exit();
-  Exit(const Exit& orig);
-  virtual ~Exit();
+  Exit()
+  {
+    
+  }
+  Exit(const Exit& orig)
+  {
+    
+  }
+  virtual ~Exit()
+  {
+    
+  }
   /**
    * Funkcja zwracająca wyjście.
    * @return Wyjście.
    */
   T getExit() const
   {
-    return this->output_value;
+    return this->ins.front()->getValue();
   }
 };
 

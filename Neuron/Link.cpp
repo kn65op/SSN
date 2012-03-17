@@ -8,11 +8,4 @@
 #include "Link.h"
 
 
-template <class T> Link<T>::Link(const Link& orig)
-{
-}
-
-template <class T> Link<T>::~Link()
-{
-}
 

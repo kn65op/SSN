@@ -17,7 +17,10 @@ template <class T> class Link;
 template <class T> class Input
 {
 public:
-  virtual ~Input();
+  virtual ~Input()
+  {
+    
+  }
   /**
    * Funkcja zwracająca przechowywaną wartość do połączeń.
    * @return Przechowywana wartość.
@@ -26,9 +29,25 @@ public:
   {
     return this->input_value;
   }
+  /**
+   * Funkcja dodająca połączenie do wejścia do połączenia.
+   * @param link Dodawane połączenie.
+   */
+  void setLinkOut(Link<T>* link)
+  {
+    outs.push_back(link);
+    link->setIn(this);
+  }
 protected:
   T input_value;
   std::list<Link<T>*> outs;
+  void setValToAuts() const
+  {
+    for (auto o: this->outs)
+    {
+      o->setValue(input_value);
+    }
+  }
 };
 
 #endif	/* INPUT_H */

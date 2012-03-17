@@ -6,16 +6,3 @@
  */
 
 #include "Exit.h"
-
-template <class T> Exit<T>::Exit()
-{
-}
-
-template <class T> Exit<T>::Exit(const Exit& orig)
-{
-}
-
-template <class T> Exit<T>::~Exit()
-{
-}
-

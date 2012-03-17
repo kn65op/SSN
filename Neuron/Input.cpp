@@ -7,8 +7,3 @@
 
 #include "Input.h"
 
-
-template <class T> Input<T>::~Input()
-{
-}
-

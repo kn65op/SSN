@@ -7,8 +7,3 @@
 
 #include "Output.h"
 
-
-template <class T> Output<T>::~Output()
-{
-}
-

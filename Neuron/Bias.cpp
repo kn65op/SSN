@@ -6,8 +6,3 @@
  */
 
 #include "Bias.h"
-
-template <class T> Bias<T>::~Bias()
-{
-}
-

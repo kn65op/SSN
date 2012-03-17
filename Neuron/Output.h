@@ -18,7 +18,10 @@ template <class T> class Output
 {
 
 public:
-  virtual ~Output();
+  virtual ~Output()
+  {
+    
+  }
   /**
    * Funkcja przyjmująca wartość z łącza.
    * @param o Otrzymana wartość z łącza.
@@ -26,6 +29,15 @@ public:
   virtual void setValue(T o)
   {
     output_value = o;
+  }
+  /**
+   * Funkcja dodająca połączenie do wyjścia z połączenia.
+   * @param link Dodawane połączenie.
+   */
+  void setLinkIn(Link<T>* link)
+  {
+    ins.push_back(link);
+    link->setOut(this);
   }
 protected:
   T output_value;

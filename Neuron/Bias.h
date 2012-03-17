@@ -24,7 +24,10 @@ public:
   {
     
   }
-  virtual ~Bias();
+  virtual ~Bias()
+  {
+    
+  }
   /**
    * Ustawia wartość przesunięcia.
    * @param i Wartość przesunięcia.
@@ -32,6 +35,7 @@ public:
   void setBias(T i)
   {
     bias_value = i;
+    this->setValToAuts();
   }
 private:
   T bias_value;

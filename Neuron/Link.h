@@ -17,9 +17,22 @@
 template <class T> class Link
 {
 public:
-  Link(Input<T>);
-  Link(const Link& orig);
-  virtual ~Link();
+  Link()
+  {
+    
+  }
+  Link(Input<T>)
+  {
+    
+  }
+  Link(const Link& orig)
+  {
+    
+  }
+  virtual ~Link()
+  {
+    
+  }
   
   /**
    * Funkcja zwracająca wartość aktualnie przetrzymywana na połączeniu.
@@ -38,6 +51,22 @@ public:
     value = v;
   }
   
+  /**
+   * Funkcja ustawiająca wejście do linku.
+   * @param i Ustawiane wejście.
+   */
+  void setIn(Input<T>* i)
+  {
+    in = i;
+  }
+  /**
+   * Funkcja ustawiająca wyjście z linku.
+   * @param out Ustawiane wyjście.
+   */
+  void setOut(Output<T>* o)
+  {
+    out = o;
+  }
   
 private:
   Input<T>* in;
