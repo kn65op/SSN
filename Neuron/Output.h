@@ -8,11 +8,15 @@
 #ifndef OUTPUT_H
 #define	OUTPUT_H
 
+template <class T> class Link;
+#include <list>
+
 /**
  * @class Klasa Output jest interfejsem wyjścia dla klasy Link.
  */
 template <class T> class Output
 {
+
 public:
   virtual ~Output();
   /**
@@ -25,6 +29,7 @@ public:
   }
 protected:
   T output_value;
+  std::list<Link<T>*> ins;
 };
 
 #endif	/* OUTPUT_H */

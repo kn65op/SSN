@@ -25,7 +25,7 @@ public:
    */
   void setEntry(T entry)
   {
-    input_value = entry;
+    this->input_value = entry;
   }
 };
 

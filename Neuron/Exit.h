@@ -25,7 +25,7 @@ public:
    */
   T getExit() const
   {
-    return output_value;
+    return this->output_value;
   }
 };
 

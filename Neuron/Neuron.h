@@ -11,6 +11,8 @@
 #include "Input.h"
 #include "Output.h"
 
+#include <list>
+
 /**
  * Klasa Neuron odpowiada neuronowi w sieci neuronowej.
  */
@@ -20,8 +22,19 @@ public:
   Neuron( );
   Neuron(const Neuron& orig);
   virtual ~Neuron();
+  
+  /**
+   * Funkcja licząca wyjście neuronu w zależności od wejsć zgodnie ze wzorem f(E(xi, yi)).
+   */
+  void calculateOutput();
+  /**
+   * Funkcja ucząca.
+   * @param answer Wymagana odpowiedź dla danego neuronu.
+   */
+  void learn(T answer);
 private:
-
+  T output;
+  std::list<T*> wages;
 };
 
 #endif	/* NEURON_H */

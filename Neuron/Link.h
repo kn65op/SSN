@@ -25,12 +25,18 @@ public:
    * Funkcja zwracająca wartość aktualnie przetrzymywana na połączeniu.
    * @return Wartość przyjęta ostatnio na wejściu do połączenia.
    */
-  T getValue() const;
+  T getValue() const
+  {
+    return value;
+  }
   /**
    * Funckja pobierająca wartość z wejścia do połączenia i zapisująca wartość w połączeniu.
    * @param Wartość, która będzie dostępna na wyjściu z połączenia.
    */
-  void setValue(const T);
+  void setValue(const T v)
+  {
+    value = v;
+  }
   
   
 private:

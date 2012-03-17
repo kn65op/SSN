@@ -8,6 +8,9 @@
 #ifndef INPUT_H
 #define	INPUT_H
 
+template <class T> class Link;
+
+#include <list>
 /**
  * @class Klasa Input jest interfejsem wejścia do klasy Link.
  */
@@ -21,10 +24,11 @@ public:
    */
   virtual T getValue() const
   {
-    return input_value;
+    return this->input_value;
   }
 protected:
   T input_value;
+  std::list<Link<T>*> outs;
 };
 
 #endif	/* INPUT_H */

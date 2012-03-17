@@ -4,6 +4,9 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>Bias.h</itemPath>
+      <itemPath>Entry.h</itemPath>
+      <itemPath>Exit.h</itemPath>
       <itemPath>Input.h</itemPath>
       <itemPath>Link.h</itemPath>
       <itemPath>Neuron.h</itemPath>
@@ -16,6 +19,9 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>Bias.cpp</itemPath>
+      <itemPath>Entry.cpp</itemPath>
+      <itemPath>Exit.cpp</itemPath>
       <itemPath>Input.cpp</itemPath>
       <itemPath>Link.cpp</itemPath>
       <itemPath>Neuron.cpp</itemPath>
@@ -38,12 +44,6 @@
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
-    <itemPath>Bias.cpp</itemPath>
-    <itemPath>Bias.h</itemPath>
-    <itemPath>Entry.cpp</itemPath>
-    <itemPath>Entry.h</itemPath>
-    <itemPath>Exit.cpp</itemPath>
-    <itemPath>Exit.h</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
