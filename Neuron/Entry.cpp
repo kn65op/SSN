@@ -19,3 +19,7 @@ template <class T> Entry<T>::~Entry()
 {
 }
 
+template <class T> T Entry<T>::getValue()
+{
+  return value;
+}

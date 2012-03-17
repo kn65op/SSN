@@ -11,6 +11,9 @@
 #include "Input.h"
 #include "Output.h"
 
+/**
+ * Klasa Neuron odpowiada neuronowi w sieci neuronowej.
+ */
 template <class T> class Neuron : public Input<T>, public Output<T>
 {
 public:

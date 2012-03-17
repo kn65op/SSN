@@ -10,6 +10,9 @@
 
 #include "Input.h"
 
+/**
+ * @class Klasa Entry odpowiada wejściom do sieci neuronowej.
+ */
 template <class T> class Entry: public Input<T>
 {
 public:

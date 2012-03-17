@@ -10,6 +10,9 @@
 
 #include "Output.h"
 
+/**
+ * Klasa Exit odpowiada wyjściom z sieci neuronowej
+ */
 template <class T> class Exit: public Output<T>
 {
 public:

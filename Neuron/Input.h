@@ -8,6 +8,9 @@
 #ifndef INPUT_H
 #define	INPUT_H
 
+/**
+ * @class Klasa Input jest interfejsem wejścia do klasy Link.
+ */
 template <class T> class Input
 {
 public:

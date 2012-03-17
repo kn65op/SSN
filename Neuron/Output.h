@@ -8,6 +8,9 @@
 #ifndef OUTPUT_H
 #define	OUTPUT_H
 
+/**
+ * @class Klasa Output jest interfejsem wyjścia dla klasy Link.
+ */
 template <class T> class Output
 {
 public:
