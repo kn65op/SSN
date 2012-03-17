@@ -7,15 +7,7 @@
 
 #include "Bias.h"
 
-Bias::Bias()
-{
-}
-
-Bias::Bias(const Bias& orig)
-{
-}
-
-Bias::~Bias()
+template <class T> Bias<T>::~Bias()
 {
 }
 

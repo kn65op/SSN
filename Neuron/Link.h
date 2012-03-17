@@ -17,15 +17,26 @@
 template <class T> class Link
 {
 public:
-  Link();
+  Link(Input<T>);
   Link(const Link& orig);
   virtual ~Link();
   
-  T getValue();
-  void setValue(T);
+  /**
+   * Funkcja zwracająca wartość aktualnie przetrzymywana na połączeniu.
+   * @return Wartość przyjęta ostatnio na wejściu do połączenia.
+   */
+  T getValue() const;
+  /**
+   * Funckja pobierająca wartość z wejścia do połączenia i zapisująca wartość w połączeniu.
+   * @param Wartość, która będzie dostępna na wyjściu z połączenia.
+   */
+  void setValue(const T);
+  
+  
 private:
-  Input<T> in;
-  Output<T> out;
+  Input<T>* in;
+  Output<T>* out;
+  T value;
 };
 
 #endif	/* LINK_H */

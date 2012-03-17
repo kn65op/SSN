@@ -15,9 +15,16 @@ template <class T> class Output
 {
 public:
   virtual ~Output();
-  virtual void setValue(T) = 0;
-private:
-
+  /**
+   * Funkcja przyjmująca wartość z łącza.
+   * @param o Otrzymana wartość z łącza.
+   */
+  virtual void setValue(T o)
+  {
+    output_value = o;
+  }
+protected:
+  T output_value;
 };
 
 #endif	/* OUTPUT_H */

@@ -7,9 +7,6 @@
 
 #include "Link.h"
 
-template <class T> Link<T>::Link()
-{
-}
 
 template <class T> Link<T>::Link(const Link& orig)
 {

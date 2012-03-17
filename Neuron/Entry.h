@@ -19,8 +19,14 @@ public:
   Entry();
   Entry(const Entry& orig);
   virtual ~Entry();
-private:
-
+  /**
+   * Ustawia wejście na podaną wartość.
+   * @param entry Żądana wartość.
+   */
+  void setEntry(T entry)
+  {
+    input_value = entry;
+  }
 };
 
 #endif	/* ENTRY_H */

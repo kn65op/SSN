@@ -16,9 +16,25 @@
 template <class T> class Bias : public Input<T>
 {
 public:
+  /**
+   * Konstruktor ustawiający początkową wartość przesunięcia.
+   * @param i Wartość przesunięcia.
+   */
+  Bias(T i): T(i)
+  {
+    
+  }
   virtual ~Bias();
+  /**
+   * Ustawia wartość przesunięcia.
+   * @param i Wartość przesunięcia.
+   */
+  void setBias(T i)
+  {
+    bias_value = i;
+  }
 private:
-
+  T bias_value;
 };
 
 #endif	/* BIAS_H */

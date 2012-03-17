@@ -38,6 +38,8 @@
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
+    <itemPath>Bias.cpp</itemPath>
+    <itemPath>Bias.h</itemPath>
     <itemPath>Entry.cpp</itemPath>
     <itemPath>Entry.h</itemPath>
     <itemPath>Exit.cpp</itemPath>

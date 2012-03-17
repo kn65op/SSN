@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Entry.o \
 	${OBJECTDIR}/Input.o \
 	${OBJECTDIR}/Link.o \
+	${OBJECTDIR}/Bias.o \
 	${OBJECTDIR}/Output.o \
 	${OBJECTDIR}/Exit.o
 
@@ -91,6 +92,11 @@ ${OBJECTDIR}/Link.o: Link.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/Link.o Link.cpp
+
+${OBJECTDIR}/Bias.o: Bias.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/Bias.o Bias.cpp
 
 ${OBJECTDIR}/Output.o: Output.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -168,6 +174,19 @@ ${OBJECTDIR}/Link_nomain.o: ${OBJECTDIR}/Link.o Link.cpp
 	    $(COMPILE.cc) -O2 -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Link_nomain.o Link.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/Link.o ${OBJECTDIR}/Link_nomain.o;\
+	fi
+
+${OBJECTDIR}/Bias_nomain.o: ${OBJECTDIR}/Bias.o Bias.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/Bias.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Bias_nomain.o Bias.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/Bias.o ${OBJECTDIR}/Bias_nomain.o;\
 	fi
 
 ${OBJECTDIR}/Output_nomain.o: ${OBJECTDIR}/Output.o Output.cpp 

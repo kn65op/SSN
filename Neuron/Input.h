@@ -15,9 +15,16 @@ template <class T> class Input
 {
 public:
   virtual ~Input();
-  virtual T getValue() = 0;
-private:
-
+  /**
+   * Funkcja zwracająca przechowywaną wartość do połączeń.
+   * @return Przechowywana wartość.
+   */
+  virtual T getValue() const
+  {
+    return input_value;
+  }
+protected:
+  T input_value;
 };
 
 #endif	/* INPUT_H */

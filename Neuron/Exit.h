@@ -19,8 +19,14 @@ public:
   Exit();
   Exit(const Exit& orig);
   virtual ~Exit();
-private:
-
+  /**
+   * Funkcja zwracająca wyjście.
+   * @return Wyjście.
+   */
+  T getExit() const
+  {
+    return output_value;
+  }
 };
 
 #endif	/* EXIT_H */
