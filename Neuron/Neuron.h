@@ -24,17 +24,36 @@ template <class T, class ActivationFunction = StepActivationFunction<T>()> class
 {
 public:
   /**
-   * Konstruktor domyślny z funkcją aktywacji, która jest funkcją skokową i skoku 0.
+   * Konstruktor domyślny z ustawieniem współczynnika uczenia z funkcją aktywacji, która jest funkcją skokową i skoku w punkcie 0. Współczynnik uczenie ustawiony jest na 0.7.
+   * @param lf Współczynnik uczenia.
    */
   Neuron() : activate_function(ActivationFunction()), learn_factor(0.7)
   {
     
   }
   /**
-   * Konstruktor parametryczny z ustawieniem funkcji aktywacji.
+   * Konstruktor parametryczny z ustawieniem współczynnika uczenia  oraz z funkcją aktywacji, która jest funkcją skokową i skoku w punkcie 0.
+   * @param lf Współczynnik uczenia.
+   */
+  Neuron(T lf) : activate_function(ActivationFunction()), learn_factor(lf)
+  {
+    
+  }
+  /**
+   * Konstruktor parametryczny z ustawieniem funkcji aktywacji. Jako współczynnik uczenia ustawione jest 0.7.
    * @param fun
+   * 
    */
   Neuron(ActivationFunction fun) : activate_function(fun), learn_factor(0.7)
+  {
+    
+  }
+  /**
+   * Konstruktor parametryczny z ustawieniem funkcji aktywacji i współczynnika uczenia.
+   * @param fun
+   * 
+   */
+  Neuron(ActivationFunction fun, T lf) : activate_function(fun), learn_factor(lf)
   {
     
   }
@@ -60,8 +79,10 @@ public:
     for (T* t : wages)
     {
       output += (*t) * (*it)->getValue();
+      //std::cout << "Waga: " << (*t) << " wartość:" << (*it)->getValue() << " ";
       it++;
     }
+    //std::cout << output << "\n";
     this->input_value = activate_function(output);
     this->setValToAuts();
   }
@@ -74,7 +95,11 @@ public:
     typename std::list<Link<T>*>::iterator it = this->ins.begin();
     for (auto w: wages)
     {
-      *w = *w + learn_factor * (*it)->getValue() * (answer - output);
+      *w = *w + learn_factor * (*it)->getValue() * (answer - this->input_value);
+      /*std::cout << learn_factor  <<"\n";
+      std::cout << (*it)->getValue()  <<"\n";
+      std::cout << (answer - output) <<"\n";
+      std::cout << learn_factor * (*it)->getValue() * (answer - output) <<"\n\n";*/
     }
   }
   /**
@@ -85,6 +110,15 @@ public:
   {
     Output<T>::setLinkIn(link);
     wages.push_back(new T(1)); //TODO: początkowe wagi 0 lub losowe
+  }
+  /***/
+  void printWages()
+  {
+    for (auto w: wages)
+    {
+      std::cout << *w << " ";
+    }
+    std::cout << "that was wages!\n";
   }
 private:
   T output;
