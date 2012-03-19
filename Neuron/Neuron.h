@@ -10,6 +10,7 @@
 
 #include "Input.h"
 #include "Output.h"
+#include "StepActivationFunction.h"
 
 #include <list>
 
@@ -17,10 +18,21 @@
 /**
  * Klasa Neuron odpowiada neuronowi w sieci neuronowej.
  */
-template <class T> class Neuron : public Input<T>, public Output<T>
+template <class T, class ActivationFunction = StepActivationFunction<T>()> class Neuron : public Input<T>, public Output<T>
 {
 public:
+  /**
+   * Konstruktor domyślny z funkcją aktywacji, która jest funkcją skokową i skoku 0.
+   */
   Neuron()
+  {
+    activate_function = ActivationFunction();
+  }
+  /**
+   * Konstruktor parametryczny z ustawieniem funkcji aktywacji.
+   * @param fun
+   */
+  Neuron(ActivationFunction fun) : activate_function(fun)
   {
     
   }
@@ -45,11 +57,10 @@ public:
     typename std::list<Link<T>*>::iterator it = this->ins.begin();
     for (T* t : wages)
     {
-     // std::cout << (*t) << " " << (*it)->getValue() << "\n";
       output += (*t) * (*it)->getValue();
       it++;
     }
-    this->input_value = output;
+    this->input_value = activate_function(output);
     this->setValToAuts();
   }
   /**
@@ -67,11 +78,13 @@ public:
   void setLinkIn(Link<T>* link)
   {
     Output<T>::setLinkIn(link);
-    wages.push_back(new T(1)); //TODO: początkowe wagi
+    wages.push_back(new T(1)); //TODO: początkowe wagi 0 lub losowe
   }
 private:
   T output;
   std::list<T*> wages;
+  ActivationFunction activate_function;
+  
 };
 
 #endif	/* NEURON_H */

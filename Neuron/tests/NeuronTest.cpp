@@ -12,17 +12,18 @@
 #include "Link.h"
 #include "Exit.h"
 #include "Entry.h"
+#include "StepActivationFunction.h"
 
 #include <vector>
 
 /**
  * SQLiteController
  */
-TEST(SimpleTest, C2Entry1Neuron1Exit0Int)
+TEST(SimpleTest, StepActivationDefault)
 {
   Entry<int> a;
   Entry<int> b;
-  Neuron<int> n;
+  Neuron<int, StepActivationFunction<int>> n;
   Exit<int> exit;
   std::vector < Link<int >> links(3);
   a.setLinkOut(&links[0]);
@@ -33,19 +34,15 @@ TEST(SimpleTest, C2Entry1Neuron1Exit0Int)
   exit.setLinkIn(&links[2]);
   a.setEntry(0);
   b.setEntry(0);
-  std::cout << "A\n";
   n.calculateOutput();
-  std::cout << "A\n";
   ASSERT_EQ(0, exit.getExit());
-  std::cout << "A\n";
 }
 
-TEST(SimpleTest, C2Entry1Neuron1Exit3Int)
+TEST(SimpleTest, StepActivationInt2)
 {
-  std::cout << "A\n";
   Entry<int> a;
   Entry<int> b;
-  Neuron<int> n;
+  Neuron<int, StepActivationFunction<int>> n(StepActivationFunction<int>(2));
   Exit<int> exit;
   std::vector < Link<int >> links(3);
   a.setLinkOut(&links[0]);
@@ -57,15 +54,14 @@ TEST(SimpleTest, C2Entry1Neuron1Exit3Int)
   a.setEntry(1);
   b.setEntry(2);
   n.calculateOutput();
-  ASSERT_EQ(3, exit.getExit());
+  ASSERT_EQ(1, exit.getExit());
 }
 
-TEST(SimpleTest, C2Entry1Neuron1ExitMinus1Int)
+TEST(SimpleTest, StepActivationIntMinus22)
 {
-  std::cout << "A\n";
   Entry<int> a;
   Entry<int> b;
-  Neuron<int> n;
+  Neuron<int, StepActivationFunction<int>> n(StepActivationFunction<int>(-2));
   Exit<int> exit;
   std::vector < Link<int >> links(3);
   a.setLinkOut(&links[0]);
@@ -77,7 +73,7 @@ TEST(SimpleTest, C2Entry1Neuron1ExitMinus1Int)
   a.setEntry(1);
   b.setEntry(-2);
   n.calculateOutput();
-  ASSERT_EQ(-1, exit.getExit());
+  ASSERT_EQ(1, exit.getExit());
 }
 
 

@@ -34,13 +34,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/Neuron.o \
-	${OBJECTDIR}/Entry.o \
-	${OBJECTDIR}/Input.o \
-	${OBJECTDIR}/Link.o \
-	${OBJECTDIR}/Bias.o \
-	${OBJECTDIR}/Output.o \
-	${OBJECTDIR}/Exit.o
+	${OBJECTDIR}/nic.o
 
 # Test Directory
 TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
@@ -73,40 +67,10 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libNeuron.so: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -std=c++0x -shared -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libNeuron.so -fPIC ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
-${OBJECTDIR}/Neuron.o: Neuron.cpp 
+${OBJECTDIR}/nic.o: nic.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/Neuron.o Neuron.cpp
-
-${OBJECTDIR}/Entry.o: Entry.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/Entry.o Entry.cpp
-
-${OBJECTDIR}/Input.o: Input.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/Input.o Input.cpp
-
-${OBJECTDIR}/Link.o: Link.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/Link.o Link.cpp
-
-${OBJECTDIR}/Bias.o: Bias.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/Bias.o Bias.cpp
-
-${OBJECTDIR}/Output.o: Output.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/Output.o Output.cpp
-
-${OBJECTDIR}/Exit.o: Exit.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/Exit.o Exit.cpp
+	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/nic.o nic.cpp
 
 # Subprojects
 .build-subprojects:
@@ -121,98 +85,20 @@ ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/NeuronTest.o ${OBJECTFILES:%.o=%_nomai
 ${TESTDIR}/tests/NeuronTest.o: tests/NeuronTest.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -g -I. -I. -I../../gtest/gtest_src/include -MMD -MP -MF $@.d -o ${TESTDIR}/tests/NeuronTest.o tests/NeuronTest.cpp
+	$(COMPILE.cc) -g -I. -I. -I. -I../../gtest/gtest_src/include -MMD -MP -MF $@.d -o ${TESTDIR}/tests/NeuronTest.o tests/NeuronTest.cpp
 
 
-${OBJECTDIR}/Neuron_nomain.o: ${OBJECTDIR}/Neuron.o Neuron.cpp 
+${OBJECTDIR}/nic_nomain.o: ${OBJECTDIR}/nic.o nic.cpp 
 	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/Neuron.o`; \
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/nic.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -g -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Neuron_nomain.o Neuron.cpp;\
+	    $(COMPILE.cc) -g -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/nic_nomain.o nic.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/Neuron.o ${OBJECTDIR}/Neuron_nomain.o;\
-	fi
-
-${OBJECTDIR}/Entry_nomain.o: ${OBJECTDIR}/Entry.o Entry.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/Entry.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} $@.d;\
-	    $(COMPILE.cc) -g -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Entry_nomain.o Entry.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/Entry.o ${OBJECTDIR}/Entry_nomain.o;\
-	fi
-
-${OBJECTDIR}/Input_nomain.o: ${OBJECTDIR}/Input.o Input.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/Input.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} $@.d;\
-	    $(COMPILE.cc) -g -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Input_nomain.o Input.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/Input.o ${OBJECTDIR}/Input_nomain.o;\
-	fi
-
-${OBJECTDIR}/Link_nomain.o: ${OBJECTDIR}/Link.o Link.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/Link.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} $@.d;\
-	    $(COMPILE.cc) -g -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Link_nomain.o Link.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/Link.o ${OBJECTDIR}/Link_nomain.o;\
-	fi
-
-${OBJECTDIR}/Bias_nomain.o: ${OBJECTDIR}/Bias.o Bias.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/Bias.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} $@.d;\
-	    $(COMPILE.cc) -g -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Bias_nomain.o Bias.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/Bias.o ${OBJECTDIR}/Bias_nomain.o;\
-	fi
-
-${OBJECTDIR}/Output_nomain.o: ${OBJECTDIR}/Output.o Output.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/Output.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} $@.d;\
-	    $(COMPILE.cc) -g -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Output_nomain.o Output.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/Output.o ${OBJECTDIR}/Output_nomain.o;\
-	fi
-
-${OBJECTDIR}/Exit_nomain.o: ${OBJECTDIR}/Exit.o Exit.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/Exit.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} $@.d;\
-	    $(COMPILE.cc) -g -fPIC  -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Exit_nomain.o Exit.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/Exit.o ${OBJECTDIR}/Exit_nomain.o;\
+	    ${CP} ${OBJECTDIR}/nic.o ${OBJECTDIR}/nic_nomain.o;\
 	fi
 
 # Run Test Targets

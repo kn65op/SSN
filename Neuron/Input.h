@@ -41,6 +41,9 @@ public:
 protected:
   T input_value;
   std::list<Link<T>*> outs;
+  /**
+   * Wysłanie wartości przechowywanej w danym obiekcie do wszystkich podłączonych linków.
+   */
   void setValToAuts() const
   {
     for (auto o: this->outs)

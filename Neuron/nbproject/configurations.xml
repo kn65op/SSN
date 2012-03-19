@@ -11,6 +11,7 @@
       <itemPath>Link.h</itemPath>
       <itemPath>Neuron.h</itemPath>
       <itemPath>Output.h</itemPath>
+      <itemPath>StepActivationFunction.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -19,13 +20,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>Bias.cpp</itemPath>
-      <itemPath>Entry.cpp</itemPath>
-      <itemPath>Exit.cpp</itemPath>
-      <itemPath>Input.cpp</itemPath>
-      <itemPath>Link.cpp</itemPath>
-      <itemPath>Neuron.cpp</itemPath>
-      <itemPath>Output.cpp</itemPath>
+      <itemPath>nic.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -78,10 +73,12 @@
           <incDir>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </incDir>
         </cTool>
         <ccTool>
           <incDir>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
           </incDir>
@@ -115,10 +112,12 @@
           <incDir>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </incDir>
         </cTool>
         <ccTool>
           <incDir>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
           </incDir>

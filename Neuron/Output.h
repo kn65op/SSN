@@ -26,10 +26,10 @@ public:
    * Funkcja przyjmująca wartość z łącza.
    * @param o Otrzymana wartość z łącza.
    */
-  virtual void setValue(T o)
-  {
-    output_value = o;
-  }
+//  virtual void setValue(T o)
+//  {
+//    output_value = o;
+//  }
   /**
    * Funkcja dodająca połączenie do wyjścia z połączenia.
    * @param link Dodawane połączenie.
@@ -40,7 +40,7 @@ public:
     link->setOut(this);
   }
 protected:
-  T output_value;
+  //T output_value;
   std::list<Link<T>*> ins;
 };
 
