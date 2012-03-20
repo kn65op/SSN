@@ -87,10 +87,10 @@ public:
     this->setValToAuts();
   }
   /**
-   * Funkcja ucząca.
+   * Funkcja ucząca wg reguły delta. Stosowana tylko dla sieci jednowarstwowych.
    * @param answer Wymagana odpowiedź dla danego neuronu.
    */
-  void learn(T answer)
+  void learnDelta(T answer)
   {
     typename std::list<Link<T>*>::iterator it = this->ins.begin();
     for (auto w: wages)

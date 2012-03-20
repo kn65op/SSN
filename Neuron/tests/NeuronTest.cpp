@@ -77,7 +77,7 @@ TEST(SimpleTest, StepActivationIntMinus22)
   ASSERT_EQ(1, exit.getExit());
 }
 
-TEST(LearnWithDeltaTest, Or100)
+TEST(learnDeltaWithDeltaTest, Or100)
 {
   Entry<double> a;
   Entry<double> b;
@@ -96,25 +96,25 @@ TEST(LearnWithDeltaTest, Or100)
     a.setEntry(0);
     b.setEntry(0);
     n.calculateOutput();
-    n.learn(0);
+    n.learnDelta(0);
     //n.printWages();
     //EXPECT_EQ(0, exit.getExit());
     a.setEntry(1);
     b.setEntry(0);
     n.calculateOutput();
-    n.learn(1);
+    n.learnDelta(1);
     //n.printWages();
     //EXPECT_EQ(1, exit.getExit());
     a.setEntry(0);
     b.setEntry(1);
     n.calculateOutput();
-    n.learn(1);
+    n.learnDelta(1);
     //n.printWages();
     //EXPECT_EQ(1, exit.getExit());
     a.setEntry(1);
     b.setEntry(1);
     n.calculateOutput();
-    n.learn(1);
+    n.learnDelta(1);
     //n.printWages();
   }
   //EXPECT_EQ(1, exit.getExit());
@@ -136,12 +136,12 @@ TEST(LearnWithDeltaTest, Or100)
   ASSERT_EQ(1, exit.getExit());
 }
 
-TEST(LearnWithDeltaTest, And100)
+TEST(learnDeltaWithDeltaTest, And100)
 {
   Entry<double> a;
   Entry<double> b;
   Bias<double> bias(1);
-  Neuron<double, StepActivationFunction<double >> n(StepActivationFunction<double>(5));
+  Neuron<double, StepActivationFunction<double >> n(StepActivationFunction<double>(90));
   Exit<double> exit;
   std::vector < Link<double >> links(4);
   a.setLinkOut(&links[0]);
@@ -159,27 +159,28 @@ TEST(LearnWithDeltaTest, And100)
     a.setEntry(0);
     b.setEntry(0);
     n.calculateOutput();
-    n.learn(0);
+    n.learnDelta(0);
     //n.printWages();
     //EXPECT_EQ(0, exit.getExit());
     a.setEntry(1);
     b.setEntry(0);
     n.calculateOutput();
-    n.learn(0);
+    n.learnDelta(0);
     //n.printWages();
     //EXPECT_EQ(0, exit.getExit());
     a.setEntry(0);
     b.setEntry(1);
     n.calculateOutput();
-    n.learn(0);
+    n.learnDelta(0);
     //n.printWages();
     //EXPECT_EQ(0, exit.getExit());
     a.setEntry(1);
     b.setEntry(1);
     n.calculateOutput();
-    n.learn(1);
+    n.learnDelta(1);
     //n.printWages();
   }
+  n.printWages();//
   //EXPECT_EQ(1, exit.getExit());
   a.setEntry(0);
   b.setEntry(0);
