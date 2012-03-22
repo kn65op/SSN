@@ -13,8 +13,11 @@
 #include "StepActivationFunction.h"
 
 #include <list>
+#include <random>
+#include <cmath>
 
 #include <iostream>
+
 /**
  * Klasa Neuron odpowiada neuronowi w sieci neuronowej. Podana funkcja aktywacji jest klasą zawierającą metody: operator() za pomocą, której jest wyliczane pobudzenie neuronu [nieaktualne]oraz
  * deriterative(T x) pozwalającą na wyznaczenie pochodnej funkcji aktywacji w punkcie x (jest to niezbędne do realizacji procesu uczenia się sieci)[/nieaktualne].
@@ -23,22 +26,25 @@
 template <class T, class ActivationFunction = StepActivationFunction<T>()> class Neuron : public Input<T>, public Output<T>
 {
 public:
+
   /**
    * Konstruktor domyślny z ustawieniem współczynnika uczenia z funkcją aktywacji, która jest funkcją skokową i skoku w punkcie 0. Współczynnik uczenie ustawiony jest na 0.7.
    * @param lf Współczynnik uczenia.
    */
   Neuron() : activate_function(ActivationFunction()), learn_factor(0.7)
   {
-    
+
   }
+
   /**
    * Konstruktor parametryczny z ustawieniem współczynnika uczenia  oraz z funkcją aktywacji, która jest funkcją skokową i skoku w punkcie 0.
    * @param lf Współczynnik uczenia.
    */
   Neuron(T lf) : activate_function(ActivationFunction()), learn_factor(lf)
   {
-    
+
   }
+
   /**
    * Konstruktor parametryczny z ustawieniem funkcji aktywacji. Jako współczynnik uczenia ustawione jest 0.7.
    * @param fun
@@ -46,8 +52,9 @@ public:
    */
   Neuron(ActivationFunction fun) : activate_function(fun), learn_factor(0.7)
   {
-    
+
   }
+
   /**
    * Konstruktor parametryczny z ustawieniem funkcji aktywacji i współczynnika uczenia.
    * @param fun
@@ -55,15 +62,17 @@ public:
    */
   Neuron(ActivationFunction fun, T lf) : activate_function(fun), learn_factor(lf)
   {
-    
+
   }
+
   Neuron(const Neuron& orig)
   {
-    
+
   }
+
   virtual ~Neuron()
   {
-    for (auto w: wages)
+    for (auto w : wages)
     {
       delete w;
     }
@@ -79,46 +88,109 @@ public:
     for (T* t : wages)
     {
       output += (*t) * (*it)->getValue();
-      //std::cout << "Waga: " << (*t) << " wartość:" << (*it)->getValue() << " ";
+     // test //std::cout << "Waga: " << (*t) << " wartość:" << (*it)->getValue() << "\n";
       it++;
     }
-    //std::cout << output << "\n";
+   // test //std::cout << output << "\n";
     this->input_value = activate_function(output);
     this->setValToAuts();
   }
+
   /**
    * Funkcja ucząca wg reguły delta. Stosowana tylko dla sieci jednowarstwowych.
    * @param answer Wymagana odpowiedź dla danego neuronu.
    */
-  void learnDelta(T answer)
+  void learnDelta()
   {
     typename std::list<Link<T>*>::iterator it = this->ins.begin();
-    for (auto w: wages)
+    for (auto w : wages)
     {
-      *w = *w + learn_factor * (*it)->getValue() * (answer - this->input_value);
-      /*std::cout << learn_factor  <<"\n";
-      std::cout << (*it)->getValue()  <<"\n";
-      std::cout << (answer - output) <<"\n";
-      std::cout << learn_factor * (*it)->getValue() * (answer - output) <<"\n\n";*/
+      *w = *w + learn_factor * (*it)->getValue() * (this->outs.front()->getAnswer()) * activate_function.deriterative(output);
+      /*std::cout << learn_factor  <<"\n";**/
+      //std::cout << (*it)->getValue()  << " wartość pobudzenia dla wagi" <<"\n";
+      //std::cout << this->outs.front()->getAnswer() <<"odpowiedz ";
+     // test //std::cout << learn_factor * (*it)->getValue() * (this->outs.front()->getAnswer()) * activate_function.deriterative(output) << " zmiana wag ostatniego neuronu\n";
+
+      it++;
+    }
+    checkWages();
+  }
+
+  /**
+   * Funkcja propagująca błąd do głębszych warstw sieci.
+   */
+  void propagateAnswer()
+  {
+    //zbieranie błędu
+    T error = 0;
+    for (auto out : this->outs)
+    {
+      error += out->getAnswer();
+    }
+    typename std::list<T*>::iterator it = wages.begin();
+    for (auto in : this->ins)
+    {
+      in->setAnswer(error * fabs(**it));
+      it++;
     }
   }
+
+  /**
+   * Funkcja ucząca wg reguły Back Propagation dla warstw ukrytych.
+   */
+  void learnBP()
+  {
+    T delta = 0;
+    for (auto out : this->outs)
+    {
+      delta += out->getAnswer();
+    }
+    typename std::list<Link<T>*>::iterator it = this->ins.begin();
+    for (auto w : wages)
+    {
+      *w = *w + learn_factor * (*it)->getValue() * (delta) * activate_function.deriterative(output);
+     // test //std::cout << learn_factor * (*it)->getValue() * (delta) * activate_function.deriterative(output) << " zmiana wag neuronu\n";
+      it++;
+    }
+    checkWages();
+  }
+
+  void checkWages()
+  {
+    for (auto w : wages)
+    {
+      if (*w > 2)
+      {
+        *w = 2;
+      }
+      else if (*w < -2)
+      {
+        *w = -2;
+      }
+    }
+  }
+
   /**
    * Funkcja ustawiająca połączenie wejściowe oraz dodające nową wagę.
    * @param link Połączenie do ododania.
    */
   void setLinkIn(Link<T>* link)
   {
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_real_distribution<> dis(-0.5, 0.5);
     Output<T>::setLinkIn(link);
-    wages.push_back(new T(1)); //TODO: początkowe wagi 0 lub losowe
+    wages.push_back(new T(dis(gen))); //TODO: początkowe wagi 0 lub losowe
   }
+
   /***/
   void printWages()
   {
-    for (auto w: wages)
+    for (auto w : wages)
     {
-      std::cout << *w << " ";
+     // test //std::cout << *w << " ";
     }
-    std::cout << "that was wages!\n";
+   // test //std::cout << "that was wages!\n";
   }
 private:
   T output;

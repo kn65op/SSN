@@ -36,6 +36,17 @@ public:
   {
     return this->ins.front()->getValue();
   }
+  /**
+   * Funkcja rozpoczynająca uczenienie z tego wyjścia sieci.
+   * @param answer Żądana odpowiedź.
+   */
+  void learn(T answer) const
+  {
+    for (auto link: this->ins)
+    {
+      link->setAnswer(answer - this->ins.front()->getValue());
+    }
+  }
 };
 
 #endif	/* EXIT_H */

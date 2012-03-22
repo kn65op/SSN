@@ -8,6 +8,7 @@
       <itemPath>Entry.h</itemPath>
       <itemPath>Exit.h</itemPath>
       <itemPath>Input.h</itemPath>
+      <itemPath>LinearActivationFunction.h</itemPath>
       <itemPath>Link.h</itemPath>
       <itemPath>Neuron.h</itemPath>
       <itemPath>Output.h</itemPath>
@@ -74,10 +75,12 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </incDir>
         </cTool>
         <ccTool>
           <incDir>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -113,10 +116,12 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </incDir>
         </cTool>
         <ccTool>
           <incDir>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>

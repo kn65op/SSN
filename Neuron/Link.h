@@ -67,11 +67,28 @@ public:
   {
     out = o;
   }
-  
+  /**
+   * Pobranie odpowiedzi z linku.
+   * @return Zapisana odpowiedź.
+   */
+  T getAnswer() const
+  {
+    return answer;
+  }
+  /**
+   * Zapisanie odpowiedzi do linku.
+   * @param answer Przekazywana odpowiedź.
+   */
+  void setAnswer(T answer)
+  {
+    this->answer = answer;
+  }
+
 private:
   Input<T>* in;
   Output<T>* out;
   T value;
+  T answer;
 };
 
 #endif	/* LINK_H */
