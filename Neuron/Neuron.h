@@ -88,10 +88,10 @@ public:
     for (T* t : wages)
     {
       output += (*t) * (*it)->getValue();
-     // test //std::cout << "Waga: " << (*t) << " wartość:" << (*it)->getValue() << "\n";
+   // Qstd::cout << "Waga: " << (*t) << " wartość:" << (*it)->getValue() << "\n";
       it++;
     }
-   // test //std::cout << output << "\n";
+ // Qstd::cout << output << "\n";
     this->input_value = activate_function(output);
     this->setValToAuts();
   }
@@ -109,7 +109,7 @@ public:
       /*std::cout << learn_factor  <<"\n";**/
       //std::cout << (*it)->getValue()  << " wartość pobudzenia dla wagi" <<"\n";
       //std::cout << this->outs.front()->getAnswer() <<"odpowiedz ";
-     // test //std::cout << learn_factor * (*it)->getValue() * (this->outs.front()->getAnswer()) * activate_function.deriterative(output) << " zmiana wag ostatniego neuronu\n";
+   // Qstd::cout << learn_factor * (*it)->getValue() * (this->outs.front()->getAnswer()) * activate_function.deriterative(output) << " zmiana wag ostatniego neuronu\n";
 
       it++;
     }
@@ -125,12 +125,13 @@ public:
     T error = 0;
     for (auto out : this->outs)
     {
-      error += out->getAnswer();
+      error += (out->getAnswer()) * activate_function.deriterative(output);
+      //error += out->getAnswer();
     }
     typename std::list<T*>::iterator it = wages.begin();
     for (auto in : this->ins)
     {
-      in->setAnswer(error * fabs(**it));
+      in->setAnswer(error * (**it));
       it++;
     }
   }
@@ -149,7 +150,7 @@ public:
     for (auto w : wages)
     {
       *w = *w + learn_factor * (*it)->getValue() * (delta) * activate_function.deriterative(output);
-     // test //std::cout << learn_factor * (*it)->getValue() * (delta) * activate_function.deriterative(output) << " zmiana wag neuronu\n";
+   // Qstd::cout << learn_factor * (*it)->getValue() * (delta) * activate_function.deriterative(output) << " zmiana wag neuronu\n";
       it++;
     }
     checkWages();
@@ -159,13 +160,13 @@ public:
   {
     for (auto w : wages)
     {
-      if (*w > 2)
+      if (*w > 200)
       {
-        *w = 2;
+        *w = 200;
       }
-      else if (*w < -2)
+      else if (*w < -200)
       {
-        *w = -2;
+        *w = -200;
       }
     }
   }
@@ -188,9 +189,9 @@ public:
   {
     for (auto w : wages)
     {
-     // test //std::cout << *w << " ";
+   // Qstd::cout << *w << " ";
     }
-   // test //std::cout << "that was wages!\n";
+ // Qstd::cout << "that was wages!\n";
   }
 private:
   T output;

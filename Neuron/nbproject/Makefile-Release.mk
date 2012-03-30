@@ -85,7 +85,7 @@ ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/NeuronTest.o ${OBJECTFILES:%.o=%_nomai
 ${TESTDIR}/tests/NeuronTest.o: tests/NeuronTest.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I. -I. -I. -MMD -MP -MF $@.d -o ${TESTDIR}/tests/NeuronTest.o tests/NeuronTest.cpp
+	$(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. -I. -MMD -MP -MF $@.d -o ${TESTDIR}/tests/NeuronTest.o tests/NeuronTest.cpp
 
 
 ${OBJECTDIR}/nic_nomain.o: ${OBJECTDIR}/nic.o nic.cpp 

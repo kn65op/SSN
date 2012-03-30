@@ -45,6 +45,11 @@ public:
     return x > threshold;
   }
 
+  /**
+   * Funkcja licząca pochodną funkcji skokowej (jako cos(x) w zakresie 0 do 1)
+   * @param x
+   * @return 
+   */
   T deriterative(T x)
   {
     if (x > threshold + 1)

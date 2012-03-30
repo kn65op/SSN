@@ -27,7 +27,7 @@
 //  Entry<int> b;
 //  Neuron<int, StepActivationFunction<int >> n;
 //  Exit<int> exit;
-//  std::vector < Link<int >> links(3);
+//  // Qstd::vector < Link<int >> links(3);
 //  a.setLinkOut(&links[0]);
 //  b.setLinkOut(&links[1]);
 //  n.setLinkIn(&links[0]);
@@ -46,7 +46,7 @@
 //  Entry<int> b;
 //  Neuron<int, StepActivationFunction<int >> n(StepActivationFunction<int>(2));
 //  Exit<int> exit;
-//  std::vector < Link<int >> links(3);
+//  // Qstd::vector < Link<int >> links(3);
 //  a.setLinkOut(&links[0]);
 //  b.setLinkOut(&links[1]);
 //  n.setLinkIn(&links[0]);
@@ -65,7 +65,7 @@
 //  Entry<int> b;
 //  Neuron<int, StepActivationFunction<int >> n(StepActivationFunction<int>(-2));
 //  Exit<int> exit;
-//  std::vector < Link<int >> links(3);
+//  // Qstd::vector < Link<int >> links(3);
 //  a.setLinkOut(&links[0]);
 //  b.setLinkOut(&links[1]);
 //  n.setLinkIn(&links[0]);
@@ -84,7 +84,7 @@
 //  Entry<double> b;
 //  Neuron<double, StepActivationFunction<double >> n(StepActivationFunction<double>(1));
 //  Exit<double> exit;
-//  std::vector < Link<double >> links(3);
+//  // Qstd::vector < Link<double >> links(3);
 //  a.setLinkOut(&links[0]);
 //  b.setLinkOut(&links[1]);
 //  n.setLinkIn(&links[0]);
@@ -148,7 +148,7 @@
 //  Bias<double> bias(1);
 //  Neuron<double, StepActivationFunction<double >> n(StepActivationFunction<double>(1));
 //  Exit<double> exit;
-//  std::vector < Link<double >> links(4);
+//  // Qstd::vector < Link<double >> links(4);
 //  a.setLinkOut(&links[0]);
 //  b.setLinkOut(&links[1]);
 //  bias.setLinkOut(&links[3]);
@@ -215,9 +215,9 @@ TEST(learnWithBPTest, XOR100)
   Entry<double> b;
   Bias<double> bias1(1);
   Bias<double> bias2(1);
-  Neuron<double, StepActivationFunction<double >> n11;
-  Neuron<double, StepActivationFunction<double >> n12;
-  Neuron<double, StepActivationFunction<double >> n22;
+  Neuron<double, LinearActivationFunction<double >> n11(0.1);
+  Neuron<double, LinearActivationFunction<double >> n12(0.1);
+  Neuron<double, LinearActivationFunction<double >> n22(0.1);
   Exit<double> exit;
   std::vector < Link<double >> links(10);
   //wejścia do 1 neuronu
@@ -262,7 +262,7 @@ TEST(learnWithBPTest, XOR100)
     n11.learnBP();
     n12.learnBP();
     
-    // test std::cout<< "0,0: " << exit.getExit() << "\n";
+    // Qstd::cout<< "0,0: " << exit.getExit() << "\n";
     
     a.setEntry(1);
     b.setEntry(0);
@@ -275,7 +275,7 @@ TEST(learnWithBPTest, XOR100)
     n11.learnBP();
     n12.learnBP();
     
-    // test std::cout<< " 1,0: " << exit.getExit() << "\n";
+    // Qstd::cout<< " 1,0: " << exit.getExit() << "\n";
     
     a.setEntry(0);
     b.setEntry(1);
@@ -288,7 +288,7 @@ TEST(learnWithBPTest, XOR100)
     n11.learnBP();
     n12.learnBP();
     
-    // test std::cout<< " 0,1: " << exit.getExit() << "\n";
+    // Qstd::cout<< " 0,1: " << exit.getExit() << "\n";
     
     a.setEntry(1);
     b.setEntry(1);
@@ -301,12 +301,12 @@ TEST(learnWithBPTest, XOR100)
     n11.learnBP();
     n12.learnBP();
     
-    // test std::cout<< " 1,1: " << exit.getExit() << "\n";
+    // Qstd::cout<< " 1,1: " << exit.getExit() << "\n";
 //    for (auto l : links)
 //    {
-//      // test std::cout<< " " << l.getValue();
+//      // Qstd::cout<< " " << l.getValue();
 //    }
-//    // test std::cout<< "\n";
+//    // Qstd::cout<< "\n";
     
   //n11.printWages();
   //n12.printWages();
@@ -320,25 +320,25 @@ TEST(learnWithBPTest, XOR100)
   n11.calculateOutput();
   n12.calculateOutput();
   n22.calculateOutput();
-  ASSERT_EQ(0, exit.getExit());
+  ASSERT_GT(0.1, exit.getExit());
   a.setEntry(1);
   b.setEntry(0);
   n11.calculateOutput();
   n12.calculateOutput();
   n22.calculateOutput();
-  ASSERT_EQ(1, exit.getExit());
+  ASSERT_LT(0.9, exit.getExit());
   a.setEntry(0);
   b.setEntry(1);
   n11.calculateOutput();
   n12.calculateOutput();
   n22.calculateOutput();
-  ASSERT_EQ(1, exit.getExit());
+  ASSERT_LT(0.9, exit.getExit());
   a.setEntry(1);
   b.setEntry(1);
   n11.calculateOutput();
   n12.calculateOutput();
   n22.calculateOutput();
-  ASSERT_EQ(0, exit.getExit());
+  ASSERT_GT(0.1, exit.getExit());
 }
 
 int main(int argc, char **argv)

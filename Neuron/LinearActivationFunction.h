@@ -11,34 +11,53 @@
 #include <cmath>
 
 /**
- * Klasa przedstawiającą skokową funkcję aktywacji o określonym progu. Aktywacja następuje gdy dana wartość jest większa od wartości progu. Pochodną funkcji jest zookrąglona delta diraca.
+ * Klasa przedstawiającą skokową funkcję aktywacji o kształcie sigmoidy parametryzowana wartością określającą w jakim zakresie jest największa zmiana wartości.
  */
 template <class T> class LinearActivationFunction
 {
 public:
 
   /**
-   * Konstrutor domyślny ustawiający za wartość 0 (rzutowaną na dany typ)
+   * Konstrutor domyślny ustawiający za parametr wartość 1.
    */
-  LinearActivationFunction()
+  LinearActivationFunction() : parameter(1)
+  {
+  }
+  
+  /**
+   * Konstrutor domyślny ustawiający żądany parametr.
+   */
+  LinearActivationFunction(double p) : parameter(p)
   {
   }
 
-
   /**
-   * Funkcja sprawdzająca czy dana wartość jest większa od podanego progu.
+   * Funkcja licząca wartość sigmoidy.
    * @param x Sprawdzana wartość.
-   * @return true jeśli sprawdzana waratość jest większa, false w przeciwnym wypadku.
+   * @return Wyliczona wartość dla sigmoidy
    */
-  double operator()(T x)
+  T operator()(T x)
   {
-    return x;
+    return 1 / (1 + pow(M_E, -parameter * x));
   }
 
   T deriterative(T x)
   {
-    return x * (1-x);
+    return x * (1 - x);
   }
+  
+  /**
+   * Funkcja ustawiająca paramtr sigmoidy,
+   * @param parameter Parametr.
+   */
+  void setParameter(double parameter)
+  {
+    this->parameter = parameter;
+  }
+
+
+private:
+  double parameter;
 };
 
 
