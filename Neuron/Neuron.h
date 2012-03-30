@@ -19,8 +19,8 @@
 #include <iostream>
 
 /**
- * Klasa Neuron odpowiada neuronowi w sieci neuronowej. Podana funkcja aktywacji jest klasą zawierającą metody: operator() za pomocą, której jest wyliczane pobudzenie neuronu [nieaktualne]oraz
- * deriterative(T x) pozwalającą na wyznaczenie pochodnej funkcji aktywacji w punkcie x (jest to niezbędne do realizacji procesu uczenia się sieci)[/nieaktualne].
+ * Klasa Neuron odpowiada neuronowi w sieci neuronowej. Podana funkcja aktywacji jest klasą zawierającą metody: operator() za pomocą, której jest wyliczane pobudzenie neuronu oraz
+ * deriterative(T x) pozwalającą na wyznaczenie pochodnej funkcji aktywacji w punkcie x (jest to niezbędne do realizacji procesu uczenia się sieci).
  * Współczynnik uczenia jest ustalony na sztywno na 0.7 (co z tym idzie aby sieć mogła się uczyć nie należy używać liczb całkowytych).
  */
 template <class T, class ActivationFunction = StepActivationFunction<T>()> class Neuron : public Input<T>, public Output<T>
