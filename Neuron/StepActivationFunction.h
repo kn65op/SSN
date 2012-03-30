@@ -10,10 +10,12 @@
 
 #include <cmath>
 
+#include "ActivationFunction.h"
+
 /**
  * Klasa przedstawiającą skokową funkcję aktywacji o określonym progu. Aktywacja następuje gdy dana wartość jest większa od wartości progu. Pochodną funkcji jest zookrąglona delta diraca.
  */
-template <class T> class StepActivationFunction
+template <class T> class StepActivationFunction : public ActivationFunction<T>
 {
   T threshold;
 public:
@@ -38,9 +40,9 @@ public:
   /**
    * Funkcja sprawdzająca czy dana wartość jest większa od podanego progu.
    * @param x Sprawdzana wartość.
-   * @return true jeśli sprawdzana waratość jest większa, false w przeciwnym wypadku.
+   * @return 1 jeśli sprawdzana waratość jest większa, 0 w przeciwnym wypadku.
    */
-  bool operator()(T x)
+  T operator()(T x)
   {
     return x > threshold;
   }
