@@ -22,7 +22,7 @@ TEST(StateTest, TryStopWithOutInit)
 {
   typedef NeuralNetwork<double, StepActivationFunction<double >> network;
   network nn;
-  ASSERT_THROW(nn.stop(), network::WrongArgument);
+  ASSERT_THROW(nn.stop(), network::WrongState);
 }
 
 int main(int argc, char **argv)
