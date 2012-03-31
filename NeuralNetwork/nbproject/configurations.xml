@@ -63,6 +63,7 @@
           <linkerLibItems>
             <linkerLibFileItem>../../gtest/libgtest.a</linkerLibFileItem>
           </linkerLibItems>
+          <commandLine>-lpthread</commandLine>
         </linkerTool>
       </folder>
       <folder path="TestFiles/f1">

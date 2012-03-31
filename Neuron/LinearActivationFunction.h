@@ -14,7 +14,7 @@
 /**
  * Klasa przedstawiającą skokową funkcję aktywacji o kształcie sigmoidy parametryzowana wartością określającą w jakim zakresie jest największa zmiana wartości.
  */
-template <class T> class LinearActivationFunction : public ActivationFunction<T>
+template <class T> class LinearActivationFunction
 {
 public:
 

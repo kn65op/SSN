@@ -12,13 +12,14 @@
 #include <Entry.h>
 #include <Exit.h>
 #include <ActivationFunction.h>
+#include <Link.h>
 
 #include <list>
 
 /**
  * Klasa odwzorująca sieć neuronową.
  */
-template <class T> class NeuralNetwork
+template <class T, class ActivationFunction> class NeuralNetwork
 {
 public:
 
@@ -61,7 +62,7 @@ public:
   {
     if (!valid)
     {
-      throw WrongState;
+      throw WrongState();
     }
     clearNetwork();
   }
@@ -73,7 +74,7 @@ public:
   {
     if (valid)
     {
-      throw WrongState;
+      throw WrongState();
     }
     for (int i = 0; i < entries_count; i++)
     {
@@ -85,16 +86,16 @@ public:
     }
     for (int j = 0; j < layers_count; j++)
     {
-      layers.push_back(new std::list<Neron<T>*>())
+      layers.push_back(new std::list<Neuron<T>*>());
     }
     //TODO: dopisać
   }
 
-  void setActivation_function(ActivationFunction<T> activation_function)
+  void setActivation_function(ActivationFunction activation_function)
   {
     if (valid)
     {
-      throw WrongState;
+      throw WrongState();
     }
     this->activation_function = activation_function;
   }
@@ -103,7 +104,7 @@ public:
   {
     if (valid)
     {
-      throw WrongState;
+      throw WrongState();
     }
     this->entries_count = entries_count;
   }
@@ -112,7 +113,7 @@ public:
   {
     if (valid)
     {
-      throw WrongState;
+      throw WrongState();
     }
     this->exits_count = exits_count;
   }
@@ -121,7 +122,7 @@ public:
   {
     if (valid)
     {
-      throw WrongState;
+      throw WrongState();
     }
     if (layer > layers_count)
     {
@@ -139,7 +140,7 @@ public:
   {
     if (!valid)
     {
-      throw WrongState;
+      throw WrongState();
     }
     //TODO: dopisać
   }
@@ -148,7 +149,7 @@ public:
   {
     if (!valid)
     {
-      throw WrongState;
+      throw WrongState();
     }
     //TODO: dopisać
   }
@@ -157,7 +158,7 @@ public:
   {
     if (!valid)
     {
-      throw WrongState;
+      throw WrongState();
     }
     //TODO: dopisać
   }
@@ -166,7 +167,7 @@ public:
   {
     if (valid)
     {
-      throw WrongState;
+      throw WrongState();
     }
     this->layers_count = layers_count;
 
@@ -219,7 +220,7 @@ private:
   //wyjścia
   std::list<Exit<T >*> exits;
   //warstwy neuronów (zawsze będzie 1 użyta).
-  std::vector<std::list<Neuron<T >*>*> layers;
+  std::vector<std::list<Neuron<T, ActivationFunction >*>*> layers;
   //łącza
   std::list<Link<T>*> links;
   //dane dotyczące sieci
@@ -227,7 +228,7 @@ private:
   int entries_count;
   int exits_count;
   std::vector<int> neurons_count;
-  ActivationFunction<T> activation_function;
+  ActivationFunction activationfunction;
   bool valid;
   
   NeuralNetwork(const NeuralNetwork& orig)

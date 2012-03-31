@@ -9,16 +9,20 @@
 #include <iostream>
 #include "../../../gtest/gtest_src/include/gtest/gtest.h"
 #include "NeuralNetwork.h"
+#include "StepActivationFunction.h"
 
 #include <vector>
 
+#define COMMA   ,
+
 /**
- * SQLiteController
+ * NeuralNetwork
  */
 TEST(StateTest, TryStopWithOutInit)
 {
-  NeuralNetwork<double> nn;
-  ASSERT_THROW(nn.stop(), NeuralNetwork<double>::WrongState);
+  typedef NeuralNetwork<double, StepActivationFunction<double >> network;
+  network nn;
+  ASSERT_THROW(nn.stop(), network::WrongArgument);
 }
 
 int main(int argc, char **argv)

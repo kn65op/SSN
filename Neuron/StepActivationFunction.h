@@ -15,7 +15,7 @@
 /**
  * Klasa przedstawiającą skokową funkcję aktywacji o określonym progu. Aktywacja następuje gdy dana wartość jest większa od wartości progu. Pochodną funkcji jest zookrąglona delta diraca.
  */
-template <class T> class StepActivationFunction : public ActivationFunction<T>
+template <class T> class StepActivationFunction
 {
   T threshold;
 public:
