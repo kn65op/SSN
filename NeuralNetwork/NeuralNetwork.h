@@ -22,6 +22,28 @@ template <class T> class NeuralNetwork
 {
 public:
 
+  class WrongArgument
+  {
+  public:
+
+    WrongArgument(std::string m) : message(m)
+    {
+    }
+
+    std::string GetMessage() const
+    {
+      return message;
+    }
+    
+
+  private:
+    std::string message;
+  };
+
+  class WrongState
+  {
+    
+  };
   NeuralNetwork()
   {
   }
@@ -35,62 +57,84 @@ public:
   }
 
   /**
-   * Funkcja tworząca siec z podanych parametrów.
+   * Funkcja zatrzymująca działanie sieci, dzięki czemu można zmienić parametry sieci.
+   */
+  void stop()
+  {
+    clearNetwork();
+    //TODO: dopisać
+  }
+
+  /**
+   * Funkcja tworząca siec z podanych parametrów. Pozwala na wykorzystanie sieci.
    */
   void init()
   {
+    for (int i = 0; i < entries_count; i++)
+    {
+      entries.push_back(new Entry<T > ());
+    }
+    for (int i = 0; i < exits_count; i++)
+    {
+      exits.push_back(new Exit<T > ());
+    }
+    for (int j = 0; j < layers_count; j++)
+    {
+      layers.push_back(new std::list<Neron<T>*>())
+    }
     //TODO: dopisać
   }
-  
+
   void setActivation_function(ActivationFunction<T> activation_function)
   {
     this->activation_function = activation_function;
   }
 
-  void setEntries_count(int entries_count)
+  void setEntries(int entries_count)
   {
     this->entries_count = entries_count;
   }
 
-  void setExits_count(int exits_count)
+  void setExits(int exits_count)
   {
     this->exits_count = exits_count;
   }
 
-  void setLayers(int layers)
+  void setNeurons(int layer, int neurons_count) throw (WrongArgument)
   {
-    this->layers = layers;
-  }
-
-  void setNeurons_count_1(int neurons_count_1)
-  {
-    this->neurons_count_1 = neurons_count_1;
-  }
-
-  void setNeurons_count_2(int neurons_count_2)
-  {
-    this->neurons_count_2 = neurons_count_2;
-  }
-
-  void setNeurons_count_3(int neurons_count_3)
-  {
-    this->neurons_count_3 = neurons_count_3;
+    if (layer > layers_count)
+    {
+      throw WrongArgument("Network doesn't have such number of layers");
+    }
+    if (layer < 1)
+    {
+      throw WrongArgument("You cannot set layer 0 or negative");
+    }
+    //this->neurons_count_1 = neurons_count_1;
+    //TODO: dopisać kod
   }
 
   void setInput()
   {
     //TODO: dopisać
   }
-  
+
   void calcOutput()
   {
     //TODO: dopisać
   }
-  
+
   void learn()
   {
     //TODO: dopisać
   }
+
+  void setLayers_count(int layers_count)
+  {
+    this->layers_count = layers_count;
+
+  }
+
 private:
 
   /**
@@ -101,28 +145,51 @@ private:
   {
     //TODO: dopisać   
   }
+
   /**
    * Funkcja czyszcząca sieć.
    */
   void clearNetwork()
   {
+    for (auto tmp : entries)
+    {
+      delete tmp;
+    }
+    for (auto tmp : exits)
+    {
+      delete tmp;
+    }
+    for (auto tmp : layers)
+    {
+      for (auto n : *tmp)
+      {
+        delete n;
+      }
+      delete tmp;
+    }
+    for (auto tmp : links)
+    {
+      delete tmp;
+    }
+    entries.clear();
+    exits.clear();
+    layers.clear();
+    links.clear();
     //TODO: dopisać
   }
   //wejścia
-  std::list<Entry<T >> entries;
+  std::list<Entry<T >*> entries;
   //wyjścia
-  std::list<Exit<T >> exits;
+  std::list<Exit<T >*> exits;
   //warstwy neuronów (zawsze będzie 1 użyta).
-  std::list<Neuron<T >> layer1;
-  std::list<Neuron<T >> layer2;
-  std::list<Neuron<T >> layer3;
+  std::vector<std::list<Neuron<T >*>*> layers;
+  //łącza
+  std::list<Link<T>*> links;
   //dane dotyczące sieci
-  int layers;
+  int layers_count;
   int entries_count;
   int exits_count;
-  int neurons_count_1;
-  int neurons_count_2;
-  int neurons_count_3;
+  std::vector<int> neurons_count;
   ActivationFunction<T> activation_function;
 };
 
