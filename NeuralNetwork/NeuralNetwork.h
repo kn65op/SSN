@@ -46,23 +46,24 @@ public:
   };
   NeuralNetwork()
   {
+    valid = false;
   }
-
-  NeuralNetwork(const NeuralNetwork& orig)
-  {
-  }
-
+  
   ~NeuralNetwork()
   {
+    clearNetwork();
   }
 
   /**
    * Funkcja zatrzymująca działanie sieci, dzięki czemu można zmienić parametry sieci.
    */
-  void stop()
+  void stop() throw(WrongState)
   {
+    if (!valid)
+    {
+      throw WrongState;
+    }
     clearNetwork();
-    //TODO: dopisać
   }
 
   /**
@@ -70,6 +71,10 @@ public:
    */
   void init()
   {
+    if (valid)
+    {
+      throw WrongState;
+    }
     for (int i = 0; i < entries_count; i++)
     {
       entries.push_back(new Entry<T > ());
@@ -87,21 +92,37 @@ public:
 
   void setActivation_function(ActivationFunction<T> activation_function)
   {
+    if (valid)
+    {
+      throw WrongState;
+    }
     this->activation_function = activation_function;
   }
 
   void setEntries(int entries_count)
   {
+    if (valid)
+    {
+      throw WrongState;
+    }
     this->entries_count = entries_count;
   }
 
   void setExits(int exits_count)
   {
+    if (valid)
+    {
+      throw WrongState;
+    }
     this->exits_count = exits_count;
   }
 
   void setNeurons(int layer, int neurons_count) throw (WrongArgument)
   {
+    if (valid)
+    {
+      throw WrongState;
+    }
     if (layer > layers_count)
     {
       throw WrongArgument("Network doesn't have such number of layers");
@@ -116,21 +137,37 @@ public:
 
   void setInput()
   {
+    if (!valid)
+    {
+      throw WrongState;
+    }
     //TODO: dopisać
   }
 
   void calcOutput()
   {
+    if (!valid)
+    {
+      throw WrongState;
+    }
     //TODO: dopisać
   }
 
   void learn()
   {
+    if (!valid)
+    {
+      throw WrongState;
+    }
     //TODO: dopisać
   }
 
   void setLayers_count(int layers_count)
   {
+    if (valid)
+    {
+      throw WrongState;
+    }
     this->layers_count = layers_count;
 
   }
@@ -191,6 +228,12 @@ private:
   int exits_count;
   std::vector<int> neurons_count;
   ActivationFunction<T> activation_function;
+  bool valid;
+  
+  NeuralNetwork(const NeuralNetwork& orig)
+  {
+  }
+
 };
 
 #endif	/* NEURALNETWORK_H */
