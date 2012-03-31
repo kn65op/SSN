@@ -48,6 +48,10 @@ public:
   NeuralNetwork()
   {
     valid = false;
+    /*/
+    exits = entries = 1;
+    layers_count = 1;
+    setLayers_count(1);*/
   }
   
   ~NeuralNetwork()
@@ -65,6 +69,7 @@ public:
       throw WrongState();
     }
     clearNetwork();
+    valid = false;
   }
 
   /**
@@ -86,9 +91,10 @@ public:
     }
     for (int j = 0; j < layers_count; j++)
     {
-      layers.push_back(new std::list<Neuron<T>*>());
+      layers.push_back(new std::list<Neuron<T, ActivationFunction>*>);
     }
     //TODO: dopisać
+    valid = true;
   }
 
   void setActivation_function(ActivationFunction activation_function)

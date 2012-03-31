@@ -18,11 +18,23 @@
 /**
  * NeuralNetwork
  */
-TEST(StateTest, TryStopWithOutInit)
+TEST(StateTest, StateAtCreate)
 {
   typedef NeuralNetwork<double, StepActivationFunction<double >> network;
   network nn;
   ASSERT_THROW(nn.stop(), network::WrongState);
+  ASSERT_NO_THROW(nn.init());
+}
+
+TEST(StateTest, InitStop)
+{
+  typedef NeuralNetwork<double, StepActivationFunction<double >> network;
+  network nn;
+  ASSERT_NO_THROW(nn.init());
+  ASSERT_THROW(nn.init(), network::WrongState);
+  ASSERT_NO_THROW(nn.stop());
+  ASSERT_THROW(nn.stop(), network::WrongState);
+  ASSERT_NO_THROW(nn.init());
 }
 
 int main(int argc, char **argv)
