@@ -129,7 +129,7 @@ public:
     this->exits_count = exits_count;
   }
 
-  void setNeurons(int layer, int neurons_count) throw (WrongArgument)
+  void setNeurons(int layer, int neurons_count) throw (WrongState, WrongArgument)
   {
     if (valid)
     {
