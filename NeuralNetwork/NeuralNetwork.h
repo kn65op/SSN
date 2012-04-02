@@ -95,8 +95,14 @@ public:
     //stworzenie warstw
     for (int j = 0; j < layers_count; j++)
     {
-      layers.push_back(new std::list<Neuron<T, ActivationFunction>*>);
+      std::list<Neuron<T, ActivationFunction>*> *tmp = new std::list<Neuron<T, ActivationFunction>*>;
       //dodanie neuronów
+      for (int n = 0; n < neurons_count[j]; n++)
+      {
+        tmp->push_back(new Neuron<T, ActivationFunction>);
+      }
+      //zapisanie warstwy
+      layers.push_back(tmp);
     }
     //TODO: dopisać
     valid = true;
@@ -143,7 +149,7 @@ public:
     {
       throw WrongArgument("You cannot set layer 0 or negative");
     }
-    neurons_count[layer - 1] = neurons_count;
+    this->neurons_count[layer - 1] = neurons_count;
   }
 
   void setInput() throw (WrongState)
