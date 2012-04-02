@@ -1,0 +1,3 @@
+[submodule "LibHelper"]
+	path = LibHelper
+	url = git@github.com:kn65op/LibHelper.git

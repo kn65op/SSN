@@ -43,12 +43,14 @@
         <ccTool>
           <incDir>
             <pElem>../Neuron</pElem>
+            <pElem>../LibHelper</pElem>
           </incDir>
           <commandLine>-std=c++0x</commandLine>
         </ccTool>
         <linkerTool>
           <linkerLibItems>
             <linkerLibFileItem>../Neuron/dist/Debug/GNU-Linux-x86/libNeuron.so</linkerLibFileItem>
+            <linkerLibFileItem>../LibHelper/dist/Debug/GNU-Linux-x86/libHelper.so</linkerLibFileItem>
           </linkerLibItems>
           <commandLine>-std=c++0x</commandLine>
         </linkerTool>
@@ -70,10 +72,12 @@
         <cTool>
           <incDir>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </incDir>
         </cTool>
         <ccTool>
           <incDir>
+            <pElem>.</pElem>
             <pElem>.</pElem>
           </incDir>
         </ccTool>
@@ -105,10 +109,12 @@
         <cTool>
           <incDir>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </incDir>
         </cTool>
         <ccTool>
           <incDir>
+            <pElem>.</pElem>
             <pElem>.</pElem>
           </incDir>
         </ccTool>
