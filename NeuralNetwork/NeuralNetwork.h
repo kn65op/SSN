@@ -143,7 +143,7 @@ public:
     {
       throw WrongArgument("You cannot set layer 0 or negative");
     }
-    //TODO: dopisać kod
+    neurons_count[layer - 1] = neurons_count;
   }
 
   void setInput() throw (WrongState)
