@@ -48,10 +48,10 @@ public:
   NeuralNetwork()
   {
     valid = false;
-    /*/
-    exits = entries = 1;
-    layers_count = 1;
-    setLayers_count(1);*/
+    //początkowe wartości
+    exits_count = entries_count = 1;
+    setLayers_count(1);
+    setNeurons(1, 1);
   }
   
   ~NeuralNetwork()
@@ -75,7 +75,7 @@ public:
   /**
    * Funkcja tworząca siec z podanych parametrów. Pozwala na wykorzystanie sieci.
    */
-  void init()
+  void init() throw (WrongState)
   {
     if (valid)
     {
@@ -97,16 +97,16 @@ public:
     valid = true;
   }
 
-  void setActivation_function(ActivationFunction activation_function)
+  void setActivationfunction(ActivationFunction activationfunction) throw (WrongState)
   {
     if (valid)
     {
       throw WrongState();
     }
-    this->activation_function = activation_function;
+    this->activationfunction = activationfunction;
   }
 
-  void setEntries(int entries_count)
+  void setEntries(int entries_count) throw (WrongState)
   {
     if (valid)
     {
@@ -115,7 +115,7 @@ public:
     this->entries_count = entries_count;
   }
 
-  void setExits(int exits_count)
+  void setExits(int exits_count) throw (WrongState)
   {
     if (valid)
     {
@@ -142,7 +142,7 @@ public:
     //TODO: dopisać kod
   }
 
-  void setInput()
+  void setInput() throw (WrongState)
   {
     if (!valid)
     {
@@ -151,7 +151,7 @@ public:
     //TODO: dopisać
   }
 
-  void calcOutput()
+  void calcOutput() throw (WrongState)
   {
     if (!valid)
     {
@@ -160,7 +160,7 @@ public:
     //TODO: dopisać
   }
 
-  void learn()
+  void learn() throw (WrongState)
   {
     if (!valid)
     {
@@ -169,7 +169,7 @@ public:
     //TODO: dopisać
   }
 
-  void setLayers_count(int layers_count)
+  void setLayers_count(int layers_count) throw (WrongState)
   {
     if (valid)
     {
