@@ -50,6 +50,21 @@ TEST(StateTest, AllMethodsWithoutInit)
   ASSERT_THROW(nn.calcOutput(), network::WrongState);
 }
 
+TEST(StateTest, AllMethodsWithInit)
+{
+  typedef NeuralNetwork<double, StepActivationFunction<double >> network;
+  NeuralNetwork<double, StepActivationFunction<double>> nn;
+  ASSERT_NO_THROW(nn.init());
+  ASSERT_THROW(nn.setEntries(2), network::WrongState);
+  ASSERT_THROW(nn.setExits(2), network::WrongState);
+  ASSERT_THROW(nn.setLayers_count(1), network::WrongState);
+  ASSERT_THROW(nn.setEntries(2), network::WrongState);
+  ASSERT_THROW(nn.setNeurons(1,2), network::WrongState);
+  ASSERT_THROW(nn.setNeurons(2,2), network::WrongState);
+  ASSERT_NO_THROW(nn.learn());
+  ASSERT_NO_THROW(nn.calcOutput());
+}
+
 int main(int argc, char **argv)
 {
 
