@@ -21,7 +21,7 @@ public:
   /**
    * Konstrutor domyślny ustawiający za parametr wartość 1.
    */
-  LinearActivationFunction() : parameter(1)
+  LinearActivationFunction() : LinearActivationFunction(1)
   {
   }
   
@@ -42,6 +42,11 @@ public:
     return 1 / (1 + pow(M_E, -parameter * x));
   }
 
+  /**
+   * Funkcja licząca pochodną
+   * @param x Wartość dla której liczymy pochodną.
+   * @return Obliczona pochodna.
+   */
   T deriterative(T x)
   {
     return x * (1 - x);

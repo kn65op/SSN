@@ -17,6 +17,9 @@
 template <class T> class Link
 {
 public:
+  /**
+   * Konstruktor domyślny.
+   */
   Link()
   {
     

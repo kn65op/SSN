@@ -16,14 +16,6 @@
 template <class T> class Entry: public Input<T>
 {
 public:
-  Entry()
-  {
-    
-  }
-  Entry(const Entry& orig)
-  {
-    
-  }
   virtual ~Entry()
   {
     

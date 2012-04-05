@@ -11,7 +11,7 @@
       <itemPath>Input.h</itemPath>
       <itemPath>LinearActivationFunction.h</itemPath>
       <itemPath>Link.h</itemPath>
-      <itemPath>Neuron.h</itemPath>
+      <itemPath>/home/tomko/moje_dziela/SSN/Neuron/Neuron.h</itemPath>
       <itemPath>Output.h</itemPath>
       <itemPath>StepActivationFunction.h</itemPath>
     </logicalFolder>
@@ -80,10 +80,12 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </incDir>
         </cTool>
         <ccTool>
           <incDir>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -127,10 +129,12 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </incDir>
         </cTool>
         <ccTool>
           <incDir>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>

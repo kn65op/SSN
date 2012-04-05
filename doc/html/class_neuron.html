@@ -122,8 +122,6 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neuron.html#a6145b98854c0fb6e9cfe09336952a5dc">Neuron</a> (T lf)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neuron.html#afff69f38459625c7d376e5f5e2e34a9d">Neuron</a> (<a class="el" href="class_activation_function.html">ActivationFunction</a> fun)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neuron.html#a1c7ea1b973546b185e6ec0c29b740453">Neuron</a> (<a class="el" href="class_activation_function.html">ActivationFunction</a> fun, T lf)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a69874cefdd2d0c8898b977a6a2bdf5ef"></a><!-- doxytag: member="Neuron::Neuron" ref="a69874cefdd2d0c8898b977a6a2bdf5ef" args="(const Neuron &amp;orig)" -->
-&#160;</td><td class="memItemRight" valign="bottom"><b>Neuron</b> (const <a class="el" href="class_neuron.html">Neuron</a> &amp;orig)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neuron.html#a36c60982cb604f2fa6a1765177a9c2e7">calculateOutput</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neuron.html#ae73a056c55311521d0e31347837109cc">learnDelta</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neuron.html#acb55ff03a770877b6afb86ed4d06896a">propagateAnswer</a> ()</td></tr>
@@ -131,8 +129,6 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7ab012ac0a6a20b474b6147fcdc6ea2d"></a><!-- doxytag: member="Neuron::checkWages" ref="a7ab012ac0a6a20b474b6147fcdc6ea2d" args="()" -->
 void&#160;</td><td class="memItemRight" valign="bottom"><b>checkWages</b> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neuron.html#a1a20d9ac9bf64126f8d74d8c1c7d3c58">setLinkIn</a> (<a class="el" href="class_link.html">Link</a>&lt; T &gt; *link)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac112e85f169835dad11a6f7bd9e477b9"></a><!-- doxytag: member="Neuron::printWages" ref="ac112e85f169835dad11a6f7bd9e477b9" args="()" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>printWages</b> ()</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><h3>template&lt;class T, class ActivationFunction = StepActivationFunction&lt;T&gt;()&gt;<br/>
@@ -210,7 +206,7 @@ template&lt;class T , class ActivationFunction  = StepActivationFunction&lt;T&gt
 <p>Konstruktor parametryczny z ustawieniem funkcji aktywacji. Jako współczynnik uczenia ustawione jest 0.7. </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">fun</td><td></td></tr>
+    <tr><td class="paramname">fun</td><td>Funkcja aktywacji. </td></tr>
   </table>
   </dd>
 </dl>
@@ -246,7 +242,8 @@ template&lt;class T , class ActivationFunction  = StepActivationFunction&lt;T&gt
 <p>Konstruktor parametryczny z ustawieniem funkcji aktywacji i współczynnika uczenia. </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">fun</td><td></td></tr>
+    <tr><td class="paramname">fun</td><td>Funkcja aktywacji. </td></tr>
+    <tr><td class="paramname">lf</td><td>Współczynnik uczenia. </td></tr>
   </table>
   </dd>
 </dl>
@@ -269,7 +266,7 @@ template&lt;class T , class ActivationFunction  = StepActivationFunction&lt;T&gt
       </table>
 </div>
 <div class="memdoc">
-<p>Funkcja licząca wyjście neuronu w zależności od wejsć zgodnie ze wzorem f(E(xi, yi)). </p>
+<p>Funkcja licząca wyjście neuronu w zależności od wejsć (suma ważone) a następnie przejście przez funkcję aktywacji. </p>
 
 </div>
 </div>
@@ -387,7 +384,7 @@ template&lt;class T , class ActivationFunction  = StepActivationFunction&lt;T&gt
     <ul>
       <li class="navelem"><a class="el" href="class_neuron.html">Neuron</a>      </li>
 
-    <li class="footer">Generated on Thu Apr 5 2012 12:28:54 for SSN by
+    <li class="footer">Generated on Thu Apr 5 2012 13:26:35 for SSN by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

@@ -15,6 +15,10 @@ class \hyperlink{class_neural_network_1_1_wrong_state}{\-Wrong\-State}
 \subsection*{\-Public \-Member \-Functions}
 \begin{DoxyCompactItemize}
 \item 
+\hyperlink{class_neural_network_ade5d1724706351407fdf6acf613ac8c8}{\-Neural\-Network} ()
+\item 
+\hyperlink{class_neural_network_a4c1e3cc6dc0114260c17f0a5ea8e9981}{$\sim$\-Neural\-Network} ()
+\item 
 \hypertarget{class_neural_network_a4ce7e819f755461926a92668aab811e2}{{\bfseries \-Neural\-Network} (const \hyperlink{class_neural_network}{\-Neural\-Network} \&orig)}\label{class_neural_network_a4ce7e819f755461926a92668aab811e2}
 
 \item 
@@ -30,9 +34,6 @@ void \hyperlink{class_neural_network_a18912fbb8068bfb301d6e2462c9f8a31}{set\-Exi
 \item 
 void \hyperlink{class_neural_network_ab3c70e006390624a5b9bd2c933b8af56}{set\-Neurons} (int layer, int neurons\-\_\-count)  throw (\-Wrong\-State, Wrong\-Argument)
 \item 
-\hypertarget{class_neural_network_af38649b96a0f8004a72b2d224bb5e18a}{void {\bfseries set\-Input} ()}\label{class_neural_network_af38649b96a0f8004a72b2d224bb5e18a}
-
-\item 
 {\footnotesize template$<$class Input\-Iterator $>$ }\\void \hyperlink{class_neural_network_aaf64536a908b15b76faa8e19216d9219}{set\-Input} (\-Input\-Iterator start, \-Input\-Iterator end)  throw (\-Wrong\-State, Wrong\-Argument)
 \item 
 void \hyperlink{class_neural_network_a7f03c156227f54548f92ea1cd686a7da}{calc\-Output} ()  throw (\-Wrong\-State)
@@ -47,7 +48,24 @@ void \hyperlink{class_neural_network_a3ef0490ade6f9efff49501132a12fd18}{set\-Lay
 \subsection{\-Detailed \-Description}
 \subsubsection*{template$<$class T, class Activation\-Function$>$class Neural\-Network$<$ T, Activation\-Function $>$}
 
-\-Klasa odwzorująca sieć neuronową. 
+\-Klasa odwzorująca sieć neuronową. \-Najpierw należy ustawić parametry sieci, a następnie uruchomić sieć. \-Jeśli wystąpi konieczność zmiany parametrów to należy zatrzymać sieć. 
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_neural_network_ade5d1724706351407fdf6acf613ac8c8}{\index{\-Neural\-Network@{\-Neural\-Network}!\-Neural\-Network@{\-Neural\-Network}}
+\index{\-Neural\-Network@{\-Neural\-Network}!NeuralNetwork@{\-Neural\-Network}}
+\subsubsection[{\-Neural\-Network}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class Activation\-Function $>$ {\bf \-Neural\-Network}$<$ \-T, {\bf \-Activation\-Function} $>$\-::{\bf \-Neural\-Network} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{class_neural_network_ade5d1724706351407fdf6acf613ac8c8}
+\-Kontruktor domyślny, tworzy prostą sieć z jednym wejściem i jednym wyjściem. \hypertarget{class_neural_network_a4c1e3cc6dc0114260c17f0a5ea8e9981}{\index{\-Neural\-Network@{\-Neural\-Network}!$\sim$\-Neural\-Network@{$\sim$\-Neural\-Network}}
+\index{$\sim$\-Neural\-Network@{$\sim$\-Neural\-Network}!NeuralNetwork@{\-Neural\-Network}}
+\subsubsection[{$\sim$\-Neural\-Network}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class Activation\-Function $>$ {\bf \-Neural\-Network}$<$ \-T, {\bf \-Activation\-Function} $>$\-::$\sim${\bf \-Neural\-Network} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{class_neural_network_a4c1e3cc6dc0114260c17f0a5ea8e9981}
+\-Destruktor, czyści sieć. 
 
 \subsection{\-Member \-Function \-Documentation}
 \hypertarget{class_neural_network_a7f03c156227f54548f92ea1cd686a7da}{\index{\-Neural\-Network@{\-Neural\-Network}!calc\-Output@{calc\-Output}}
@@ -122,7 +140,7 @@ void \hyperlink{class_neural_network_a3ef0490ade6f9efff49501132a12fd18}{set\-Lay
 \end{DoxyExceptions}
 \hypertarget{class_neural_network_aaf64536a908b15b76faa8e19216d9219}{\index{\-Neural\-Network@{\-Neural\-Network}!set\-Input@{set\-Input}}
 \index{set\-Input@{set\-Input}!NeuralNetwork@{\-Neural\-Network}}
-\subsubsection[{set\-Input}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class Activation\-Function $>$ template$<$class Input\-Iterator $>$ void {\bf \-Neural\-Network}$<$ \-T, {\bf \-Activation\-Function} $>$\-::set\-Input (
+\subsubsection[{set\-Input}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class Activation\-Function $>$ template$<$class Input\-Iterator $>$ void {\bf \-Neural\-Network}$<$ \-T, {\bf \-Activation\-Function} $>$\-::{\bf set\-Input} (
 \begin{DoxyParamCaption}
 \item[{\-Input\-Iterator}]{start, }
 \item[{\-Input\-Iterator}]{end}

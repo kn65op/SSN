@@ -49,8 +49,8 @@ public:
 
   /**
    * Funkcja licząca pochodną funkcji skokowej (jako cos(x) w zakresie 0 do 1)
-   * @param x
-   * @return 
+   * @param x Argument.
+   * @return Wynik pochodnej.
    */
   T deriterative(T x)
   {

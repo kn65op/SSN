@@ -109,7 +109,7 @@ public:
       throw WrongState();
     }
     //zapisanie liczby wyjść jako liczby neuronów ostatniej warstwy
-    neurons_count[layers_count-1] = exits_count;
+    neurons_count[layers_count - 1] = exits_count;
     //stworzenie wejsć
     for (int i = 0; i < entries_count; i++)
     {
@@ -136,57 +136,43 @@ public:
     //tworzenie linków, inaczej się tworzy dla warstw ukrytych, a inaczej dla braku warstw ukryty, layers_count == 1 oznacza, że brak warstw ukrytych
     int links_count = 0;
     Link<T>* tmp;
-    //if (1 == layers_count)
-    //{
-      //links_count = entries_count * exits_count;
-      //połączenie wejść z pierwszą warstwą
-      for (auto e: entries) // e - wskaźnik do wejścia
+    
+    //połączenie wejść z pierwszą warstwą
+    for (auto e : entries) // e - wskaźnik do wejścia
+    {
+      for (auto n : *(layers[0])) // n -wskaźnik do listy z warstwą 1 
       {
-        for (auto n: *(layers[0])) // n -wskaźnik do listy z warstwą 1 
+        tmp = new Link<T > ();
+        e->setLinkOut(tmp);
+        n->setLinkIn(tmp);
+        links.push_back(tmp);
+      }
+    }
+    
+    //połączenie kolejnych warstw
+    for (int i = 1; i < layers_count; i++)
+    {
+      for (auto n1 : *(layers[i - 1])) // n1 - wskaźnik do neuronu warstwy niższej
+      {
+        for (auto n2 : *(layers[i])) // n2 - wskaźnik do neuronu warstwy niższej
         {
-          tmp = new Link<T>();
-          e->setLinkOut(tmp);
-          n->setLinkIn(tmp);
+          tmp = new Link<T > ();
+          n1->setLinkOut(tmp);
+          n2->setLinkIn(tmp);
           links.push_back(tmp);
         }
       }
-      //połączenie kolejnych warstw
-      for (int i=1; i<layers_count; i++)
-      {
-        for (auto n1 : *(layers[i-1])) // n1 - wskaźnik do neuronu warstwy niższej
-        {
-          for (auto n2 : *(layers[i])) // n2 - wskaźnik do neuronu warstwy niższej
-          {
-            tmp = new Link<T>();
-            n1->setLinkOut(tmp);
-            n2->setLinkIn(tmp);
-            links.push_back(tmp);
-          }
-        }
-      }
-      //połączenie wartswy wyjściowej z wyjściami
-      typename std::list<Neuron<T, ActivationFunction>*>::iterator it = layers[layers_count-1]->begin();
-      for (auto e :exits) //e - wskaźnik do wyjścia
-      {
-        tmp = new Link<T>();
-        (*it)->setLinkOut(tmp);
-        e->setLinkIn(tmp);
-        links.push_back(tmp);
-      }
-    //}
-    //else
-//    {
-//      links_count = entries_count * neurons_count[0];
-//      for (int i=1; i<layers_count; i++)
-//      {
-//        links_count += neurons_count[i] * neurons_count[i-1];
-//      }
-//      links_count += neurons_count[layers_count-1] * exits_count;
-//    }
-//    //tworzenie linków
-//    for (int i=0; i<links_count; i++)
-//    {
-//    }
+    }
+    
+    //połączenie wartswy wyjściowej z wyjściami
+    typename std::list<Neuron<T, ActivationFunction>*>::iterator it = layers[layers_count - 1]->begin();
+    for (auto e : exits) //e - wskaźnik do wyjścia
+    {
+      tmp = new Link<T > ();
+      (*it)->setLinkOut(tmp);
+      e->setLinkIn(tmp);
+      links.push_back(tmp);
+    }
     valid = true;
   }
 
@@ -350,7 +336,7 @@ private:
    */
   void clearNetwork()
   {
-    std::cout << entries.size() << " " << exits.size() << " " << layers.size() << " "  << links.size() << " \n";
+    std::cout << entries.size() << " " << exits.size() << " " << layers.size() << " " << links.size() << " \n";
     for (auto tmp : entries)
     {
       delete tmp;
@@ -399,26 +385,6 @@ private:
 
 template <class T, class ActivationFunction> int NeuralNetwork<T, ActivationFunction> ::max_layers_count = 3;
 
-/*
- template <class T, class ActivationFunction>
-template <class InputIterator>
-void NeuralNetwork<T, ActivationFunction>::setInput(InputIterator start, InputIterator end) throw (NeuralNetwork::WrongArgument, NeuralNetwork::WrongState)
-{
-  if (!valid)
-  {
-    throw WrongState();
-  }
-  for (auto e : entries)
-  {
-    if (start == end)
-    {
-      throw (WrongArgument("Size of input is smaller then input of network"));
-    }
-    e->setInput(*start);
-    start++;
-  }
-}
- */
 
 #endif	/* NEURALNETWORK_H */
 

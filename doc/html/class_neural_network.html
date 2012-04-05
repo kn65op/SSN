@@ -113,6 +113,8 @@ Classes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neural_network_1_1_wrong_state.html">WrongState</a></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neural_network.html#ade5d1724706351407fdf6acf613ac8c8">NeuralNetwork</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neural_network.html#a4c1e3cc6dc0114260c17f0a5ea8e9981">~NeuralNetwork</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4ce7e819f755461926a92668aab811e2"></a><!-- doxytag: member="NeuralNetwork::NeuralNetwork" ref="a4ce7e819f755461926a92668aab811e2" args="(const NeuralNetwork &amp;orig)" -->
 &#160;</td><td class="memItemRight" valign="bottom"><b>NeuralNetwork</b> (const <a class="el" href="class_neural_network.html">NeuralNetwork</a> &amp;orig)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neural_network.html#aaf6e7c89c53dcc4f4b2c71f8d25a9741">stop</a> ()  throw (WrongState)</td></tr>
@@ -121,8 +123,6 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neural_network.html#a705286b62e4d1d11310f997dadd31fa8">setEntries</a> (int entries_count)  throw (WrongState)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neural_network.html#a18912fbb8068bfb301d6e2462c9f8a31">setExits</a> (int exits_count)  throw (WrongState)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neural_network.html#ab3c70e006390624a5b9bd2c933b8af56">setNeurons</a> (int layer, int neurons_count)  throw (WrongState, WrongArgument)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af38649b96a0f8004a72b2d224bb5e18a"></a><!-- doxytag: member="NeuralNetwork::setInput" ref="af38649b96a0f8004a72b2d224bb5e18a" args="()" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setInput</b> ()</td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;class InputIterator &gt; </td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_neural_network.html#aaf64536a908b15b76faa8e19216d9219">setInput</a> (InputIterator start, InputIterator end)  throw (WrongState, WrongArgument)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neural_network.html#a7f03c156227f54548f92ea1cd686a7da">calcOutput</a> ()  throw (WrongState)</td></tr>
@@ -134,8 +134,47 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>learn</b> ()  throw (
 <div class="textblock"><h3>template&lt;class T, class ActivationFunction&gt;<br/>
 class NeuralNetwork&lt; T, ActivationFunction &gt;</h3>
 
-<p>Klasa odwzorująca sieć neuronową. </p>
-</div><hr/><h2>Member Function Documentation</h2>
+<p>Klasa odwzorująca sieć neuronową. Najpierw należy ustawić parametry sieci, a następnie uruchomić sieć. Jeśli wystąpi konieczność zmiany parametrów to należy zatrzymać sieć. </p>
+</div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="ade5d1724706351407fdf6acf613ac8c8"></a><!-- doxytag: member="NeuralNetwork::NeuralNetwork" ref="ade5d1724706351407fdf6acf613ac8c8" args="()" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , class ActivationFunction &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_neural_network.html">NeuralNetwork</a>&lt; T, <a class="el" href="class_activation_function.html">ActivationFunction</a> &gt;::<a class="el" href="class_neural_network.html">NeuralNetwork</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Kontruktor domyślny, tworzy prostą sieć z jednym wejściem i jednym wyjściem. </p>
+
+</div>
+</div>
+<a class="anchor" id="a4c1e3cc6dc0114260c17f0a5ea8e9981"></a><!-- doxytag: member="NeuralNetwork::~NeuralNetwork" ref="a4c1e3cc6dc0114260c17f0a5ea8e9981" args="()" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , class ActivationFunction &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_neural_network.html">NeuralNetwork</a>&lt; T, <a class="el" href="class_activation_function.html">ActivationFunction</a> &gt;::~<a class="el" href="class_neural_network.html">NeuralNetwork</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Destruktor, czyści sieć. </p>
+
+</div>
+</div>
+<hr/><h2>Member Function Documentation</h2>
 <a class="anchor" id="a7f03c156227f54548f92ea1cd686a7da"></a><!-- doxytag: member="NeuralNetwork::calcOutput" ref="a7f03c156227f54548f92ea1cd686a7da" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -285,7 +324,7 @@ template&lt;class T , class ActivationFunction &gt; </div>
 template&lt;class InputIterator &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_neural_network.html">NeuralNetwork</a>&lt; T, <a class="el" href="class_activation_function.html">ActivationFunction</a> &gt;::setInput </td>
+          <td class="memname">void <a class="el" href="class_neural_network.html">NeuralNetwork</a>&lt; T, <a class="el" href="class_activation_function.html">ActivationFunction</a> &gt;::<a class="el" href="class_neural_network.html#aaf64536a908b15b76faa8e19216d9219">setInput</a> </td>
           <td>(</td>
           <td class="paramtype">InputIterator&#160;</td>
           <td class="paramname"><em>start</em>, </td>
@@ -441,7 +480,7 @@ template&lt;class T , class ActivationFunction &gt; </div>
     <ul>
       <li class="navelem"><a class="el" href="class_neural_network.html">NeuralNetwork</a>      </li>
 
-    <li class="footer">Generated on Thu Apr 5 2012 12:28:54 for SSN by
+    <li class="footer">Generated on Thu Apr 5 2012 13:26:35 for SSN by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

@@ -9,7 +9,6 @@ var class_neural_network =
     [ "setActivationfunction", "class_neural_network.html#acfdd9905e047fff1b40e4cd358160f6e", null ],
     [ "setEntries", "class_neural_network.html#a705286b62e4d1d11310f997dadd31fa8", null ],
     [ "setExits", "class_neural_network.html#a18912fbb8068bfb301d6e2462c9f8a31", null ],
-    [ "setInput", "class_neural_network.html#af38649b96a0f8004a72b2d224bb5e18a", null ],
     [ "setInput", "class_neural_network.html#aaf64536a908b15b76faa8e19216d9219", null ],
     [ "setLayersCount", "class_neural_network.html#a3ef0490ade6f9efff49501132a12fd18", null ],
     [ "setNeurons", "class_neural_network.html#ab3c70e006390624a5b9bd2c933b8af56", null ],

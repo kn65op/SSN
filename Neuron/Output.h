@@ -18,6 +18,9 @@ template <class T> class Output
 {
 
 public:
+  /**
+   * Destruktor.
+   */
   virtual ~Output()
   {
     

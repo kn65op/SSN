@@ -26,9 +26,6 @@ Inherits \fBInput< T >\fP, and \fBOutput< T >\fP\&.
 .RI "\fBNeuron\fP (\fBActivationFunction\fP fun, T lf)"
 .br
 .ti -1c
-.RI "\fBNeuron\fP (const \fBNeuron\fP &orig)"
-.br
-.ti -1c
 .RI "void \fBcalculateOutput\fP ()"
 .br
 .ti -1c
@@ -45,9 +42,6 @@ Inherits \fBInput< T >\fP, and \fBOutput< T >\fP\&.
 .br
 .ti -1c
 .RI "void \fBsetLinkIn\fP (\fBLink\fP< T > *link)"
-.br
-.ti -1c
-.RI "void \fBprintWages\fP ()"
 .br
 .in -1c
 .SH "Detailed Description"
@@ -77,7 +71,7 @@ Klasa \fBNeuron\fP odpowiada neuronowi w sieci neuronowej\&. Podana funkcja akty
 .PP
 \fBParameters:\fP
 .RS 4
-\fIfun\fP 
+\fIfun\fP Funkcja aktywacji\&. 
 .RE
 .PP
 
@@ -85,13 +79,15 @@ Klasa \fBNeuron\fP odpowiada neuronowi w sieci neuronowej\&. Podana funkcja akty
 .PP
 \fBParameters:\fP
 .RS 4
-\fIfun\fP 
+\fIfun\fP Funkcja aktywacji\&. 
+.br
+\fIlf\fP Współczynnik uczenia\&. 
 .RE
 .PP
 
 .SH "Member Function Documentation"
 .PP 
-.SS "template<class T , class ActivationFunction  = StepActivationFunction<T>()> void \fBNeuron\fP< T, \fBActivationFunction\fP >::\fBcalculateOutput\fP ()\fC [inline]\fP"Funkcja licząca wyjście neuronu w zależności od wejsć zgodnie ze wzorem f(E(xi, yi))\&. 
+.SS "template<class T , class ActivationFunction  = StepActivationFunction<T>()> void \fBNeuron\fP< T, \fBActivationFunction\fP >::\fBcalculateOutput\fP ()\fC [inline]\fP"Funkcja licząca wyjście neuronu w zależności od wejsć (suma ważone) a następnie przejście przez funkcję aktywacji\&. 
 .SS "template<class T , class ActivationFunction  = StepActivationFunction<T>()> void \fBNeuron\fP< T, \fBActivationFunction\fP >::\fBlearnBP\fP ()\fC [inline]\fP"Funkcja ucząca wg reguły Back Propagation dla warstw ukrytych\&. 
 .SS "template<class T , class ActivationFunction  = StepActivationFunction<T>()> void \fBNeuron\fP< T, \fBActivationFunction\fP >::\fBlearnDelta\fP ()\fC [inline]\fP"Funkcja ucząca wg reguły delta\&. Stosowana tylko dla sieci jednowarstwowych\&. 
 .PP

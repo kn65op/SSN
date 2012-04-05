@@ -22,9 +22,6 @@
 \item 
 \hyperlink{class_neuron_a1c7ea1b973546b185e6ec0c29b740453}{\-Neuron} (\hyperlink{class_activation_function}{\-Activation\-Function} fun, \-T lf)
 \item 
-\hypertarget{class_neuron_a69874cefdd2d0c8898b977a6a2bdf5ef}{{\bfseries \-Neuron} (const \hyperlink{class_neuron}{\-Neuron} \&orig)}\label{class_neuron_a69874cefdd2d0c8898b977a6a2bdf5ef}
-
-\item 
 void \hyperlink{class_neuron_a36c60982cb604f2fa6a1765177a9c2e7}{calculate\-Output} ()
 \item 
 void \hyperlink{class_neuron_ae73a056c55311521d0e31347837109cc}{learn\-Delta} ()
@@ -37,9 +34,6 @@ void \hyperlink{class_neuron_a5e479fce295d76be68c017ab8c986f8c}{learn\-B\-P} ()
 
 \item 
 void \hyperlink{class_neuron_a1a20d9ac9bf64126f8d74d8c1c7d3c58}{set\-Link\-In} (\hyperlink{class_link}{\-Link}$<$ \-T $>$ $\ast$link)
-\item 
-\hypertarget{class_neuron_ac112e85f169835dad11a6f7bd9e477b9}{void {\bfseries print\-Wages} ()}\label{class_neuron_ac112e85f169835dad11a6f7bd9e477b9}
-
 \end{DoxyCompactItemize}
 
 
@@ -82,7 +76,7 @@ void \hyperlink{class_neuron_a1a20d9ac9bf64126f8d74d8c1c7d3c58}{set\-Link\-In} (
 )\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{class_neuron_afff69f38459625c7d376e5f5e2e34a9d}
 \-Konstruktor parametryczny z ustawieniem funkcji aktywacji. \-Jako współczynnik uczenia ustawione jest 0.\-7. 
 \begin{DoxyParams}{\-Parameters}
-{\em fun} & \\
+{\em fun} & \-Funkcja aktywacji. \\
 \hline
 \end{DoxyParams}
 \hypertarget{class_neuron_a1c7ea1b973546b185e6ec0c29b740453}{\index{\-Neuron@{\-Neuron}!\-Neuron@{\-Neuron}}
@@ -95,7 +89,9 @@ void \hyperlink{class_neuron_a1a20d9ac9bf64126f8d74d8c1c7d3c58}{set\-Link\-In} (
 )\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{class_neuron_a1c7ea1b973546b185e6ec0c29b740453}
 \-Konstruktor parametryczny z ustawieniem funkcji aktywacji i współczynnika uczenia. 
 \begin{DoxyParams}{\-Parameters}
-{\em fun} & \\
+{\em fun} & \-Funkcja aktywacji. \\
+\hline
+{\em lf} & \-Współczynnik uczenia. \\
 \hline
 \end{DoxyParams}
 
@@ -108,7 +104,7 @@ void \hyperlink{class_neuron_a1a20d9ac9bf64126f8d74d8c1c7d3c58}{set\-Link\-In} (
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{class_neuron_a36c60982cb604f2fa6a1765177a9c2e7}
-\-Funkcja licząca wyjście neuronu w zależności od wejsć zgodnie ze wzorem f(\-E(xi, yi)). \hypertarget{class_neuron_a5e479fce295d76be68c017ab8c986f8c}{\index{\-Neuron@{\-Neuron}!learn\-B\-P@{learn\-B\-P}}
+\-Funkcja licząca wyjście neuronu w zależności od wejsć (suma ważone) a następnie przejście przez funkcję aktywacji. \hypertarget{class_neuron_a5e479fce295d76be68c017ab8c986f8c}{\index{\-Neuron@{\-Neuron}!learn\-B\-P@{learn\-B\-P}}
 \index{learn\-B\-P@{learn\-B\-P}!Neuron@{\-Neuron}}
 \subsubsection[{learn\-B\-P}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class Activation\-Function  = \-Step\-Activation\-Function$<$\-T$>$()$>$ void {\bf \-Neuron}$<$ \-T, {\bf \-Activation\-Function} $>$\-::{\bf learn\-B\-P} (
 \begin{DoxyParamCaption}

@@ -16,14 +16,6 @@
 template <class T> class Exit: public Output<T>
 {
 public:
-  Exit()
-  {
-    
-  }
-  Exit(const Exit& orig)
-  {
-    
-  }
   virtual ~Exit()
   {
     

@@ -47,7 +47,7 @@ public:
 
   /**
    * Konstruktor parametryczny z ustawieniem funkcji aktywacji. Jako współczynnik uczenia ustawione jest 0.7.
-   * @param fun
+   * @param fun Funkcja aktywacji.
    * 
    */
   Neuron(ActivationFunction fun) : activate_function(fun), learn_factor(0.7)
@@ -57,15 +57,11 @@ public:
 
   /**
    * Konstruktor parametryczny z ustawieniem funkcji aktywacji i współczynnika uczenia.
-   * @param fun
+   * @param fun Funkcja aktywacji.
+   * @param  lf Współczynnik uczenia.
    * 
    */
   Neuron(ActivationFunction fun, T lf) : activate_function(fun), learn_factor(lf)
-  {
-
-  }
-
-  Neuron(const Neuron& orig)
   {
 
   }
@@ -79,7 +75,7 @@ public:
   }
 
   /**
-   * Funkcja licząca wyjście neuronu w zależności od wejsć zgodnie ze wzorem f(E(xi, yi)).
+   * Funkcja licząca wyjście neuronu w zależności od wejsć (suma ważone) a następnie przejście przez funkcję aktywacji.
    */
   void calculateOutput()
   {
@@ -156,6 +152,7 @@ public:
     checkWages();
   }
 
+  
   void checkWages()
   {
     for (auto w : wages)
@@ -185,14 +182,14 @@ public:
   }
 
   /***/
-  void printWages()
-  {
-    for (auto w : wages)
-    {
-   // Qstd::cout << *w << " ";
-    }
- // Qstd::cout << "that was wages!\n";
-  }
+//  void printWages()
+//  {
+//    for (auto w : wages)
+//    {
+//   // Qstd::cout << *w << " ";
+//    }
+// // Qstd::cout << "that was wages!\n";
+//  }
 private:
   T output;
   std::list<T*> wages; //THINK: Może zmienić na samo T
