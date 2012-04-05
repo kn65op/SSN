@@ -52,7 +52,8 @@ public:
     //początkowe wartości
     exits_count = entries_count = 1;
     setLayersCount(1);
-    setNeurons(1, 1);
+    setEntries(1);
+    setExits(1);
   }
 
   ~NeuralNetwork()
@@ -176,13 +177,38 @@ public:
     this->neurons_count[layer - 1] = neurons_count;
   }
 
-  void setInput() throw (WrongState)
+  
+  void setInput()
   {
     if (!valid)
     {
       throw WrongState();
     }
-    //TODO: dopisać
+  }
+  
+  /**
+   * Funkcja ustawiająca wejście. Przyjmuje jako argumenty dwa iteratory, do pierwszego elementu wejścia oraz do pierwszego za ostatnim elementem wejścia. Jeśli liczba elementów wejściowych jest
+   * dłuższa niż liczba wejść, to elementy po skończeniu wejścia są ignorowane.
+   * @param start Interator wskazujący na pierwszy element.
+   * @param end Iterator wskazujący na element za ostatnim
+   * @throw NeuralNetwork::WrognState W przypadku, gdy nie można ustawić wejścia
+   * @throw NeuralNetwork::WrognArgument W przypadku, gdy zostanie podanych za mało elementów wejściowych.
+   */
+  template <class InputIterator> void setInput(InputIterator start, InputIterator end) throw (WrongState, WrongArgument)
+  {
+    if (!valid)
+    {
+      throw WrongState();
+    }
+    for (auto e : entries)
+    {
+      e->setInput(*start);
+      start++;
+      if (start == end)
+      {
+        throw (WrongArgument("Size of input is smaller then input of network"));
+      }
+    }
   }
 
   void calcOutput() throw (WrongState)
@@ -292,6 +318,28 @@ private:
 };
 
 template <class T, class ActivationFunction> int NeuralNetwork<T, ActivationFunction> ::max_layers_count = 3;
+
+/*
+ template <class T, class ActivationFunction>
+template <class InputIterator>
+void NeuralNetwork<T, ActivationFunction>::setInput(InputIterator start, InputIterator end) throw (NeuralNetwork::WrongArgument, NeuralNetwork::WrongState)
+{
+  if (!valid)
+  {
+    throw WrongState();
+  }
+  for (auto e : entries)
+  {
+    if (start == end)
+    {
+      throw (WrongArgument("Size of input is smaller then input of network"));
+    }
+    e->setInput(*start);
+    start++;
+  }
+  //TODO: dopisać
+}
+ */
 
 #endif	/* NEURALNETWORK_H */
 
