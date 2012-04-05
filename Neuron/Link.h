@@ -21,14 +21,7 @@ public:
   {
     
   }
-  Link(Input<T>)
-  {
-    
-  }
-  Link(const Link& orig)
-  {
-    
-  }
+  Link(const Link& orig) = delete;
   virtual ~Link()
   {
     
