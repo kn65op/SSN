@@ -110,22 +110,22 @@ public:
     //zapisanie liczby wyjść jako liczby neuronów ostatniej warstwy
     neurons_count[layers_count - 1] = exits_count;
     //stworzenie wejsć
-    for (int i = 0; i < entries_count; i++)
+    for (int i = 0; i < entries_count; ++i)
     {
       entries.push_back(new Entry<T > ());
     }
     //stworzenie wyjść
-    for (int i = 0; i < exits_count; i++)
+    for (int i = 0; i < exits_count; ++i)
     {
       exits.push_back(new Exit<T > ());
     }
     //stworzenie warstw i biasów
     layers.reserve(layers_count);
-    for (int j = 0; j < layers_count; j++)
+    for (int j = 0; j < layers_count; ++j)
     {
       std::list<Neuron<T, ActivationFunction>*> *tmp = new std::list<Neuron<T, ActivationFunction>*>;
       //dodanie neuronów
-      for (int n = 0; n < neurons_count[j]; n++)
+      for (int n = 0; n < neurons_count[j]; ++n)
       {
         tmp->push_back(new Neuron<T, ActivationFunction>);
       }
@@ -155,7 +155,7 @@ public:
     }
 
     //połączenie kolejnych warstw
-    for (int i = 1; i < layers_count; i++)
+    for (int i = 1; i < layers_count; ++i)
     {
       for (auto n2 : *(layers[i])) // n2 - wskaźnik do neuronu warstwy wyższej
       {
@@ -288,7 +288,7 @@ public:
     {
       throw WrongState();
     }
-    for (auto b :biases) // b - wskaźnik do biasu
+    for (auto b : biases) // b - wskaźnik do biasu
     {
       b->sendBiasToLinks();
     }
@@ -300,7 +300,7 @@ public:
       }
     }
     std::vector<T> tmp(exits_count);
-    int i =0;
+    int i = 0;
     for (auto e : exits) // e - wksaźnik na Exit
     {
       tmp[i++] = e->getExit();
@@ -308,13 +308,50 @@ public:
     return tmp;
   }
 
-  void learn() throw (WrongState)
+  /**
+   * Funkcja ucząca sieć. Jako argumenty podawana jest odpowiedź oczekiwana w postaci pary iteratorów: pierwszy i pierwszy za ostatnim.
+   * Jeśli podana odpowiedź jest większa niż ilość wyjść, to ostatnie elementy odpowiedzi są ignorowane.
+   * @param start Iterator do pierwszego składnika odpowiedzi.
+   * @param end Iterator do pierwszego elementu za ostatnim składnikiem odpowiedzi.
+   * @throw NeuralNetwork::WrongState W przypadku, gdy nie jest możliwe w danenym momencie uczenie sieci.
+   * @throw NeuralNetwork::WrongArgument W przypadku, gdy podana odpowiedź jest za mała.
+   */
+  template <class InputIterator> void learn(InputIterator start, InputIterator end) throw (WrongState, WrongArgument)
   {
     if (!valid)
     {
       throw WrongState();
     }
-    //TODO: dopisać
+    //przekazanie odpowiedzi na wyjścia.
+    for (auto e : exits) //e - wskaźnik do exit
+    {
+      if (start == end)
+      {
+        throw (WrongArgument("Size of the answer is too small."));
+      }
+      e->learn(*(start++));
+    }
+    //przekazywanie odpowiedzi do warst ukrytych (jeśli są)
+    for (int i = layers_count - 1; i != 0; --i)
+    {
+      for (auto n : *(layers[i])) //n - wskaźnik do neuronu
+      {
+        n->propagateAnswer();
+      }
+    }
+    //uczenie warstwy najwyższej
+    for (auto n : *(layers[layers_count - 1])) // n - wskaźnik do neuronu
+    {
+      n->learnDelta();
+    }
+    //uczenie niższych warstw
+    for (int i = layers_count - 2; i >= 0; --i)
+    {
+      for (auto n : *(layers[i])) //n - wskaźnik do neuronu
+      {
+        n->learnBP();
+      }
+    }
   }
 
   /**
@@ -358,7 +395,7 @@ private:
    */
   void clearNetwork()
   {
-//    std::cout << entries.size() << " " << exits.size() << " " << layers.size() << " " << links.size() << " \n";
+    //    std::cout << entries.size() << " " << exits.size() << " " << layers.size() << " " << links.size() << " \n";
     for (auto tmp : entries)
     {
       delete tmp;

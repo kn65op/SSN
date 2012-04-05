@@ -53,7 +53,9 @@ TEST(StateTest, AllMethodsWithoutInit)
   ASSERT_THROW(nn.setNeurons(1, 2), network::WrongArgument);
   ASSERT_THROW(nn.setLayersCount(4), network::WrongArgument);
   ASSERT_THROW(nn.setNeurons(2, 2), network::WrongArgument);
-  ASSERT_THROW(nn.learn(), network::WrongState);
+  std::vector<double> ans;
+  ans.assign(2, 1);
+  ASSERT_THROW(nn.learn(ans.begin(), ans.end()), network::WrongState);
   ASSERT_THROW(nn.calcOutput(), network::WrongState);
   ASSERT_NO_THROW(nn.init());
 
@@ -70,7 +72,9 @@ TEST(StateTest, AllMethodsWithInit)
   ASSERT_THROW(nn.setEntries(2), network::WrongState);
   ASSERT_THROW(nn.setNeurons(1, 2), network::WrongState);
   ASSERT_THROW(nn.setNeurons(2, 2), network::WrongState);
-  ASSERT_NO_THROW(nn.learn());
+  std::vector<double> ans;
+  ans.assign(2, 1);
+  ASSERT_NO_THROW(nn.learn(ans.begin(), ans.end()));
   ASSERT_NO_THROW(nn.calcOutput());
   ASSERT_NO_THROW(nn.stop());
 }
@@ -86,7 +90,9 @@ TEST(CreationTest, Entries2Exit1Layers2)
   ASSERT_NO_THROW(nn.setNeurons(1, 2));
   ASSERT_THROW(nn.setNeurons(2, 2), network::WrongArgument);
   ASSERT_NO_THROW(nn.init());
-  ASSERT_NO_THROW(nn.learn());
+  std::vector<double> ans;
+  ans.assign(2, 1);
+  ASSERT_NO_THROW(nn.learn(ans.begin(), ans.end()));
   ASSERT_NO_THROW(nn.calcOutput());
   ASSERT_NO_THROW(nn.stop());
 }
