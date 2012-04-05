@@ -52,10 +52,10 @@ NeuralNetwork< T, ActivationFunction > \-
 .RI "template<class InputIterator > void \fBsetInput\fP (InputIterator start, InputIterator end)  throw (WrongState, WrongArgument)"
 .br
 .ti -1c
-.RI "void \fBcalcOutput\fP ()  throw (WrongState)"
+.RI "std::vector< T > \fBcalcOutput\fP ()  throw (WrongState)"
 .br
 .ti -1c
-.RI "void \fBlearn\fP ()  throw (WrongState)"
+.RI "template<class InputIterator > void \fBlearn\fP (InputIterator start, InputIterator end)  throw (WrongState, WrongArgument)"
 .br
 .ti -1c
 .RI "void \fBsetLayersCount\fP (int layers_count)  throw (WrongState, WrongArgument)"
@@ -72,15 +72,37 @@ Klasa odwzorująca sieć neuronową\&. Najpierw należy ustawić parametry sieci
 .SS "template<class T , class ActivationFunction > \fBNeuralNetwork\fP< T, \fBActivationFunction\fP >::~\fBNeuralNetwork\fP ()\fC [inline]\fP"Destruktor, czyści sieć\&. 
 .SH "Member Function Documentation"
 .PP 
-.SS "template<class T , class ActivationFunction > void \fBNeuralNetwork\fP< T, \fBActivationFunction\fP >::\fBcalcOutput\fP ()  throw (\fBWrongState\fP)\fC [inline]\fP"Funkcja licząca odpowiedź sieci na zadane wcześniej wejście\&. 
+.SS "template<class T , class ActivationFunction > std::vector<T> \fBNeuralNetwork\fP< T, \fBActivationFunction\fP >::\fBcalcOutput\fP ()  throw (\fBWrongState\fP)\fC [inline]\fP"Funkcja licząca odpowiedź sieci na zadane wcześniej wejście\&. 
 .PP
 \fBExceptions:\fP
 .RS 4
 \fI\fBNeuralNetwork::WrongState\fP\fP W przypadku, gdy nie można wyliczyć odpowiedzi 
 .RE
 .PP
+\fBReturns:\fP
+.RS 4
+Wektor wartości wyjściowych\&. 
+.RE
+.PP
 
 .SS "template<class T , class ActivationFunction > void \fBNeuralNetwork\fP< T, \fBActivationFunction\fP >::\fBinit\fP ()  throw (\fBWrongState\fP)\fC [inline]\fP"Funkcja tworząca siec z podanych parametrów\&. Pozwala na wykorzystanie sieci\&. 
+.SS "template<class T , class ActivationFunction > template<class InputIterator > void \fBNeuralNetwork\fP< T, \fBActivationFunction\fP >::\fBlearn\fP (InputIteratorstart, InputIteratorend)  throw (\fBWrongState\fP, \fBWrongArgument\fP)\fC [inline]\fP"Funkcja ucząca sieć\&. Jako argumenty podawana jest odpowiedź oczekiwana w postaci pary iteratorów: pierwszy i pierwszy za ostatnim\&. Jeśli podana odpowiedź jest większa niż ilość wyjść, to ostatnie elementy odpowiedzi są ignorowane\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstart\fP Iterator do pierwszego składnika odpowiedzi\&. 
+.br
+\fIend\fP Iterator do pierwszego elementu za ostatnim składnikiem odpowiedzi\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBNeuralNetwork::WrongState\fP\fP W przypadku, gdy nie jest możliwe w danenym momencie uczenie sieci\&. 
+.br
+\fI\fBNeuralNetwork::WrongArgument\fP\fP W przypadku, gdy podana odpowiedź jest za mała\&. 
+.RE
+.PP
+
 .SS "template<class T , class ActivationFunction > void \fBNeuralNetwork\fP< T, \fBActivationFunction\fP >::\fBsetActivationfunction\fP (\fBActivationFunction\fPactivationfunction)  throw (\fBWrongState\fP)\fC [inline]\fP"Funkcja ustawiająca funkcję aktywacji\&. 
 .PP
 \fBParameters:\fP
