@@ -22,6 +22,7 @@ TEST(StartTest, Create)
   typedef NeuralNetwork<double, StepActivationFunction<double >> network;
   ASSERT_NO_THROW(network nn);
 }
+
 TEST(StateTest, StateAtCreate)
 {
   typedef NeuralNetwork<double, StepActivationFunction<double >> network;
@@ -72,7 +73,22 @@ TEST(StateTest, AllMethodsWithInit)
   ASSERT_NO_THROW(nn.learn());
   ASSERT_NO_THROW(nn.calcOutput());
   ASSERT_NO_THROW(nn.stop());
+}
 
+TEST(CreationTest, Entries2Exit1Layers2)
+{
+  typedef NeuralNetwork<double, StepActivationFunction<double >> network;
+  NeuralNetwork<double, StepActivationFunction<double >> nn;
+  ASSERT_NO_THROW(nn.setEntries(2));
+  ASSERT_NO_THROW(nn.setExits(1));
+  ASSERT_NO_THROW(nn.setLayersCount(2));
+  ASSERT_NO_THROW(nn.setEntries(2));
+  ASSERT_NO_THROW(nn.setNeurons(1, 2));
+  ASSERT_THROW(nn.setNeurons(2, 2), network::WrongArgument);
+  ASSERT_NO_THROW(nn.init());
+  ASSERT_NO_THROW(nn.learn());
+  ASSERT_NO_THROW(nn.calcOutput());
+  ASSERT_NO_THROW(nn.stop());
 }
 
 int main(int argc, char **argv)
