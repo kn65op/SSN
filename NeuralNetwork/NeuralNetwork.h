@@ -97,6 +97,7 @@ public:
       exits.push_back(new Exit<T > ());
     }
     //stworzenie warstw
+    layers.reserve(layers_count);
     for (int j = 0; j < layers_count; j++)
     {
       std::list<Neuron<T, ActivationFunction>*> *tmp = new std::list<Neuron<T, ActivationFunction>*>;
@@ -108,6 +109,7 @@ public:
       //zapisanie warstwy
       layers.push_back(tmp);
     }
+    //TODO dopisanie linków
     valid = true;
   }
 
@@ -200,7 +202,7 @@ public:
     {
       throw WrongState();
     }
-    for (auto e : entries)
+    for (auto e : entries) //e - wskaźnik  na wejście
     {
       e->setEntry(*start);
       start++;
@@ -211,13 +213,23 @@ public:
     }
   }
 
+  /**
+   * Funkcja licząca odpowiedź sieci na zadane wcześniej wejście.
+   * @throw NeuralNetwork::WrongState W przypadku, gdy nie można wyliczyć odpowiedzi
+   */
   void calcOutput() throw (WrongState)
   {
     if (!valid)
     {
       throw WrongState();
     }
-    for 
+    for (auto l :layers) //l - wskaźnik na listę neuronów
+    {
+      for (auto a : *l) //a -  wskaźnik  na neuron
+      {
+        a->calculateOutput();
+      }
+    }
   }
 
   void learn() throw (WrongState)
