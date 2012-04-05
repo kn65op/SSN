@@ -18,8 +18,6 @@
 
 #include <list>
 
-//TODO: Dopisać Bias
-
 /**
  * Klasa odwzorująca sieć neuronową. Najpierw należy ustawić parametry sieci, a następnie uruchomić sieć. Jeśli wystąpi konieczność zmiany parametrów to należy zatrzymać sieć.
  */
@@ -282,8 +280,9 @@ public:
   /**
    * Funkcja licząca odpowiedź sieci na zadane wcześniej wejście.
    * @throw NeuralNetwork::WrongState W przypadku, gdy nie można wyliczyć odpowiedzi
+   * @return Wektor wartości wyjściowych.
    */
-  void calcOutput() throw (WrongState)
+  std::vector<T> calcOutput() throw (WrongState)
   {
     if (!valid)
     {
@@ -300,6 +299,13 @@ public:
         a->calculateOutput();
       }
     }
+    std::vector<T> tmp(exits_count);
+    int i =0;
+    for (auto e : exits) // e - wksaźnik na Exit
+    {
+      tmp[i++] = e->getExit();
+    }
+    return tmp;
   }
 
   void learn() throw (WrongState)
