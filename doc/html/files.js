@@ -1,15 +1,15 @@
 var files =
 [
-    [ "/home/tomko/moje_dziela/SSN/LibHelper/Helper.h", null, null ],
-    [ "NeuralNetwork.h", null, null ],
-    [ "/home/tomko/moje_dziela/SSN/Neuron/ActivationFunction.h", null, null ],
-    [ "/home/tomko/moje_dziela/SSN/Neuron/Bias.h", null, null ],
-    [ "/home/tomko/moje_dziela/SSN/Neuron/Entry.h", null, null ],
-    [ "/home/tomko/moje_dziela/SSN/Neuron/Exit.h", null, null ],
-    [ "/home/tomko/moje_dziela/SSN/Neuron/Input.h", null, null ],
-    [ "/home/tomko/moje_dziela/SSN/Neuron/LinearActivationFunction.h", null, null ],
-    [ "/home/tomko/moje_dziela/SSN/Neuron/Link.h", null, null ],
-    [ "/home/tomko/moje_dziela/SSN/Neuron/Neuron.h", null, null ],
-    [ "/home/tomko/moje_dziela/SSN/Neuron/Output.h", null, null ],
-    [ "/home/tomko/moje_dziela/SSN/Neuron/StepActivationFunction.h", null, null ]
+    [ "LibHelper/Helper.h", null, null ],
+    [ "NeuralNetwork/NeuralNetwork.h", null, null ],
+    [ "Neuron/ActivationFunction.h", null, null ],
+    [ "Neuron/Bias.h", null, null ],
+    [ "Neuron/Entry.h", null, null ],
+    [ "Neuron/Exit.h", null, null ],
+    [ "Neuron/Input.h", null, null ],
+    [ "Neuron/LinearActivationFunction.h", null, null ],
+    [ "Neuron/Link.h", null, null ],
+    [ "Neuron/Neuron.h", null, null ],
+    [ "Neuron/Output.h", null, null ],
+    [ "Neuron/StepActivationFunction.h", null, null ]
 ];
