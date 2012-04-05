@@ -112,304 +112,356 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00014"></a>00014 <span class="preprocessor">#include &lt;ActivationFunction.h&gt;</span>
 <a name="l00015"></a>00015 <span class="preprocessor">#include &lt;Link.h&gt;</span>
 <a name="l00016"></a>00016 <span class="preprocessor">#include &lt;Helper.h&gt;</span>
-<a name="l00017"></a>00017 
-<a name="l00018"></a>00018 <span class="preprocessor">#include &lt;list&gt;</span>
-<a name="l00019"></a>00019 
-<a name="l00020"></a>00020 <span class="comment">//TODO: Dopisać Bias</span>
-<a name="l00021"></a>00021 
-<a name="l00025"></a><a class="code" href="class_neural_network.html">00025</a> <span class="keyword">template</span> &lt;<span class="keyword">class</span> T, <span class="keyword">class</span> ActivationFunction&gt; <span class="keyword">class </span><a class="code" href="class_neural_network.html">NeuralNetwork</a>
-<a name="l00026"></a>00026 {
-<a name="l00027"></a>00027 <span class="keyword">public</span>:
-<a name="l00028"></a>00028 
-<a name="l00032"></a><a class="code" href="class_neural_network_1_1_wrong_argument.html">00032</a>   <span class="keyword">class </span><a class="code" href="class_neural_network_1_1_wrong_argument.html">WrongArgument</a>
-<a name="l00033"></a>00033   {
-<a name="l00034"></a>00034   <span class="keyword">public</span>:
-<a name="l00035"></a>00035 
-<a name="l00040"></a><a class="code" href="class_neural_network_1_1_wrong_argument.html#a7dddcaf96b854ada5554b05e0429ea6a">00040</a>     <a class="code" href="class_neural_network_1_1_wrong_argument.html#a7dddcaf96b854ada5554b05e0429ea6a">WrongArgument</a>(std::string m) : message(m)
-<a name="l00041"></a>00041     {
-<a name="l00042"></a>00042     }
-<a name="l00043"></a>00043 
-<a name="l00048"></a><a class="code" href="class_neural_network_1_1_wrong_argument.html#a708ad656cec99bc65e351dec562c5402">00048</a>     std::string <a class="code" href="class_neural_network_1_1_wrong_argument.html#a708ad656cec99bc65e351dec562c5402">GetMessage</a>()<span class="keyword"> const</span>
-<a name="l00049"></a>00049 <span class="keyword">    </span>{
-<a name="l00050"></a>00050       <span class="keywordflow">return</span> message;
-<a name="l00051"></a>00051     }
+<a name="l00017"></a>00017 <span class="preprocessor">#include &lt;Bias.h&gt;</span>
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 <span class="preprocessor">#include &lt;list&gt;</span>
+<a name="l00020"></a>00020 
+<a name="l00024"></a><a class="code" href="class_neural_network.html">00024</a> <span class="keyword">template</span> &lt;<span class="keyword">class</span> T, <span class="keyword">class</span> ActivationFunction&gt; <span class="keyword">class </span><a class="code" href="class_neural_network.html">NeuralNetwork</a>
+<a name="l00025"></a>00025 {
+<a name="l00026"></a>00026 <span class="keyword">public</span>:
+<a name="l00027"></a>00027 
+<a name="l00031"></a><a class="code" href="class_neural_network_1_1_wrong_argument.html">00031</a>   <span class="keyword">class </span><a class="code" href="class_neural_network_1_1_wrong_argument.html">WrongArgument</a>
+<a name="l00032"></a>00032   {
+<a name="l00033"></a>00033   <span class="keyword">public</span>:
+<a name="l00034"></a>00034 
+<a name="l00039"></a><a class="code" href="class_neural_network_1_1_wrong_argument.html#a7dddcaf96b854ada5554b05e0429ea6a">00039</a>     <a class="code" href="class_neural_network_1_1_wrong_argument.html#a7dddcaf96b854ada5554b05e0429ea6a">WrongArgument</a>(std::string m) : message(m)
+<a name="l00040"></a>00040     {
+<a name="l00041"></a>00041     }
+<a name="l00042"></a>00042 
+<a name="l00047"></a><a class="code" href="class_neural_network_1_1_wrong_argument.html#a708ad656cec99bc65e351dec562c5402">00047</a>     std::string <a class="code" href="class_neural_network_1_1_wrong_argument.html#a708ad656cec99bc65e351dec562c5402">GetMessage</a>()<span class="keyword"> const</span>
+<a name="l00048"></a>00048 <span class="keyword">    </span>{
+<a name="l00049"></a>00049       <span class="keywordflow">return</span> message;
+<a name="l00050"></a>00050     }
+<a name="l00051"></a>00051 
 <a name="l00052"></a>00052 
-<a name="l00053"></a>00053 
-<a name="l00054"></a>00054   <span class="keyword">private</span>:
-<a name="l00055"></a>00055     std::string message;
-<a name="l00056"></a>00056   };
-<a name="l00057"></a>00057 
-<a name="l00061"></a><a class="code" href="class_neural_network_1_1_wrong_state.html">00061</a>   <span class="keyword">class </span><a class="code" href="class_neural_network_1_1_wrong_state.html">WrongState</a>
-<a name="l00062"></a>00062   {
-<a name="l00063"></a>00063   };
-<a name="l00064"></a>00064 
-<a name="l00068"></a><a class="code" href="class_neural_network.html#ade5d1724706351407fdf6acf613ac8c8">00068</a>   <a class="code" href="class_neural_network.html#ade5d1724706351407fdf6acf613ac8c8">NeuralNetwork</a>()
-<a name="l00069"></a>00069   {
-<a name="l00070"></a>00070     valid = <span class="keyword">false</span>;
-<a name="l00071"></a>00071     <span class="comment">//początkowe wartości</span>
-<a name="l00072"></a>00072     exits_count = entries_count = 1;
-<a name="l00073"></a>00073     <a class="code" href="class_neural_network.html#a3ef0490ade6f9efff49501132a12fd18">setLayersCount</a>(1);
-<a name="l00074"></a>00074     <a class="code" href="class_neural_network.html#a705286b62e4d1d11310f997dadd31fa8">setEntries</a>(1);
-<a name="l00075"></a>00075     <a class="code" href="class_neural_network.html#a18912fbb8068bfb301d6e2462c9f8a31">setExits</a>(1);
-<a name="l00076"></a>00076   }
-<a name="l00077"></a>00077 
-<a name="l00081"></a><a class="code" href="class_neural_network.html#a4c1e3cc6dc0114260c17f0a5ea8e9981">00081</a>   <a class="code" href="class_neural_network.html#a4c1e3cc6dc0114260c17f0a5ea8e9981">~NeuralNetwork</a>()
-<a name="l00082"></a>00082   {
-<a name="l00083"></a>00083     clearNetwork();
-<a name="l00084"></a>00084   }
-<a name="l00085"></a>00085 
-<a name="l00086"></a>00086   <span class="comment">//brak możliwości kopiowania.</span>
-<a name="l00087"></a>00087   <a class="code" href="class_neural_network.html#ade5d1724706351407fdf6acf613ac8c8">NeuralNetwork</a>(<span class="keyword">const</span> <a class="code" href="class_neural_network.html">NeuralNetwork</a>&amp; orig) = <span class="keyword">delete</span>;
-<a name="l00088"></a>00088 
-<a name="l00092"></a><a class="code" href="class_neural_network.html#aaf6e7c89c53dcc4f4b2c71f8d25a9741">00092</a>   <span class="keywordtype">void</span> <a class="code" href="class_neural_network.html#aaf6e7c89c53dcc4f4b2c71f8d25a9741">stop</a>() throw (<a class="code" href="class_neural_network_1_1_wrong_state.html">WrongState</a>)
-<a name="l00093"></a>00093   {
-<a name="l00094"></a>00094     <span class="keywordflow">if</span> (!valid)
-<a name="l00095"></a>00095     {
-<a name="l00096"></a>00096       <span class="keywordflow">throw</span> WrongState();
-<a name="l00097"></a>00097     }
-<a name="l00098"></a>00098     clearNetwork();
-<a name="l00099"></a>00099     valid = <span class="keyword">false</span>;
-<a name="l00100"></a>00100   }
-<a name="l00101"></a>00101 
-<a name="l00105"></a><a class="code" href="class_neural_network.html#aa83131836c86cd3e60ddb46a17b164a5">00105</a>   <span class="keywordtype">void</span> <a class="code" href="class_neural_network.html#aa83131836c86cd3e60ddb46a17b164a5">init</a>() throw (<a class="code" href="class_neural_network_1_1_wrong_state.html">WrongState</a>)
-<a name="l00106"></a>00106   {
-<a name="l00107"></a>00107     <span class="keywordflow">if</span> (valid)
-<a name="l00108"></a>00108     {
-<a name="l00109"></a>00109       <span class="keywordflow">throw</span> WrongState();
-<a name="l00110"></a>00110     }
-<a name="l00111"></a>00111     <span class="comment">//zapisanie liczby wyjść jako liczby neuronów ostatniej warstwy</span>
-<a name="l00112"></a>00112     neurons_count[layers_count - 1] = exits_count;
-<a name="l00113"></a>00113     <span class="comment">//stworzenie wejsć</span>
-<a name="l00114"></a>00114     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; entries_count; i++)
-<a name="l00115"></a>00115     {
-<a name="l00116"></a>00116       entries.push_back(<span class="keyword">new</span> <a class="code" href="class_entry.html">Entry&lt;T &gt;</a> ());
-<a name="l00117"></a>00117     }
-<a name="l00118"></a>00118     <span class="comment">//stworzenie wyjść</span>
-<a name="l00119"></a>00119     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; exits_count; i++)
-<a name="l00120"></a>00120     {
-<a name="l00121"></a>00121       exits.push_back(<span class="keyword">new</span> <a class="code" href="class_exit.html">Exit&lt;T &gt;</a> ());
-<a name="l00122"></a>00122     }
-<a name="l00123"></a>00123     <span class="comment">//stworzenie warstw</span>
-<a name="l00124"></a>00124     layers.reserve(layers_count);
-<a name="l00125"></a>00125     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; layers_count; j++)
-<a name="l00126"></a>00126     {
-<a name="l00127"></a>00127       std::list&lt;Neuron&lt;T, ActivationFunction&gt;*&gt; *tmp = <span class="keyword">new</span> std::list&lt;Neuron&lt;T, ActivationFunction&gt;*&gt;;
-<a name="l00128"></a>00128       <span class="comment">//dodanie neuronów</span>
-<a name="l00129"></a>00129       <span class="keywordflow">for</span> (<span class="keywordtype">int</span> n = 0; n &lt; neurons_count[j]; n++)
-<a name="l00130"></a>00130       {
-<a name="l00131"></a>00131         tmp-&gt;push_back(<span class="keyword">new</span> <a class="code" href="class_neuron.html">Neuron&lt;T, ActivationFunction&gt;</a>);
-<a name="l00132"></a>00132       }
-<a name="l00133"></a>00133       <span class="comment">//zapisanie warstwy</span>
-<a name="l00134"></a>00134       layers.push_back(tmp);
+<a name="l00053"></a>00053   <span class="keyword">private</span>:
+<a name="l00054"></a>00054     std::string message;
+<a name="l00055"></a>00055   };
+<a name="l00056"></a>00056 
+<a name="l00060"></a><a class="code" href="class_neural_network_1_1_wrong_state.html">00060</a>   <span class="keyword">class </span><a class="code" href="class_neural_network_1_1_wrong_state.html">WrongState</a>
+<a name="l00061"></a>00061   {
+<a name="l00062"></a>00062   };
+<a name="l00063"></a>00063 
+<a name="l00067"></a><a class="code" href="class_neural_network.html#ade5d1724706351407fdf6acf613ac8c8">00067</a>   <a class="code" href="class_neural_network.html#ade5d1724706351407fdf6acf613ac8c8">NeuralNetwork</a>()
+<a name="l00068"></a>00068   {
+<a name="l00069"></a>00069     valid = <span class="keyword">false</span>;
+<a name="l00070"></a>00070     <span class="comment">//początkowe wartości</span>
+<a name="l00071"></a>00071     exits_count = entries_count = 1;
+<a name="l00072"></a>00072     <a class="code" href="class_neural_network.html#a3ef0490ade6f9efff49501132a12fd18">setLayersCount</a>(1);
+<a name="l00073"></a>00073     <a class="code" href="class_neural_network.html#a705286b62e4d1d11310f997dadd31fa8">setEntries</a>(1);
+<a name="l00074"></a>00074     <a class="code" href="class_neural_network.html#a18912fbb8068bfb301d6e2462c9f8a31">setExits</a>(1);
+<a name="l00075"></a>00075   }
+<a name="l00076"></a>00076 
+<a name="l00080"></a><a class="code" href="class_neural_network.html#a4c1e3cc6dc0114260c17f0a5ea8e9981">00080</a>   <a class="code" href="class_neural_network.html#a4c1e3cc6dc0114260c17f0a5ea8e9981">~NeuralNetwork</a>()
+<a name="l00081"></a>00081   {
+<a name="l00082"></a>00082     clearNetwork();
+<a name="l00083"></a>00083   }
+<a name="l00084"></a>00084 
+<a name="l00085"></a>00085   <span class="comment">//brak możliwości kopiowania.</span>
+<a name="l00086"></a>00086   <a class="code" href="class_neural_network.html#ade5d1724706351407fdf6acf613ac8c8">NeuralNetwork</a>(<span class="keyword">const</span> <a class="code" href="class_neural_network.html">NeuralNetwork</a>&amp; orig) = <span class="keyword">delete</span>;
+<a name="l00087"></a>00087 
+<a name="l00091"></a><a class="code" href="class_neural_network.html#aaf6e7c89c53dcc4f4b2c71f8d25a9741">00091</a>   <span class="keywordtype">void</span> <a class="code" href="class_neural_network.html#aaf6e7c89c53dcc4f4b2c71f8d25a9741">stop</a>() throw (<a class="code" href="class_neural_network_1_1_wrong_state.html">WrongState</a>)
+<a name="l00092"></a>00092   {
+<a name="l00093"></a>00093     <span class="keywordflow">if</span> (!valid)
+<a name="l00094"></a>00094     {
+<a name="l00095"></a>00095       <span class="keywordflow">throw</span> WrongState();
+<a name="l00096"></a>00096     }
+<a name="l00097"></a>00097     clearNetwork();
+<a name="l00098"></a>00098     valid = <span class="keyword">false</span>;
+<a name="l00099"></a>00099   }
+<a name="l00100"></a>00100 
+<a name="l00104"></a><a class="code" href="class_neural_network.html#aa83131836c86cd3e60ddb46a17b164a5">00104</a>   <span class="keywordtype">void</span> <a class="code" href="class_neural_network.html#aa83131836c86cd3e60ddb46a17b164a5">init</a>() throw (<a class="code" href="class_neural_network_1_1_wrong_state.html">WrongState</a>)
+<a name="l00105"></a>00105   {
+<a name="l00106"></a>00106     <span class="keywordflow">if</span> (valid)
+<a name="l00107"></a>00107     {
+<a name="l00108"></a>00108       <span class="keywordflow">throw</span> WrongState();
+<a name="l00109"></a>00109     }
+<a name="l00110"></a>00110     <span class="comment">//zapisanie liczby wyjść jako liczby neuronów ostatniej warstwy</span>
+<a name="l00111"></a>00111     neurons_count[layers_count - 1] = exits_count;
+<a name="l00112"></a>00112     <span class="comment">//stworzenie wejsć</span>
+<a name="l00113"></a>00113     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; entries_count; ++i)
+<a name="l00114"></a>00114     {
+<a name="l00115"></a>00115       entries.push_back(<span class="keyword">new</span> <a class="code" href="class_entry.html">Entry&lt;T &gt;</a> ());
+<a name="l00116"></a>00116     }
+<a name="l00117"></a>00117     <span class="comment">//stworzenie wyjść</span>
+<a name="l00118"></a>00118     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; exits_count; ++i)
+<a name="l00119"></a>00119     {
+<a name="l00120"></a>00120       exits.push_back(<span class="keyword">new</span> <a class="code" href="class_exit.html">Exit&lt;T &gt;</a> ());
+<a name="l00121"></a>00121     }
+<a name="l00122"></a>00122     <span class="comment">//stworzenie warstw i biasów</span>
+<a name="l00123"></a>00123     layers.reserve(layers_count);
+<a name="l00124"></a>00124     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; layers_count; ++j)
+<a name="l00125"></a>00125     {
+<a name="l00126"></a>00126       std::list&lt;Neuron&lt;T, ActivationFunction&gt;*&gt; *tmp = <span class="keyword">new</span> std::list&lt;Neuron&lt;T, ActivationFunction&gt;*&gt;;
+<a name="l00127"></a>00127       <span class="comment">//dodanie neuronów</span>
+<a name="l00128"></a>00128       <span class="keywordflow">for</span> (<span class="keywordtype">int</span> n = 0; n &lt; neurons_count[j]; ++n)
+<a name="l00129"></a>00129       {
+<a name="l00130"></a>00130         tmp-&gt;push_back(<span class="keyword">new</span> <a class="code" href="class_neuron.html">Neuron&lt;T, ActivationFunction&gt;</a>);
+<a name="l00131"></a>00131       }
+<a name="l00132"></a>00132       <span class="comment">//zapisanie warstwy</span>
+<a name="l00133"></a>00133       layers.push_back(tmp);
+<a name="l00134"></a>00134       biases.push_back(<span class="keyword">new</span> <a class="code" href="class_bias.html">Bias&lt;T &gt;</a> (1));
 <a name="l00135"></a>00135     }
 <a name="l00136"></a>00136     <span class="comment">//tworzenie linków, inaczej się tworzy dla warstw ukrytych, a inaczej dla braku warstw ukryty, layers_count == 1 oznacza, że brak warstw ukrytych</span>
 <a name="l00137"></a>00137     <span class="keywordtype">int</span> links_count = 0;
 <a name="l00138"></a>00138     <a class="code" href="class_link.html">Link&lt;T&gt;</a>* tmp;
-<a name="l00139"></a>00139     
+<a name="l00139"></a>00139 
 <a name="l00140"></a>00140     <span class="comment">//połączenie wejść z pierwszą warstwą</span>
-<a name="l00141"></a>00141     <span class="keywordflow">for</span> (<span class="keyword">auto</span> e : entries) <span class="comment">// e - wskaźnik do wejścia</span>
+<a name="l00141"></a>00141     <span class="keywordflow">for</span> (<span class="keyword">auto</span> n : *(layers[0])) <span class="comment">// n -wskaźnik do listy z warstwą 1 </span>
 <a name="l00142"></a>00142     {
-<a name="l00143"></a>00143       <span class="keywordflow">for</span> (<span class="keyword">auto</span> n : *(layers[0])) <span class="comment">// n -wskaźnik do listy z warstwą 1 </span>
+<a name="l00143"></a>00143       <span class="keywordflow">for</span> (<span class="keyword">auto</span> e : entries) <span class="comment">// e - wskaźnik do wejścia</span>
 <a name="l00144"></a>00144       {
 <a name="l00145"></a>00145         tmp = <span class="keyword">new</span> <a class="code" href="class_link.html">Link&lt;T &gt;</a> ();
 <a name="l00146"></a>00146         e-&gt;setLinkOut(tmp);
 <a name="l00147"></a>00147         n-&gt;setLinkIn(tmp);
 <a name="l00148"></a>00148         links.push_back(tmp);
 <a name="l00149"></a>00149       }
-<a name="l00150"></a>00150     }
-<a name="l00151"></a>00151     
-<a name="l00152"></a>00152     <span class="comment">//połączenie kolejnych warstw</span>
-<a name="l00153"></a>00153     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; layers_count; i++)
-<a name="l00154"></a>00154     {
-<a name="l00155"></a>00155       <span class="keywordflow">for</span> (<span class="keyword">auto</span> n1 : *(layers[i - 1])) <span class="comment">// n1 - wskaźnik do neuronu warstwy niższej</span>
-<a name="l00156"></a>00156       {
-<a name="l00157"></a>00157         <span class="keywordflow">for</span> (<span class="keyword">auto</span> n2 : *(layers[i])) <span class="comment">// n2 - wskaźnik do neuronu warstwy niższej</span>
-<a name="l00158"></a>00158         {
-<a name="l00159"></a>00159           tmp = <span class="keyword">new</span> <a class="code" href="class_link.html">Link&lt;T &gt;</a> ();
-<a name="l00160"></a>00160           n1-&gt;setLinkOut(tmp);
-<a name="l00161"></a>00161           n2-&gt;setLinkIn(tmp);
-<a name="l00162"></a>00162           links.push_back(tmp);
-<a name="l00163"></a>00163         }
-<a name="l00164"></a>00164       }
-<a name="l00165"></a>00165     }
-<a name="l00166"></a>00166     
-<a name="l00167"></a>00167     <span class="comment">//połączenie wartswy wyjściowej z wyjściami</span>
-<a name="l00168"></a>00168     <span class="keyword">typename</span> std::list&lt;Neuron&lt;T, ActivationFunction&gt;*&gt;::iterator it = layers[layers_count - 1]-&gt;begin();
-<a name="l00169"></a>00169     <span class="keywordflow">for</span> (<span class="keyword">auto</span> e : exits) <span class="comment">//e - wskaźnik do wyjścia</span>
-<a name="l00170"></a>00170     {
-<a name="l00171"></a>00171       tmp = <span class="keyword">new</span> <a class="code" href="class_link.html">Link&lt;T &gt;</a> ();
-<a name="l00172"></a>00172       (*it)-&gt;setLinkOut(tmp);
-<a name="l00173"></a>00173       e-&gt;setLinkIn(tmp);
-<a name="l00174"></a>00174       links.push_back(tmp);
+<a name="l00150"></a>00150       <span class="comment">//dodanie bias</span>
+<a name="l00151"></a>00151       tmp = <span class="keyword">new</span> <a class="code" href="class_link.html">Link&lt;T &gt;</a> ();
+<a name="l00152"></a>00152       biases[0]-&gt;setLinkOut(tmp);
+<a name="l00153"></a>00153       n-&gt;setLinkIn(tmp);
+<a name="l00154"></a>00154       links.push_back(tmp);
+<a name="l00155"></a>00155     }
+<a name="l00156"></a>00156 
+<a name="l00157"></a>00157     <span class="comment">//połączenie kolejnych warstw</span>
+<a name="l00158"></a>00158     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; layers_count; ++i)
+<a name="l00159"></a>00159     {
+<a name="l00160"></a>00160       <span class="keywordflow">for</span> (<span class="keyword">auto</span> n2 : *(layers[i])) <span class="comment">// n2 - wskaźnik do neuronu warstwy wyższej</span>
+<a name="l00161"></a>00161       {
+<a name="l00162"></a>00162         <span class="keywordflow">for</span> (<span class="keyword">auto</span> n1 : *(layers[i - 1])) <span class="comment">// n1 - wskaźnik do neuronu warstwy niższej</span>
+<a name="l00163"></a>00163         {
+<a name="l00164"></a>00164           tmp = <span class="keyword">new</span> <a class="code" href="class_link.html">Link&lt;T &gt;</a> ();
+<a name="l00165"></a>00165           n1-&gt;setLinkOut(tmp);
+<a name="l00166"></a>00166           n2-&gt;setLinkIn(tmp);
+<a name="l00167"></a>00167           links.push_back(tmp);
+<a name="l00168"></a>00168         }
+<a name="l00169"></a>00169         <span class="comment">//dodanie bias</span>
+<a name="l00170"></a>00170         tmp = <span class="keyword">new</span> <a class="code" href="class_link.html">Link&lt;T &gt;</a> ();
+<a name="l00171"></a>00171         biases[i]-&gt;setLinkOut(tmp);
+<a name="l00172"></a>00172         n2-&gt;setLinkIn(tmp);
+<a name="l00173"></a>00173         links.push_back(tmp);
+<a name="l00174"></a>00174       }
 <a name="l00175"></a>00175     }
-<a name="l00176"></a>00176     valid = <span class="keyword">true</span>;
-<a name="l00177"></a>00177   }
-<a name="l00178"></a>00178 
-<a name="l00184"></a><a class="code" href="class_neural_network.html#acfdd9905e047fff1b40e4cd358160f6e">00184</a>   <span class="keywordtype">void</span> <a class="code" href="class_neural_network.html#acfdd9905e047fff1b40e4cd358160f6e">setActivationfunction</a>(<a class="code" href="class_activation_function.html">ActivationFunction</a> activationfunction) <span class="keywordflow">throw</span> (<a class="code" href="class_neural_network_1_1_wrong_state.html">WrongState</a>)
-<a name="l00185"></a>00185   {
-<a name="l00186"></a>00186     <span class="keywordflow">if</span> (valid)
-<a name="l00187"></a>00187     {
-<a name="l00188"></a>00188       <span class="keywordflow">throw</span> <a class="code" href="class_neural_network_1_1_wrong_state.html">WrongState</a>();
-<a name="l00189"></a>00189     }
-<a name="l00190"></a>00190     this-&gt;activationfunction = activationfunction;
-<a name="l00191"></a>00191   }
-<a name="l00192"></a>00192 
-<a name="l00198"></a><a class="code" href="class_neural_network.html#a705286b62e4d1d11310f997dadd31fa8">00198</a>   <span class="keywordtype">void</span> <a class="code" href="class_neural_network.html#a705286b62e4d1d11310f997dadd31fa8">setEntries</a>(<span class="keywordtype">int</span> entries_count) <span class="keywordflow">throw</span> (<a class="code" href="class_neural_network_1_1_wrong_state.html">WrongState</a>)
-<a name="l00199"></a>00199   {
-<a name="l00200"></a>00200     <span class="keywordflow">if</span> (valid)
-<a name="l00201"></a>00201     {
-<a name="l00202"></a>00202       <span class="keywordflow">throw</span> <a class="code" href="class_neural_network_1_1_wrong_state.html">WrongState</a>();
-<a name="l00203"></a>00203     }
-<a name="l00204"></a>00204     this-&gt;entries_count = entries_count;
-<a name="l00205"></a>00205   }
-<a name="l00206"></a>00206 
-<a name="l00212"></a><a class="code" href="class_neural_network.html#a18912fbb8068bfb301d6e2462c9f8a31">00212</a>   <span class="keywordtype">void</span> <a class="code" href="class_neural_network.html#a18912fbb8068bfb301d6e2462c9f8a31">setExits</a>(<span class="keywordtype">int</span> exits_count) <span class="keywordflow">throw</span> (<a class="code" href="class_neural_network_1_1_wrong_state.html">WrongState</a>)
-<a name="l00213"></a>00213   {
-<a name="l00214"></a>00214     <span class="keywordflow">if</span> (valid)
-<a name="l00215"></a>00215     {
-<a name="l00216"></a>00216       <span class="keywordflow">throw</span> <a class="code" href="class_neural_network_1_1_wrong_state.html">WrongState</a>();
-<a name="l00217"></a>00217     }
-<a name="l00218"></a>00218     this-&gt;exits_count = exits_count;
-<a name="l00219"></a>00219   }
-<a name="l00220"></a>00220 
-<a name="l00228"></a><a class="code" href="class_neural_network.html#ab3c70e006390624a5b9bd2c933b8af56">00228</a>   <span class="keywordtype">void</span> <a class="code" href="class_neural_network.html#ab3c70e006390624a5b9bd2c933b8af56">setNeurons</a>(<span class="keywordtype">int</span> layer, <span class="keywordtype">int</span> neurons_count) <span class="keywordflow">throw</span> (<a class="code" href="class_neural_network_1_1_wrong_state.html">WrongState</a>, <a class="code" href="class_neural_network_1_1_wrong_argument.html">WrongArgument</a>)
-<a name="l00229"></a>00229   {
-<a name="l00230"></a>00230     <span class="keywordflow">if</span> (valid)
-<a name="l00231"></a>00231     {
-<a name="l00232"></a>00232       <span class="keywordflow">throw</span> <a class="code" href="class_neural_network_1_1_wrong_state.html">WrongState</a>();
-<a name="l00233"></a>00233     }
-<a name="l00234"></a>00234     <span class="keywordflow">if</span> (layer &gt; layers_count - 1)
-<a name="l00235"></a>00235     {
-<a name="l00236"></a>00236       <span class="keywordflow">throw</span> <a class="code" href="class_neural_network_1_1_wrong_argument.html">WrongArgument</a>(<span class="stringliteral">&quot;Network doesn&#39;t have such number of layers&quot;</span>);
-<a name="l00237"></a>00237     }
-<a name="l00238"></a>00238     <span class="keywordflow">if</span> (layer &lt; 1)
-<a name="l00239"></a>00239     {
-<a name="l00240"></a>00240       <span class="keywordflow">throw</span> <a class="code" href="class_neural_network_1_1_wrong_argument.html">WrongArgument</a>(<span class="stringliteral">&quot;You cannot set layer 0 or negative&quot;</span>);
-<a name="l00241"></a>00241     }
-<a name="l00242"></a>00242     this-&gt;neurons_count[layer - 1] = neurons_count;
-<a name="l00243"></a>00243   }
-<a name="l00244"></a>00244 
-<a name="l00253"></a><a class="code" href="class_neural_network.html#aaf64536a908b15b76faa8e19216d9219">00253</a>   <span class="keyword">template</span> &lt;<span class="keyword">class</span> InputIterator&gt; <span class="keywordtype">void</span> <a class="code" href="class_neural_network.html#aaf64536a908b15b76faa8e19216d9219">setInput</a>(InputIterator start, InputIterator end) <span class="keywordflow">throw</span> (<a class="code" href="class_neural_network_1_1_wrong_state.html">WrongState</a>, <a class="code" href="class_neural_network_1_1_wrong_argument.html">WrongArgument</a>)
-<a name="l00254"></a>00254   {
-<a name="l00255"></a>00255     <span class="keywordflow">if</span> (!valid)
-<a name="l00256"></a>00256     {
-<a name="l00257"></a>00257       <span class="keywordflow">throw</span> <a class="code" href="class_neural_network_1_1_wrong_state.html">WrongState</a>();
-<a name="l00258"></a>00258     }
-<a name="l00259"></a>00259     <span class="keywordflow">for</span> (<span class="keyword">auto</span> e : entries) <span class="comment">//e - wskaźnik  na wejście</span>
-<a name="l00260"></a>00260     {
-<a name="l00261"></a>00261       e-&gt;setEntry(*start);
-<a name="l00262"></a>00262       start++;
-<a name="l00263"></a>00263       <span class="keywordflow">if</span> (start == end)
-<a name="l00264"></a>00264       {
-<a name="l00265"></a>00265         <span class="keywordflow">throw</span> (<a class="code" href="class_neural_network_1_1_wrong_argument.html">WrongArgument</a>(<span class="stringliteral">&quot;Size of input is smaller then input of network&quot;</span>));
-<a name="l00266"></a>00266       }
-<a name="l00267"></a>00267     }
-<a name="l00268"></a>00268   }
-<a name="l00269"></a>00269 
-<a name="l00274"></a><a class="code" href="class_neural_network.html#a7f03c156227f54548f92ea1cd686a7da">00274</a>   <span class="keywordtype">void</span> <a class="code" href="class_neural_network.html#a7f03c156227f54548f92ea1cd686a7da">calcOutput</a>() throw (<a class="code" href="class_neural_network_1_1_wrong_state.html">WrongState</a>)
-<a name="l00275"></a>00275   {
-<a name="l00276"></a>00276     <span class="keywordflow">if</span> (!valid)
-<a name="l00277"></a>00277     {
-<a name="l00278"></a>00278       <span class="keywordflow">throw</span> WrongState();
-<a name="l00279"></a>00279     }
-<a name="l00280"></a>00280     <span class="keywordflow">for</span> (<span class="keyword">auto</span> l : layers) <span class="comment">//l - wskaźnik na listę neuronów</span>
-<a name="l00281"></a>00281     {
-<a name="l00282"></a>00282       <span class="keywordflow">for</span> (<span class="keyword">auto</span> a : *l) <span class="comment">//a -  wskaźnik  na neuron</span>
-<a name="l00283"></a>00283       {
-<a name="l00284"></a>00284         a-&gt;calculateOutput();
-<a name="l00285"></a>00285       }
-<a name="l00286"></a>00286     }
-<a name="l00287"></a>00287   }
-<a name="l00288"></a>00288 
-<a name="l00289"></a>00289   <span class="keywordtype">void</span> learn() throw (WrongState)
-<a name="l00290"></a>00290   {
-<a name="l00291"></a>00291     <span class="keywordflow">if</span> (!valid)
+<a name="l00176"></a>00176 
+<a name="l00177"></a>00177     <span class="comment">//połączenie wartswy wyjściowej z wyjściami</span>
+<a name="l00178"></a>00178     <span class="keyword">typename</span> std::list&lt;Neuron&lt;T, ActivationFunction&gt;*&gt;::iterator it = layers[layers_count - 1]-&gt;begin();
+<a name="l00179"></a>00179     <span class="keywordflow">for</span> (<span class="keyword">auto</span> e : exits) <span class="comment">//e - wskaźnik do wyjścia</span>
+<a name="l00180"></a>00180     {
+<a name="l00181"></a>00181       tmp = <span class="keyword">new</span> <a class="code" href="class_link.html">Link&lt;T &gt;</a> ();
+<a name="l00182"></a>00182       (*it)-&gt;setLinkOut(tmp);
+<a name="l00183"></a>00183       e-&gt;setLinkIn(tmp);
+<a name="l00184"></a>00184       links.push_back(tmp);
+<a name="l00185"></a>00185     }
+<a name="l00186"></a>00186     valid = <span class="keyword">true</span>;
+<a name="l00187"></a>00187   }
+<a name="l00188"></a>00188 
+<a name="l00194"></a><a class="code" href="class_neural_network.html#acfdd9905e047fff1b40e4cd358160f6e">00194</a>   <span class="keywordtype">void</span> <a class="code" href="class_neural_network.html#acfdd9905e047fff1b40e4cd358160f6e">setActivationfunction</a>(<a class="code" href="class_activation_function.html">ActivationFunction</a> activationfunction) <span class="keywordflow">throw</span> (<a class="code" href="class_neural_network_1_1_wrong_state.html">WrongState</a>)
+<a name="l00195"></a>00195   {
+<a name="l00196"></a>00196     <span class="keywordflow">if</span> (valid)
+<a name="l00197"></a>00197     {
+<a name="l00198"></a>00198       <span class="keywordflow">throw</span> <a class="code" href="class_neural_network_1_1_wrong_state.html">WrongState</a>();
+<a name="l00199"></a>00199     }
+<a name="l00200"></a>00200     this-&gt;activationfunction = activationfunction;
+<a name="l00201"></a>00201   }
+<a name="l00202"></a>00202 
+<a name="l00208"></a><a class="code" href="class_neural_network.html#a705286b62e4d1d11310f997dadd31fa8">00208</a>   <span class="keywordtype">void</span> <a class="code" href="class_neural_network.html#a705286b62e4d1d11310f997dadd31fa8">setEntries</a>(<span class="keywordtype">int</span> entries_count) <span class="keywordflow">throw</span> (<a class="code" href="class_neural_network_1_1_wrong_state.html">WrongState</a>)
+<a name="l00209"></a>00209   {
+<a name="l00210"></a>00210     <span class="keywordflow">if</span> (valid)
+<a name="l00211"></a>00211     {
+<a name="l00212"></a>00212       <span class="keywordflow">throw</span> <a class="code" href="class_neural_network_1_1_wrong_state.html">WrongState</a>();
+<a name="l00213"></a>00213     }
+<a name="l00214"></a>00214     this-&gt;entries_count = entries_count;
+<a name="l00215"></a>00215   }
+<a name="l00216"></a>00216 
+<a name="l00222"></a><a class="code" href="class_neural_network.html#a18912fbb8068bfb301d6e2462c9f8a31">00222</a>   <span class="keywordtype">void</span> <a class="code" href="class_neural_network.html#a18912fbb8068bfb301d6e2462c9f8a31">setExits</a>(<span class="keywordtype">int</span> exits_count) <span class="keywordflow">throw</span> (<a class="code" href="class_neural_network_1_1_wrong_state.html">WrongState</a>)
+<a name="l00223"></a>00223   {
+<a name="l00224"></a>00224     <span class="keywordflow">if</span> (valid)
+<a name="l00225"></a>00225     {
+<a name="l00226"></a>00226       <span class="keywordflow">throw</span> <a class="code" href="class_neural_network_1_1_wrong_state.html">WrongState</a>();
+<a name="l00227"></a>00227     }
+<a name="l00228"></a>00228     this-&gt;exits_count = exits_count;
+<a name="l00229"></a>00229   }
+<a name="l00230"></a>00230 
+<a name="l00238"></a><a class="code" href="class_neural_network.html#ab3c70e006390624a5b9bd2c933b8af56">00238</a>   <span class="keywordtype">void</span> <a class="code" href="class_neural_network.html#ab3c70e006390624a5b9bd2c933b8af56">setNeurons</a>(<span class="keywordtype">int</span> layer, <span class="keywordtype">int</span> neurons_count) <span class="keywordflow">throw</span> (<a class="code" href="class_neural_network_1_1_wrong_state.html">WrongState</a>, <a class="code" href="class_neural_network_1_1_wrong_argument.html">WrongArgument</a>)
+<a name="l00239"></a>00239   {
+<a name="l00240"></a>00240     <span class="keywordflow">if</span> (valid)
+<a name="l00241"></a>00241     {
+<a name="l00242"></a>00242       <span class="keywordflow">throw</span> <a class="code" href="class_neural_network_1_1_wrong_state.html">WrongState</a>();
+<a name="l00243"></a>00243     }
+<a name="l00244"></a>00244     <span class="keywordflow">if</span> (layer &gt; layers_count - 1)
+<a name="l00245"></a>00245     {
+<a name="l00246"></a>00246       <span class="keywordflow">throw</span> <a class="code" href="class_neural_network_1_1_wrong_argument.html">WrongArgument</a>(<span class="stringliteral">&quot;Network doesn&#39;t have such number of layers&quot;</span>);
+<a name="l00247"></a>00247     }
+<a name="l00248"></a>00248     <span class="keywordflow">if</span> (layer &lt; 1)
+<a name="l00249"></a>00249     {
+<a name="l00250"></a>00250       <span class="keywordflow">throw</span> <a class="code" href="class_neural_network_1_1_wrong_argument.html">WrongArgument</a>(<span class="stringliteral">&quot;You cannot set layer 0 or negative&quot;</span>);
+<a name="l00251"></a>00251     }
+<a name="l00252"></a>00252     this-&gt;neurons_count[layer - 1] = neurons_count;
+<a name="l00253"></a>00253   }
+<a name="l00254"></a>00254 
+<a name="l00263"></a><a class="code" href="class_neural_network.html#aaf64536a908b15b76faa8e19216d9219">00263</a>   <span class="keyword">template</span> &lt;<span class="keyword">class</span> InputIterator&gt; <span class="keywordtype">void</span> <a class="code" href="class_neural_network.html#aaf64536a908b15b76faa8e19216d9219">setInput</a>(InputIterator start, InputIterator end) <span class="keywordflow">throw</span> (<a class="code" href="class_neural_network_1_1_wrong_state.html">WrongState</a>, <a class="code" href="class_neural_network_1_1_wrong_argument.html">WrongArgument</a>)
+<a name="l00264"></a>00264   {
+<a name="l00265"></a>00265     <span class="keywordflow">if</span> (!valid)
+<a name="l00266"></a>00266     {
+<a name="l00267"></a>00267       <span class="keywordflow">throw</span> <a class="code" href="class_neural_network_1_1_wrong_state.html">WrongState</a>();
+<a name="l00268"></a>00268     }
+<a name="l00269"></a>00269     <span class="keywordflow">for</span> (<span class="keyword">auto</span> e : entries) <span class="comment">//e - wskaźnik  na wejście</span>
+<a name="l00270"></a>00270     {
+<a name="l00271"></a>00271       e-&gt;setEntry(*start);
+<a name="l00272"></a>00272       start++;
+<a name="l00273"></a>00273       <span class="keywordflow">if</span> (start == end)
+<a name="l00274"></a>00274       {
+<a name="l00275"></a>00275         <span class="keywordflow">throw</span> (<a class="code" href="class_neural_network_1_1_wrong_argument.html">WrongArgument</a>(<span class="stringliteral">&quot;Size of input is smaller then input of network&quot;</span>));
+<a name="l00276"></a>00276       }
+<a name="l00277"></a>00277     }
+<a name="l00278"></a>00278   }
+<a name="l00279"></a>00279 
+<a name="l00285"></a><a class="code" href="class_neural_network.html#af7c28ad226f6d32d8c578159f0d03ae9">00285</a>   std::vector&lt;T&gt; <a class="code" href="class_neural_network.html#af7c28ad226f6d32d8c578159f0d03ae9">calcOutput</a>() throw (<a class="code" href="class_neural_network_1_1_wrong_state.html">WrongState</a>)
+<a name="l00286"></a>00286   {
+<a name="l00287"></a>00287     <span class="keywordflow">if</span> (!valid)
+<a name="l00288"></a>00288     {
+<a name="l00289"></a>00289       <span class="keywordflow">throw</span> WrongState();
+<a name="l00290"></a>00290     }
+<a name="l00291"></a>00291     <span class="keywordflow">for</span> (<span class="keyword">auto</span> b : biases) <span class="comment">// b - wskaźnik do biasu</span>
 <a name="l00292"></a>00292     {
-<a name="l00293"></a>00293       <span class="keywordflow">throw</span> WrongState();
+<a name="l00293"></a>00293       b-&gt;sendBiasToLinks();
 <a name="l00294"></a>00294     }
-<a name="l00295"></a>00295     <span class="comment">//TODO: dopisać</span>
-<a name="l00296"></a>00296   }
-<a name="l00297"></a>00297 
-<a name="l00304"></a><a class="code" href="class_neural_network.html#a3ef0490ade6f9efff49501132a12fd18">00304</a>   <span class="keywordtype">void</span> <a class="code" href="class_neural_network.html#a3ef0490ade6f9efff49501132a12fd18">setLayersCount</a>(<span class="keywordtype">int</span> layers_count) <span class="keywordflow">throw</span> (WrongState, <a class="code" href="class_neural_network_1_1_wrong_argument.html">WrongArgument</a>)
-<a name="l00305"></a>00305   {
-<a name="l00306"></a>00306     <span class="keywordflow">if</span> (valid)
-<a name="l00307"></a>00307     {
-<a name="l00308"></a>00308       <span class="keywordflow">throw</span> WrongState();
-<a name="l00309"></a>00309     }
-<a name="l00310"></a>00310     <span class="keywordflow">if</span> (layers_count &gt; max_layers_count)
-<a name="l00311"></a>00311     {
-<a name="l00312"></a>00312       <span class="keywordflow">throw</span> <a class="code" href="class_neural_network_1_1_wrong_argument.html">WrongArgument</a>(<span class="stringliteral">&quot;Liczba warstw nie może być większa od ustalonej wartości: &quot;</span> + <a class="code" href="class_helper.html#aea19db1a4a7d6d3d793584fe8afab244">Helper::intToString</a>(max_layers_count) + <span class="stringliteral">&quot;.&quot;</span>);
-<a name="l00313"></a>00313     }
-<a name="l00314"></a>00314     <span class="keywordflow">else</span> <span class="keywordflow">if</span> (layers_count &lt; 1)
-<a name="l00315"></a>00315     {
-<a name="l00316"></a>00316       <span class="keywordflow">throw</span> <a class="code" href="class_neural_network_1_1_wrong_argument.html">WrongArgument</a>(<span class="stringliteral">&quot;Network should have at least one layer&quot;</span>);
-<a name="l00317"></a>00317     }
-<a name="l00318"></a>00318 
-<a name="l00319"></a>00319     this-&gt;layers_count = layers_count;
-<a name="l00320"></a>00320     neurons_count.resize(layers_count);
-<a name="l00321"></a>00321   }
-<a name="l00322"></a>00322 
-<a name="l00323"></a>00323 <span class="keyword">private</span>:
-<a name="l00324"></a>00324 
-<a name="l00329"></a>00329   <span class="keywordtype">void</span> processLayer(std::list&lt;<a class="code" href="class_neuron.html">Neuron&lt;T &gt;</a>&gt; &amp;layer)
-<a name="l00330"></a>00330   {
-<a name="l00331"></a>00331     <span class="comment">//LATER: dopisać   </span>
-<a name="l00332"></a>00332   }
-<a name="l00333"></a>00333 
-<a name="l00337"></a>00337   <span class="keywordtype">void</span> clearNetwork()
-<a name="l00338"></a>00338   {
-<a name="l00339"></a>00339     std::cout &lt;&lt; entries.size() &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; exits.size() &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; layers.size() &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; links.size() &lt;&lt; <span class="stringliteral">&quot; \n&quot;</span>;
-<a name="l00340"></a>00340     <span class="keywordflow">for</span> (<span class="keyword">auto</span> tmp : entries)
-<a name="l00341"></a>00341     {
-<a name="l00342"></a>00342       <span class="keyword">delete</span> tmp;
-<a name="l00343"></a>00343     }
-<a name="l00344"></a>00344     <span class="keywordflow">for</span> (<span class="keyword">auto</span> tmp : exits)
-<a name="l00345"></a>00345     {
-<a name="l00346"></a>00346       <span class="keyword">delete</span> tmp;
-<a name="l00347"></a>00347     }
-<a name="l00348"></a>00348     <span class="keywordflow">for</span> (<span class="keyword">auto</span> tmp : layers)
+<a name="l00295"></a>00295     <span class="keywordflow">for</span> (<span class="keyword">auto</span> l : layers) <span class="comment">//l - wskaźnik na listę neuronów</span>
+<a name="l00296"></a>00296     {
+<a name="l00297"></a>00297       <span class="keywordflow">for</span> (<span class="keyword">auto</span> a : *l) <span class="comment">//a -  wskaźnik  na neuron</span>
+<a name="l00298"></a>00298       {
+<a name="l00299"></a>00299         a-&gt;calculateOutput();
+<a name="l00300"></a>00300       }
+<a name="l00301"></a>00301     }
+<a name="l00302"></a>00302     std::vector&lt;T&gt; tmp(exits_count);
+<a name="l00303"></a>00303     <span class="keywordtype">int</span> i = 0;
+<a name="l00304"></a>00304     <span class="keywordflow">for</span> (<span class="keyword">auto</span> e : exits) <span class="comment">// e - wksaźnik na Exit</span>
+<a name="l00305"></a>00305     {
+<a name="l00306"></a>00306       tmp[i++] = e-&gt;getExit();
+<a name="l00307"></a>00307     }
+<a name="l00308"></a>00308     <span class="keywordflow">return</span> tmp;
+<a name="l00309"></a>00309   }
+<a name="l00310"></a>00310 
+<a name="l00319"></a><a class="code" href="class_neural_network.html#a814f14ae36ecb286923f7fff6cff7aa7">00319</a>   <span class="keyword">template</span> &lt;<span class="keyword">class</span> InputIterator&gt; <span class="keywordtype">void</span> <a class="code" href="class_neural_network.html#a814f14ae36ecb286923f7fff6cff7aa7">learn</a>(InputIterator start, InputIterator end) <span class="keywordflow">throw</span> (<a class="code" href="class_neural_network_1_1_wrong_state.html">WrongState</a>, <a class="code" href="class_neural_network_1_1_wrong_argument.html">WrongArgument</a>)
+<a name="l00320"></a>00320   {
+<a name="l00321"></a>00321     <span class="keywordflow">if</span> (!valid)
+<a name="l00322"></a>00322     {
+<a name="l00323"></a>00323       <span class="keywordflow">throw</span> <a class="code" href="class_neural_network_1_1_wrong_state.html">WrongState</a>();
+<a name="l00324"></a>00324     }
+<a name="l00325"></a>00325     <span class="comment">//przekazanie odpowiedzi na wyjścia.</span>
+<a name="l00326"></a>00326     <span class="keywordflow">for</span> (<span class="keyword">auto</span> e : exits) <span class="comment">//e - wskaźnik do exit</span>
+<a name="l00327"></a>00327     {
+<a name="l00328"></a>00328       <span class="keywordflow">if</span> (start == end)
+<a name="l00329"></a>00329       {
+<a name="l00330"></a>00330         <span class="keywordflow">throw</span> (<a class="code" href="class_neural_network_1_1_wrong_argument.html">WrongArgument</a>(<span class="stringliteral">&quot;Size of the answer is too small.&quot;</span>));
+<a name="l00331"></a>00331       }
+<a name="l00332"></a>00332       e-&gt;learn(*(start++));
+<a name="l00333"></a>00333     }
+<a name="l00334"></a>00334     <span class="comment">//przekazywanie odpowiedzi do warst ukrytych (jeśli są)</span>
+<a name="l00335"></a>00335     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = layers_count - 1; i != 0; --i)
+<a name="l00336"></a>00336     {
+<a name="l00337"></a>00337       <span class="keywordflow">for</span> (<span class="keyword">auto</span> n : *(layers[i])) <span class="comment">//n - wskaźnik do neuronu</span>
+<a name="l00338"></a>00338       {
+<a name="l00339"></a>00339         n-&gt;propagateAnswer();
+<a name="l00340"></a>00340       }
+<a name="l00341"></a>00341     }
+<a name="l00342"></a>00342     <span class="comment">//uczenie warstwy najwyższej</span>
+<a name="l00343"></a>00343     <span class="keywordflow">for</span> (<span class="keyword">auto</span> n : *(layers[layers_count - 1])) <span class="comment">// n - wskaźnik do neuronu</span>
+<a name="l00344"></a>00344     {
+<a name="l00345"></a>00345       n-&gt;learnDelta();
+<a name="l00346"></a>00346     }
+<a name="l00347"></a>00347     <span class="comment">//uczenie niższych warstw</span>
+<a name="l00348"></a>00348     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = layers_count - 2; i &gt;= 0; --i)
 <a name="l00349"></a>00349     {
-<a name="l00350"></a>00350       <span class="keywordflow">for</span> (<span class="keyword">auto</span> n : *tmp)
+<a name="l00350"></a>00350       <span class="keywordflow">for</span> (<span class="keyword">auto</span> n : *(layers[i])) <span class="comment">//n - wskaźnik do neuronu</span>
 <a name="l00351"></a>00351       {
-<a name="l00352"></a>00352         <span class="keyword">delete</span> n;
+<a name="l00352"></a>00352         n-&gt;learnBP();
 <a name="l00353"></a>00353       }
-<a name="l00354"></a>00354       <span class="keyword">delete</span> tmp;
-<a name="l00355"></a>00355     }
-<a name="l00356"></a>00356     <span class="keywordflow">for</span> (<span class="keyword">auto</span> tmp : links)
-<a name="l00357"></a>00357     {
-<a name="l00358"></a>00358       <span class="keyword">delete</span> tmp;
-<a name="l00359"></a>00359     }
-<a name="l00360"></a>00360     entries.clear();
-<a name="l00361"></a>00361     exits.clear();
-<a name="l00362"></a>00362     layers.clear();
-<a name="l00363"></a>00363     links.clear();
-<a name="l00364"></a>00364   }
-<a name="l00365"></a>00365   <span class="comment">//wejścia</span>
-<a name="l00366"></a>00366   std::list&lt;Entry&lt;T &gt;*&gt; entries;
-<a name="l00367"></a>00367   <span class="comment">//wyjścia</span>
-<a name="l00368"></a>00368   std::list&lt;Exit&lt;T &gt;*&gt; exits;
-<a name="l00369"></a>00369   <span class="comment">//warstwy neuronów (zawsze będzie 1 użyta).</span>
-<a name="l00370"></a>00370   std::vector&lt;std::list&lt;Neuron&lt;T, ActivationFunction &gt;*&gt;*&gt; layers;
-<a name="l00371"></a>00371   <span class="comment">//łącza</span>
-<a name="l00372"></a>00372   std::list&lt;Link&lt;T&gt;*&gt; links;
-<a name="l00373"></a>00373   <span class="comment">//dane dotyczące sieci</span>
-<a name="l00374"></a>00374   <span class="keywordtype">int</span> layers_count;
-<a name="l00375"></a>00375   <span class="keywordtype">int</span> entries_count;
-<a name="l00376"></a>00376   <span class="keywordtype">int</span> exits_count;
-<a name="l00377"></a>00377   std::vector&lt;int&gt; neurons_count;
-<a name="l00378"></a>00378   <a class="code" href="class_activation_function.html">ActivationFunction</a> activationfunction;
-<a name="l00379"></a>00379   <span class="comment">//poprawność sieci</span>
-<a name="l00380"></a>00380   <span class="keywordtype">bool</span> valid;
+<a name="l00354"></a>00354     }
+<a name="l00355"></a>00355   }
+<a name="l00356"></a>00356 
+<a name="l00363"></a><a class="code" href="class_neural_network.html#a3ef0490ade6f9efff49501132a12fd18">00363</a>   <span class="keywordtype">void</span> <a class="code" href="class_neural_network.html#a3ef0490ade6f9efff49501132a12fd18">setLayersCount</a>(<span class="keywordtype">int</span> layers_count) <span class="keywordflow">throw</span> (<a class="code" href="class_neural_network_1_1_wrong_state.html">WrongState</a>, <a class="code" href="class_neural_network_1_1_wrong_argument.html">WrongArgument</a>)
+<a name="l00364"></a>00364   {
+<a name="l00365"></a>00365     <span class="keywordflow">if</span> (valid)
+<a name="l00366"></a>00366     {
+<a name="l00367"></a>00367       <span class="keywordflow">throw</span> <a class="code" href="class_neural_network_1_1_wrong_state.html">WrongState</a>();
+<a name="l00368"></a>00368     }
+<a name="l00369"></a>00369     <span class="keywordflow">if</span> (layers_count &gt; max_layers_count)
+<a name="l00370"></a>00370     {
+<a name="l00371"></a>00371       <span class="keywordflow">throw</span> <a class="code" href="class_neural_network_1_1_wrong_argument.html">WrongArgument</a>(<span class="stringliteral">&quot;Liczba warstw nie może być większa od ustalonej wartości: &quot;</span> + <a class="code" href="class_helper.html#aea19db1a4a7d6d3d793584fe8afab244">Helper::intToString</a>(max_layers_count) + <span class="stringliteral">&quot;.&quot;</span>);
+<a name="l00372"></a>00372     }
+<a name="l00373"></a>00373     <span class="keywordflow">else</span> <span class="keywordflow">if</span> (layers_count &lt; 1)
+<a name="l00374"></a>00374     {
+<a name="l00375"></a>00375       <span class="keywordflow">throw</span> <a class="code" href="class_neural_network_1_1_wrong_argument.html">WrongArgument</a>(<span class="stringliteral">&quot;Network should have at least one layer&quot;</span>);
+<a name="l00376"></a>00376     }
+<a name="l00377"></a>00377 
+<a name="l00378"></a>00378     this-&gt;layers_count = layers_count;
+<a name="l00379"></a>00379     neurons_count.resize(layers_count);
+<a name="l00380"></a>00380   }
 <a name="l00381"></a>00381 
-<a name="l00382"></a>00382   <span class="keyword">static</span> <span class="keywordtype">int</span> max_layers_count;
+<a name="l00382"></a>00382 <span class="keyword">private</span>:
 <a name="l00383"></a>00383 
-<a name="l00384"></a>00384 };
-<a name="l00385"></a>00385 
-<a name="l00386"></a>00386 <span class="keyword">template</span> &lt;<span class="keyword">class</span> T, <span class="keyword">class</span> ActivationFunction&gt; <span class="keywordtype">int</span> <a class="code" href="class_neural_network.html">NeuralNetwork&lt;T, ActivationFunction&gt;</a> ::max_layers_count = 3;
-<a name="l00387"></a>00387 
-<a name="l00388"></a>00388 
-<a name="l00389"></a>00389 <span class="preprocessor">#endif  </span><span class="comment">/* NEURALNETWORK_H */</span>
-<a name="l00390"></a>00390 
+<a name="l00388"></a>00388   <span class="keywordtype">void</span> processLayer(std::list&lt;<a class="code" href="class_neuron.html">Neuron&lt;T &gt;</a>&gt; &amp;layer)
+<a name="l00389"></a>00389   {
+<a name="l00390"></a>00390     <span class="comment">//LATER: dopisać   </span>
+<a name="l00391"></a>00391   }
+<a name="l00392"></a>00392 
+<a name="l00396"></a>00396   <span class="keywordtype">void</span> clearNetwork()
+<a name="l00397"></a>00397   {
+<a name="l00398"></a>00398     <span class="comment">//    std::cout &lt;&lt; entries.size() &lt;&lt; &quot; &quot; &lt;&lt; exits.size() &lt;&lt; &quot; &quot; &lt;&lt; layers.size() &lt;&lt; &quot; &quot; &lt;&lt; links.size() &lt;&lt; &quot; \n&quot;;</span>
+<a name="l00399"></a>00399     <span class="keywordflow">for</span> (<span class="keyword">auto</span> tmp : entries)
+<a name="l00400"></a>00400     {
+<a name="l00401"></a>00401       <span class="keyword">delete</span> tmp;
+<a name="l00402"></a>00402     }
+<a name="l00403"></a>00403     <span class="keywordflow">for</span> (<span class="keyword">auto</span> tmp : exits)
+<a name="l00404"></a>00404     {
+<a name="l00405"></a>00405       <span class="keyword">delete</span> tmp;
+<a name="l00406"></a>00406     }
+<a name="l00407"></a>00407     <span class="keywordflow">for</span> (<span class="keyword">auto</span> tmp : layers)
+<a name="l00408"></a>00408     {
+<a name="l00409"></a>00409       <span class="keywordflow">for</span> (<span class="keyword">auto</span> n : *tmp)
+<a name="l00410"></a>00410       {
+<a name="l00411"></a>00411         <span class="keyword">delete</span> n;
+<a name="l00412"></a>00412       }
+<a name="l00413"></a>00413       <span class="keyword">delete</span> tmp;
+<a name="l00414"></a>00414     }
+<a name="l00415"></a>00415     <span class="keywordflow">for</span> (<span class="keyword">auto</span> tmp : links)
+<a name="l00416"></a>00416     {
+<a name="l00417"></a>00417       <span class="keyword">delete</span> tmp;
+<a name="l00418"></a>00418     }
+<a name="l00419"></a>00419     entries.clear();
+<a name="l00420"></a>00420     exits.clear();
+<a name="l00421"></a>00421     layers.clear();
+<a name="l00422"></a>00422     links.clear();
+<a name="l00423"></a>00423   }
+<a name="l00424"></a>00424   <span class="comment">//wejścia</span>
+<a name="l00425"></a>00425   std::list&lt;Entry&lt;T &gt;*&gt; entries;
+<a name="l00426"></a>00426   <span class="comment">//wyjścia</span>
+<a name="l00427"></a>00427   std::list&lt;Exit&lt;T &gt;*&gt; exits;
+<a name="l00428"></a>00428   <span class="comment">//warstwy neuronów (zawsze będzie 1 użyta).</span>
+<a name="l00429"></a>00429   std::vector&lt;std::list&lt;Neuron&lt;T, ActivationFunction &gt;*&gt;*&gt; layers;
+<a name="l00430"></a>00430   <span class="comment">//bias</span>
+<a name="l00431"></a>00431   std::vector&lt;Bias&lt;T&gt;*&gt; biases;
+<a name="l00432"></a>00432   <span class="comment">//łącza</span>
+<a name="l00433"></a>00433   std::list&lt;Link&lt;T&gt;*&gt; links;
+<a name="l00434"></a>00434   <span class="comment">//dane dotyczące sieci</span>
+<a name="l00435"></a>00435   <span class="keywordtype">int</span> layers_count;
+<a name="l00436"></a>00436   <span class="keywordtype">int</span> entries_count;
+<a name="l00437"></a>00437   <span class="keywordtype">int</span> exits_count;
+<a name="l00438"></a>00438   std::vector&lt;int&gt; neurons_count;
+<a name="l00439"></a>00439   <a class="code" href="class_activation_function.html">ActivationFunction</a> activationfunction;
+<a name="l00440"></a>00440   <span class="comment">//poprawność sieci</span>
+<a name="l00441"></a>00441   <span class="keywordtype">bool</span> valid;
+<a name="l00442"></a>00442 
+<a name="l00443"></a>00443   <span class="keyword">static</span> <span class="keywordtype">int</span> max_layers_count;
+<a name="l00444"></a>00444 
+<a name="l00445"></a>00445 };
+<a name="l00446"></a>00446 
+<a name="l00447"></a>00447 <span class="keyword">template</span> &lt;<span class="keyword">class</span> T, <span class="keyword">class</span> ActivationFunction&gt; <span class="keywordtype">int</span> <a class="code" href="class_neural_network.html">NeuralNetwork&lt;T, ActivationFunction&gt;</a> ::max_layers_count = 3;
+<a name="l00448"></a>00448 
+<a name="l00449"></a>00449 
+<a name="l00450"></a>00450 <span class="preprocessor">#endif  </span><span class="comment">/* NEURALNETWORK_H */</span>
+<a name="l00451"></a>00451 
 </pre></div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->
@@ -430,7 +482,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul>
       <li class="navelem"><b>NeuralNetwork.h</b>      </li>
 
-    <li class="footer">Generated on Thu Apr 5 2012 13:26:34 for SSN by
+    <li class="footer">Generated on Thu Apr 5 2012 14:42:59 for SSN by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>
