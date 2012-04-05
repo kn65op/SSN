@@ -97,6 +97,182 @@ TEST(CreationTest, Entries2Exit1Layers2)
   ASSERT_NO_THROW(nn.stop());
 }
 
+TEST(RealWordTest, AND)
+{
+  typedef NeuralNetwork<double, StepActivationFunction<double >> network;
+  network nn;
+  nn.setEntries(2);
+  nn.setExits(1);
+  nn.setLayersCount(1);
+  nn.init();
+  std::vector<double> in1(2);
+  std::vector<double> in2(2);
+  std::vector<double> in3(2);
+  std::vector<double> in4(2);
+  in1[0] = 0;
+  in1[1] = 0;
+  in2[0] = 1;
+  in2[1] = 0;
+  in3[0] = 0;
+  in3[1] = 1;
+  in4[0] = 1;
+  in4[1] = 1;
+  std::vector<double> out0(1);
+  std::vector<double> out1(1);
+  out0[0] = 0;
+  out1[0] = 1;
+  //uczenie
+  for (int i = 0; i < 100; ++i)
+  {
+    nn.setInput(in1.begin(), in1.end());
+    nn.calcOutput();
+    nn.learn(out0.begin(), out0.end());
+    nn.setInput(in2.begin(), in2.end());
+    nn.calcOutput();
+    nn.learn(out0.begin(), out0.end());
+    nn.setInput(in3.begin(), in3.end());
+    nn.calcOutput();
+    nn.learn(out0.begin(), out0.end());
+    nn.setInput(in4.begin(), in4.end());
+    nn.calcOutput();
+    nn.learn(out1.begin(), out1.end());
+  }
+  //test
+  std::vector<double> out;
+  nn.setInput(in1.begin(), in1.end());
+  out = nn.calcOutput();
+  ASSERT_EQ(out[0], 0);
+  nn.setInput(in2.begin(), in2.end());
+  out = nn.calcOutput();
+  ASSERT_EQ(out[0], 0);
+  nn.setInput(in3.begin(), in3.end());
+  out = nn.calcOutput();
+  ASSERT_EQ(out[0], 0);
+  nn.setInput(in4.begin(), in4.end());
+  out = nn.calcOutput();
+  ASSERT_EQ(out[0], 1);
+}
+
+TEST(RealWordTest, OR)
+{
+  typedef NeuralNetwork<double, StepActivationFunction<double >> network;
+  network nn;
+  nn.setEntries(2);
+  nn.setExits(1);
+  nn.setLayersCount(1);
+  nn.init();
+  std::vector<double> in1(2);
+  std::vector<double> in2(2);
+  std::vector<double> in3(2);
+  std::vector<double> in4(2);
+  in1[0] = 0;
+  in1[1] = 0;
+  in2[0] = 1;
+  in2[1] = 0;
+  in3[0] = 0;
+  in3[1] = 1;
+  in4[0] = 1;
+  in4[1] = 1;
+  std::vector<double> out0(1);
+  std::vector<double> out1(1);
+  out0[0] = 0;
+  out1[0] = 1;
+  //uczenie
+  for (int i = 0; i < 100; ++i)
+  {
+    nn.setInput(in1.begin(), in1.end());
+    nn.calcOutput();
+    nn.learn(out0.begin(), out0.end());
+    nn.setInput(in2.begin(), in2.end());
+    nn.calcOutput();
+    nn.learn(out1.begin(), out1.end());
+    nn.setInput(in3.begin(), in3.end());
+    nn.calcOutput();
+    nn.learn(out1.begin(), out1.end());
+    nn.setInput(in4.begin(), in4.end());
+    nn.calcOutput();
+    nn.learn(out1.begin(), out1.end());
+  }
+  //test
+  std::vector<double> out;
+  nn.setInput(in1.begin(), in1.end());
+  out = nn.calcOutput();
+  ASSERT_EQ(out[0], 0);
+  nn.setInput(in2.begin(), in2.end());
+  out = nn.calcOutput();
+  ASSERT_EQ(out[0], 1);
+  nn.setInput(in3.begin(), in3.end());
+  out = nn.calcOutput();
+  ASSERT_EQ(out[0], 1);
+  nn.setInput(in4.begin(), in4.end());
+  out = nn.calcOutput();
+  ASSERT_EQ(out[0], 1);
+}
+
+TEST(RealWordTest, XOR)
+{
+  typedef NeuralNetwork<double, StepActivationFunction<double >> network;
+  network nn;
+  nn.setEntries(2);
+  nn.setExits(1);
+  nn.setLayersCount(2);
+  nn.setNeurons(1, 2);
+  nn.init();
+  std::vector<double> in1(2);
+  std::vector<double> in2(2);
+  std::vector<double> in3(2);
+  std::vector<double> in4(2);
+  in1[0] = 0;
+  in1[1] = 0;
+  in2[0] = 1;
+  in2[1] = 0;
+  in3[0] = 0;
+  in3[1] = 1;
+  in4[0] = 1;
+  in4[1] = 1;
+  std::vector<double> out0(1);
+  std::vector<double> out1(1);
+  out0[0] = 0;
+  out1[0] = 1;
+  //uczenie
+  for (int i = 0; i < 100; ++i)
+  {
+    nn.setInput(in1.begin(), in1.end());
+    nn.calcOutput();
+    nn.learn(out0.begin(), out0.end());
+    nn.setInput(in2.begin(), in2.end());
+    nn.calcOutput();
+    nn.learn(out1.begin(), out1.end());
+    nn.setInput(in3.begin(), in3.end());
+    nn.calcOutput();
+    nn.learn(out1.begin(), out1.end());
+    nn.setInput(in4.begin(), in4.end());
+    nn.calcOutput();
+    nn.learn(out0.begin(), out0.end());
+  }
+  //test
+  std::vector<double> out;
+  std::vector<double> o(4);
+  nn.setInput(in1.begin(), in1.end());
+  out = nn.calcOutput();
+  o[0] = out[0];
+  ASSERT_EQ(out[0], 0);
+  nn.setInput(in2.begin(), in2.end());
+  out = nn.calcOutput();
+  o[1] = out[0];
+  ASSERT_EQ(out[0], 1);
+  nn.setInput(in3.begin(), in3.end());
+  out = nn.calcOutput();
+  o[2] = out[0];
+  ASSERT_EQ(out[0], 1);
+  nn.setInput(in4.begin(), in4.end());
+  out = nn.calcOutput();
+  o[3] = out[0];
+  ASSERT_EQ(out[0], 0);
+  
+  std::cout << o[0] << " " << o[1] << " " << o[2] << " " << o[3] << "\n";
+}
+
 int main(int argc, char **argv)
 {
 

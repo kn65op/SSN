@@ -268,12 +268,12 @@ public:
     }
     for (auto e : entries) //e - wskaźnik  na wejście
     {
-      e->setEntry(*start);
-      start++;
       if (start == end)
       {
         throw (WrongArgument("Size of input is smaller then input of network"));
       }
+      e->setEntry(*start);
+      start++;
     }
   }
 
