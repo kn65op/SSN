@@ -72,6 +72,7 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libNeuralNetwork.so: ${OBJECTFILES}
 
 # Subprojects
 .build-subprojects:
+	cd /home/tomko/moje_dziela/SSN/Neuron && ${MAKE}  -f Makefile CONF=Debug
 
 # Build Test Targets
 .build-tests-conf: .build-conf ${TESTFILES}
@@ -102,6 +103,7 @@ ${TESTDIR}/tests/NeuralNetworkTest.o: tests/NeuralNetworkTest.cpp
 
 # Subprojects
 .clean-subprojects:
+	cd /home/tomko/moje_dziela/SSN/Neuron && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

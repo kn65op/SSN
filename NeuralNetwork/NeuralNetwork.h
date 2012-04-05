@@ -14,6 +14,7 @@
 #include <ActivationFunction.h>
 #include <Link.h>
 #include <Helper.h>
+#include <Bias.h>
 
 #include <list>
 
@@ -120,7 +121,7 @@ public:
     {
       exits.push_back(new Exit<T > ());
     }
-    //stworzenie warstw
+    //stworzenie warstw i biasów
     layers.reserve(layers_count);
     for (int j = 0; j < layers_count; j++)
     {
@@ -132,38 +133,49 @@ public:
       }
       //zapisanie warstwy
       layers.push_back(tmp);
+      biases.push_back(new Bias<T > (1));
     }
     //tworzenie linków, inaczej się tworzy dla warstw ukrytych, a inaczej dla braku warstw ukryty, layers_count == 1 oznacza, że brak warstw ukrytych
     int links_count = 0;
     Link<T>* tmp;
-    
+
     //połączenie wejść z pierwszą warstwą
-    for (auto e : entries) // e - wskaźnik do wejścia
+    for (auto n : *(layers[0])) // n -wskaźnik do listy z warstwą 1 
     {
-      for (auto n : *(layers[0])) // n -wskaźnik do listy z warstwą 1 
+      for (auto e : entries) // e - wskaźnik do wejścia
       {
         tmp = new Link<T > ();
         e->setLinkOut(tmp);
         n->setLinkIn(tmp);
         links.push_back(tmp);
       }
+      //dodanie bias
+      tmp = new Link<T > ();
+      biases[0]->setLinkOut(tmp);
+      n->setLinkIn(tmp);
+      links.push_back(tmp);
     }
-    
+
     //połączenie kolejnych warstw
     for (int i = 1; i < layers_count; i++)
     {
-      for (auto n1 : *(layers[i - 1])) // n1 - wskaźnik do neuronu warstwy niższej
+      for (auto n2 : *(layers[i])) // n2 - wskaźnik do neuronu warstwy wyższej
       {
-        for (auto n2 : *(layers[i])) // n2 - wskaźnik do neuronu warstwy niższej
+        for (auto n1 : *(layers[i - 1])) // n1 - wskaźnik do neuronu warstwy niższej
         {
           tmp = new Link<T > ();
           n1->setLinkOut(tmp);
           n2->setLinkIn(tmp);
           links.push_back(tmp);
         }
+        //dodanie bias
+        tmp = new Link<T > ();
+        biases[i]->setLinkOut(tmp);
+        n2->setLinkIn(tmp);
+        links.push_back(tmp);
       }
     }
-    
+
     //połączenie wartswy wyjściowej z wyjściami
     typename std::list<Neuron<T, ActivationFunction>*>::iterator it = layers[layers_count - 1]->begin();
     for (auto e : exits) //e - wskaźnik do wyjścia
@@ -277,6 +289,10 @@ public:
     {
       throw WrongState();
     }
+    for (auto b :biases) // b - wskaźnik do biasu
+    {
+      b->sendBiasToLinks();
+    }
     for (auto l : layers) //l - wskaźnik na listę neuronów
     {
       for (auto a : *l) //a -  wskaźnik  na neuron
@@ -336,7 +352,7 @@ private:
    */
   void clearNetwork()
   {
-    std::cout << entries.size() << " " << exits.size() << " " << layers.size() << " " << links.size() << " \n";
+//    std::cout << entries.size() << " " << exits.size() << " " << layers.size() << " " << links.size() << " \n";
     for (auto tmp : entries)
     {
       delete tmp;
@@ -368,6 +384,8 @@ private:
   std::list<Exit<T >*> exits;
   //warstwy neuronów (zawsze będzie 1 użyta).
   std::vector<std::list<Neuron<T, ActivationFunction >*>*> layers;
+  //bias
+  std::vector<Bias<T>*> biases;
   //łącza
   std::list<Link<T>*> links;
   //dane dotyczące sieci
