@@ -59,7 +59,10 @@ public:
   {
     clearNetwork();
   }
-
+  
+  //brak możliwości kopiowania.
+  NeuralNetwork(const NeuralNetwork& orig) = delete;
+  
   /**
    * Funkcja zatrzymująca działanie sieci, dzięki czemu można zmienić parametry sieci.
    */
@@ -104,10 +107,14 @@ public:
       //zapisanie warstwy
       layers.push_back(tmp);
     }
-    //TODO: dopisać
     valid = true;
   }
 
+  /**
+   * Funkcja ustawiająca funkcję aktywacji.
+   * @param activationfunction Ustawiana funkcja aktywacji.
+   * @throw NeuralNetwork::WrongState W przypadku, gdy nie można zmienić funkcji aktywacji w tym moemencie,
+   */
   void setActivationfunction(ActivationFunction activationfunction) throw (WrongState)
   {
     if (valid)
@@ -117,6 +124,11 @@ public:
     this->activationfunction = activationfunction;
   }
 
+  /**
+   * Ustawnienie liczby wejść.
+   * @param entries_count Liczba wejść ile chcemy mieć w sieci.
+   * @throw NeuralNetwork::WrongState W przypadku, gdy nie można zmienić w tym momencie liczby wejść
+   */
   void setEntries(int entries_count) throw (WrongState)
   {
     if (valid)
@@ -126,6 +138,11 @@ public:
     this->entries_count = entries_count;
   }
 
+  /**
+   * Ustawnienie liczby wyjść.
+   * @param exits_count Liczba wyjść ile chcemy mieć w sieci.
+   * @throw NeuralNetwork::WrongState W przypadku, gdy nie można zmienić w tym momencie liczby wyjść
+   */
   void setExits(int exits_count) throw (WrongState)
   {
     if (valid)
@@ -135,13 +152,20 @@ public:
     this->exits_count = exits_count;
   }
 
+  /**
+   * Ustawienie liczby neuronów w danej warstwie ukrytej. Neurony warstwy wyjściowej są ustawiane zgodnie z liczbą wyjść.
+   * @param layer Warstwa, której liczbę neruonów chcemy ustawić.
+   * @param neurons_count Liczba neuronów, które chcemy ustawić
+   * @throw NeuralNetwork::WrongState Gdy nie można w danym momencie ustawić liczby neuronów
+   * @throw NeuralNetwork::WrongArgument Gdy chcemy ustawić neurony dla warstwy, która nie istnieje.
+   */
   void setNeurons(int layer, int neurons_count) throw (WrongState, WrongArgument)
   {
     if (valid)
     {
       throw WrongState();
     }
-    if (layer > layers_count)
+    if (layer > layers_count - 1)
     {
       throw WrongArgument("Network doesn't have such number of layers");
     }
@@ -179,6 +203,12 @@ public:
     //TODO: dopisać
   }
 
+  /**
+   * Ustawnie liczby warstw. Ustawienie 1 oznacza, że sieć posiada tylko jedną warstwę. Wyższe wartości dodają warstwy ukryte. Maksymalna liczba warstw, które można ustawić to 3.
+   * @param layers_count Liczba warstw, którą chcemy ustawić
+   * @throw NeuralNetwork::WrongState Gdy w danym momencie nie można ustawić liczby warstw
+   * @throw NeuralNetwork::WrongArgument Gdy liczba warstw jest nieprawidłowa (np. ujemna)
+   */
   void setLayersCount(int layers_count) throw (WrongState, WrongArgument)
   {
     if (valid)
@@ -188,6 +218,10 @@ public:
     if (layers_count > max_layers_count)
     {
       throw WrongArgument("Liczba warstw nie może być większa od ustalonej wartości: " + Helper::intToString(max_layers_count) + ".");
+    }
+    else if (layers_count < 1)
+    {
+      throw WrongArgument("Network should have at least one layer");
     }
 
     this->layers_count = layers_count;
@@ -250,13 +284,10 @@ private:
   int exits_count;
   std::vector<int> neurons_count;
   ActivationFunction activationfunction;
+  //poprawność sieci
   bool valid;
 
   static int max_layers_count;
-
-  NeuralNetwork(const NeuralNetwork& orig)
-  {
-  }
 
 };
 
