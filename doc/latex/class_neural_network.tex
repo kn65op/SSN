@@ -1,0 +1,197 @@
+\hypertarget{class_neural_network}{\section{\-Neural\-Network$<$ \-T, \-Activation\-Function $>$ \-Class \-Template \-Reference}
+\label{class_neural_network}\index{\-Neural\-Network$<$ T, Activation\-Function $>$@{\-Neural\-Network$<$ T, Activation\-Function $>$}}
+}
+
+
+{\ttfamily \#include $<$\-Neural\-Network.\-h$>$}
+
+\subsection*{\-Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_neural_network_1_1_wrong_argument}{\-Wrong\-Argument}
+\item 
+class \hyperlink{class_neural_network_1_1_wrong_state}{\-Wrong\-State}
+\end{DoxyCompactItemize}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_neural_network_a4ce7e819f755461926a92668aab811e2}{{\bfseries \-Neural\-Network} (const \hyperlink{class_neural_network}{\-Neural\-Network} \&orig)}\label{class_neural_network_a4ce7e819f755461926a92668aab811e2}
+
+\item 
+void \hyperlink{class_neural_network_aaf6e7c89c53dcc4f4b2c71f8d25a9741}{stop} ()  throw (\-Wrong\-State)
+\item 
+void \hyperlink{class_neural_network_aa83131836c86cd3e60ddb46a17b164a5}{init} ()  throw (\-Wrong\-State)
+\item 
+void \hyperlink{class_neural_network_acfdd9905e047fff1b40e4cd358160f6e}{set\-Activationfunction} (\hyperlink{class_activation_function}{\-Activation\-Function} activationfunction)  throw (\-Wrong\-State)
+\item 
+void \hyperlink{class_neural_network_a705286b62e4d1d11310f997dadd31fa8}{set\-Entries} (int entries\-\_\-count)  throw (\-Wrong\-State)
+\item 
+void \hyperlink{class_neural_network_a18912fbb8068bfb301d6e2462c9f8a31}{set\-Exits} (int exits\-\_\-count)  throw (\-Wrong\-State)
+\item 
+void \hyperlink{class_neural_network_ab3c70e006390624a5b9bd2c933b8af56}{set\-Neurons} (int layer, int neurons\-\_\-count)  throw (\-Wrong\-State, Wrong\-Argument)
+\item 
+\hypertarget{class_neural_network_af38649b96a0f8004a72b2d224bb5e18a}{void {\bfseries set\-Input} ()}\label{class_neural_network_af38649b96a0f8004a72b2d224bb5e18a}
+
+\item 
+{\footnotesize template$<$class Input\-Iterator $>$ }\\void \hyperlink{class_neural_network_aaf64536a908b15b76faa8e19216d9219}{set\-Input} (\-Input\-Iterator start, \-Input\-Iterator end)  throw (\-Wrong\-State, Wrong\-Argument)
+\item 
+void \hyperlink{class_neural_network_a7f03c156227f54548f92ea1cd686a7da}{calc\-Output} ()  throw (\-Wrong\-State)
+\item 
+\hypertarget{class_neural_network_a88c90e7bb7cfe85fb4f22bd4fbb2fe51}{void {\bfseries learn} ()  throw (\-Wrong\-State)}\label{class_neural_network_a88c90e7bb7cfe85fb4f22bd4fbb2fe51}
+
+\item 
+void \hyperlink{class_neural_network_a3ef0490ade6f9efff49501132a12fd18}{set\-Layers\-Count} (int layers\-\_\-count)  throw (\-Wrong\-State, Wrong\-Argument)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\subsubsection*{template$<$class T, class Activation\-Function$>$class Neural\-Network$<$ T, Activation\-Function $>$}
+
+\-Klasa odwzorująca sieć neuronową. 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_neural_network_a7f03c156227f54548f92ea1cd686a7da}{\index{\-Neural\-Network@{\-Neural\-Network}!calc\-Output@{calc\-Output}}
+\index{calc\-Output@{calc\-Output}!NeuralNetwork@{\-Neural\-Network}}
+\subsubsection[{calc\-Output}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class Activation\-Function $>$ void {\bf \-Neural\-Network}$<$ \-T, {\bf \-Activation\-Function} $>$\-::{\bf calc\-Output} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throw ({\bf \-Wrong\-State})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{class_neural_network_a7f03c156227f54548f92ea1cd686a7da}
+\-Funkcja licząca odpowiedź sieci na zadane wcześniej wejście. 
+\begin{DoxyExceptions}{\-Exceptions}
+{\em \hyperlink{class_neural_network_1_1_wrong_state}{\-Neural\-Network\-::\-Wrong\-State}} & \-W przypadku, gdy nie można wyliczyć odpowiedzi \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_neural_network_aa83131836c86cd3e60ddb46a17b164a5}{\index{\-Neural\-Network@{\-Neural\-Network}!init@{init}}
+\index{init@{init}!NeuralNetwork@{\-Neural\-Network}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class Activation\-Function $>$ void {\bf \-Neural\-Network}$<$ \-T, {\bf \-Activation\-Function} $>$\-::{\bf init} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throw ({\bf \-Wrong\-State})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{class_neural_network_aa83131836c86cd3e60ddb46a17b164a5}
+\-Funkcja tworząca siec z podanych parametrów. \-Pozwala na wykorzystanie sieci. \hypertarget{class_neural_network_acfdd9905e047fff1b40e4cd358160f6e}{\index{\-Neural\-Network@{\-Neural\-Network}!set\-Activationfunction@{set\-Activationfunction}}
+\index{set\-Activationfunction@{set\-Activationfunction}!NeuralNetwork@{\-Neural\-Network}}
+\subsubsection[{set\-Activationfunction}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class Activation\-Function $>$ void {\bf \-Neural\-Network}$<$ \-T, {\bf \-Activation\-Function} $>$\-::{\bf set\-Activationfunction} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Activation\-Function}}]{activationfunction}
+\end{DoxyParamCaption}
+)  throw ({\bf \-Wrong\-State})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{class_neural_network_acfdd9905e047fff1b40e4cd358160f6e}
+\-Funkcja ustawiająca funkcję aktywacji. 
+\begin{DoxyParams}{\-Parameters}
+{\em activationfunction} & \-Ustawiana funkcja aktywacji. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{\-Exceptions}
+{\em \hyperlink{class_neural_network_1_1_wrong_state}{\-Neural\-Network\-::\-Wrong\-State}} & \-W przypadku, gdy nie można zmienić funkcji aktywacji w tym moemencie, \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_neural_network_a705286b62e4d1d11310f997dadd31fa8}{\index{\-Neural\-Network@{\-Neural\-Network}!set\-Entries@{set\-Entries}}
+\index{set\-Entries@{set\-Entries}!NeuralNetwork@{\-Neural\-Network}}
+\subsubsection[{set\-Entries}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class Activation\-Function $>$ void {\bf \-Neural\-Network}$<$ \-T, {\bf \-Activation\-Function} $>$\-::{\bf set\-Entries} (
+\begin{DoxyParamCaption}
+\item[{int}]{entries\-\_\-count}
+\end{DoxyParamCaption}
+)  throw ({\bf \-Wrong\-State})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{class_neural_network_a705286b62e4d1d11310f997dadd31fa8}
+\-Ustawnienie liczby wejść. 
+\begin{DoxyParams}{\-Parameters}
+{\em entries\-\_\-count} & \-Liczba wejść ile chcemy mieć w sieci. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{\-Exceptions}
+{\em \hyperlink{class_neural_network_1_1_wrong_state}{\-Neural\-Network\-::\-Wrong\-State}} & \-W przypadku, gdy nie można zmienić w tym momencie liczby wejść \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_neural_network_a18912fbb8068bfb301d6e2462c9f8a31}{\index{\-Neural\-Network@{\-Neural\-Network}!set\-Exits@{set\-Exits}}
+\index{set\-Exits@{set\-Exits}!NeuralNetwork@{\-Neural\-Network}}
+\subsubsection[{set\-Exits}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class Activation\-Function $>$ void {\bf \-Neural\-Network}$<$ \-T, {\bf \-Activation\-Function} $>$\-::{\bf set\-Exits} (
+\begin{DoxyParamCaption}
+\item[{int}]{exits\-\_\-count}
+\end{DoxyParamCaption}
+)  throw ({\bf \-Wrong\-State})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{class_neural_network_a18912fbb8068bfb301d6e2462c9f8a31}
+\-Ustawnienie liczby wyjść. 
+\begin{DoxyParams}{\-Parameters}
+{\em exits\-\_\-count} & \-Liczba wyjść ile chcemy mieć w sieci. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{\-Exceptions}
+{\em \hyperlink{class_neural_network_1_1_wrong_state}{\-Neural\-Network\-::\-Wrong\-State}} & \-W przypadku, gdy nie można zmienić w tym momencie liczby wyjść \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_neural_network_aaf64536a908b15b76faa8e19216d9219}{\index{\-Neural\-Network@{\-Neural\-Network}!set\-Input@{set\-Input}}
+\index{set\-Input@{set\-Input}!NeuralNetwork@{\-Neural\-Network}}
+\subsubsection[{set\-Input}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class Activation\-Function $>$ template$<$class Input\-Iterator $>$ void {\bf \-Neural\-Network}$<$ \-T, {\bf \-Activation\-Function} $>$\-::set\-Input (
+\begin{DoxyParamCaption}
+\item[{\-Input\-Iterator}]{start, }
+\item[{\-Input\-Iterator}]{end}
+\end{DoxyParamCaption}
+)  throw ({\bf \-Wrong\-State}, {\bf \-Wrong\-Argument})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{class_neural_network_aaf64536a908b15b76faa8e19216d9219}
+\-Funkcja ustawiająca wejście. \-Przyjmuje jako argumenty dwa iteratory, do pierwszego elementu wejścia oraz do pierwszego za ostatnim elementem wejścia. \-Jeśli liczba elementów wejściowych jest dłuższa niż liczba wejść, to elementy po skończeniu wejścia są ignorowane. 
+\begin{DoxyParams}{\-Parameters}
+{\em start} & \-Interator wskazujący na pierwszy element. \\
+\hline
+{\em end} & \-Iterator wskazujący na element za ostatnim \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{\-Exceptions}
+{\em \-Neural\-Network\-::\-Wrogn\-State} & \-W przypadku, gdy nie można ustawić wejścia \\
+\hline
+{\em \-Neural\-Network\-::\-Wrogn\-Argument} & \-W przypadku, gdy zostanie podanych za mało elementów wejściowych. \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_neural_network_a3ef0490ade6f9efff49501132a12fd18}{\index{\-Neural\-Network@{\-Neural\-Network}!set\-Layers\-Count@{set\-Layers\-Count}}
+\index{set\-Layers\-Count@{set\-Layers\-Count}!NeuralNetwork@{\-Neural\-Network}}
+\subsubsection[{set\-Layers\-Count}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class Activation\-Function $>$ void {\bf \-Neural\-Network}$<$ \-T, {\bf \-Activation\-Function} $>$\-::{\bf set\-Layers\-Count} (
+\begin{DoxyParamCaption}
+\item[{int}]{layers\-\_\-count}
+\end{DoxyParamCaption}
+)  throw ({\bf \-Wrong\-State}, {\bf \-Wrong\-Argument})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{class_neural_network_a3ef0490ade6f9efff49501132a12fd18}
+\-Ustawnie liczby warstw. \-Ustawienie 1 oznacza, że sieć posiada tylko jedną warstwę. \-Wyższe wartości dodają warstwy ukryte. \-Maksymalna liczba warstw, które można ustawić to 3. 
+\begin{DoxyParams}{\-Parameters}
+{\em layers\-\_\-count} & \-Liczba warstw, którą chcemy ustawić \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{\-Exceptions}
+{\em \hyperlink{class_neural_network_1_1_wrong_state}{\-Neural\-Network\-::\-Wrong\-State}} & \-Gdy w danym momencie nie można ustawić liczby warstw \\
+\hline
+{\em \hyperlink{class_neural_network_1_1_wrong_argument}{\-Neural\-Network\-::\-Wrong\-Argument}} & \-Gdy liczba warstw jest nieprawidłowa (np. ujemna) \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_neural_network_ab3c70e006390624a5b9bd2c933b8af56}{\index{\-Neural\-Network@{\-Neural\-Network}!set\-Neurons@{set\-Neurons}}
+\index{set\-Neurons@{set\-Neurons}!NeuralNetwork@{\-Neural\-Network}}
+\subsubsection[{set\-Neurons}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class Activation\-Function $>$ void {\bf \-Neural\-Network}$<$ \-T, {\bf \-Activation\-Function} $>$\-::{\bf set\-Neurons} (
+\begin{DoxyParamCaption}
+\item[{int}]{layer, }
+\item[{int}]{neurons\-\_\-count}
+\end{DoxyParamCaption}
+)  throw ({\bf \-Wrong\-State}, {\bf \-Wrong\-Argument})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{class_neural_network_ab3c70e006390624a5b9bd2c933b8af56}
+\-Ustawienie liczby neuronów w danej warstwie ukrytej. \-Neurony warstwy wyjściowej są ustawiane zgodnie z liczbą wyjść. 
+\begin{DoxyParams}{\-Parameters}
+{\em layer} & \-Warstwa, której liczbę neruonów chcemy ustawić. \\
+\hline
+{\em neurons\-\_\-count} & \-Liczba neuronów, które chcemy ustawić \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{\-Exceptions}
+{\em \hyperlink{class_neural_network_1_1_wrong_state}{\-Neural\-Network\-::\-Wrong\-State}} & \-Gdy nie można w danym momencie ustawić liczby neuronów \\
+\hline
+{\em \hyperlink{class_neural_network_1_1_wrong_argument}{\-Neural\-Network\-::\-Wrong\-Argument}} & \-Gdy chcemy ustawić neurony dla warstwy, która nie istnieje. \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_neural_network_aaf6e7c89c53dcc4f4b2c71f8d25a9741}{\index{\-Neural\-Network@{\-Neural\-Network}!stop@{stop}}
+\index{stop@{stop}!NeuralNetwork@{\-Neural\-Network}}
+\subsubsection[{stop}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class Activation\-Function $>$ void {\bf \-Neural\-Network}$<$ \-T, {\bf \-Activation\-Function} $>$\-::{\bf stop} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throw ({\bf \-Wrong\-State})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{class_neural_network_aaf6e7c89c53dcc4f4b2c71f8d25a9741}
+\-Funkcja zatrzymująca działanie sieci, dzięki czemu można zmienić parametry sieci. 
+
+\-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\-Neural\-Network.\-h\end{DoxyCompactItemize}

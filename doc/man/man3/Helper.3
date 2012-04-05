@@ -1,0 +1,50 @@
+.TH "Helper" 3 "Thu Apr 5 2012" "SSN" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Helper \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static std::string \fBintToString\fP (int n)"
+.br
+.ti -1c
+.RI "static std::string \fBdoubleToString\fP (double n)"
+.br
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "string \fBHelper::doubleToString\fP (doublen)\fC [static]\fP"Funkcja zmieniająca double na std::string 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIn\fP double do zmiany\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+std::string odpowiadający danej liczbie\&. 
+.RE
+.PP
+
+.SS "string \fBHelper::intToString\fP (intn)\fC [static]\fP"Funkcja zamieniająca integer na string\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIn\fP Integer, który chcemy zamienić\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+String odpowiadający tej liczbie\&. Jeśli przekazana liczba nie jest całkowita to następuje obcięcie (np\&. z 5\&.6 tworzone jest '5')\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SSN from the source code\&.

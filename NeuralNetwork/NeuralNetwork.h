@@ -17,6 +17,8 @@
 
 #include <list>
 
+//TODO: Dopisać Bias
+
 /**
  * Klasa odwzorująca sieć neuronową.
  */

@@ -1,0 +1,83 @@
+\hypertarget{class_step_activation_function}{\section{\-Step\-Activation\-Function$<$ \-T $>$ \-Class \-Template \-Reference}
+\label{class_step_activation_function}\index{\-Step\-Activation\-Function$<$ T $>$@{\-Step\-Activation\-Function$<$ T $>$}}
+}
+
+
+{\ttfamily \#include $<$\-Step\-Activation\-Function.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_step_activation_function_abcd92f0d83e917f9e7bc57caadf8af45}{\-Step\-Activation\-Function} ()
+\item 
+\hyperlink{class_step_activation_function_ac28ff4d93eb28f878b174630d4023c67}{\-Step\-Activation\-Function} (\-T i)
+\item 
+\-T \hyperlink{class_step_activation_function_a2b243dae27dd2ba5458acc5a32d4c542}{operator()} (\-T x)
+\item 
+\-T \hyperlink{class_step_activation_function_ad85d33127de89670f9c8a46ec1d5dd55}{deriterative} (\-T x)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\subsubsection*{template$<$class T$>$class Step\-Activation\-Function$<$ T $>$}
+
+\-Klasa przedstawiającą skokową funkcję aktywacji o określonym progu. \-Aktywacja następuje gdy dana wartość jest większa od wartości progu. \-Pochodną funkcji jest zookrąglona delta diraca. 
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_step_activation_function_abcd92f0d83e917f9e7bc57caadf8af45}{\index{\-Step\-Activation\-Function@{\-Step\-Activation\-Function}!\-Step\-Activation\-Function@{\-Step\-Activation\-Function}}
+\index{\-Step\-Activation\-Function@{\-Step\-Activation\-Function}!StepActivationFunction@{\-Step\-Activation\-Function}}
+\subsubsection[{\-Step\-Activation\-Function}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf \-Step\-Activation\-Function}$<$ \-T $>$\-::{\bf \-Step\-Activation\-Function} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{class_step_activation_function_abcd92f0d83e917f9e7bc57caadf8af45}
+\-Konstrutor domyślny ustawiający za wartość 0 (rzutowaną na dany typ) \hypertarget{class_step_activation_function_ac28ff4d93eb28f878b174630d4023c67}{\index{\-Step\-Activation\-Function@{\-Step\-Activation\-Function}!\-Step\-Activation\-Function@{\-Step\-Activation\-Function}}
+\index{\-Step\-Activation\-Function@{\-Step\-Activation\-Function}!StepActivationFunction@{\-Step\-Activation\-Function}}
+\subsubsection[{\-Step\-Activation\-Function}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf \-Step\-Activation\-Function}$<$ \-T $>$\-::{\bf \-Step\-Activation\-Function} (
+\begin{DoxyParamCaption}
+\item[{\-T}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{class_step_activation_function_ac28ff4d93eb28f878b174630d4023c67}
+\-Konstruktor z parametrem progu. 
+\begin{DoxyParams}{\-Parameters}
+{\em i} & \-Próg jaki chcemy ustawić. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_step_activation_function_ad85d33127de89670f9c8a46ec1d5dd55}{\index{\-Step\-Activation\-Function@{\-Step\-Activation\-Function}!deriterative@{deriterative}}
+\index{deriterative@{deriterative}!StepActivationFunction@{\-Step\-Activation\-Function}}
+\subsubsection[{deriterative}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ \-T {\bf \-Step\-Activation\-Function}$<$ \-T $>$\-::{\bf deriterative} (
+\begin{DoxyParamCaption}
+\item[{\-T}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{class_step_activation_function_ad85d33127de89670f9c8a46ec1d5dd55}
+\-Funkcja licząca pochodną funkcji skokowej (jako cos(x) w zakresie 0 do 1) 
+\begin{DoxyParams}{\-Parameters}
+{\em x} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+
+\end{DoxyReturn}
+\hypertarget{class_step_activation_function_a2b243dae27dd2ba5458acc5a32d4c542}{\index{\-Step\-Activation\-Function@{\-Step\-Activation\-Function}!operator()@{operator()}}
+\index{operator()@{operator()}!StepActivationFunction@{\-Step\-Activation\-Function}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ \-T {\bf \-Step\-Activation\-Function}$<$ \-T $>$\-::operator() (
+\begin{DoxyParamCaption}
+\item[{\-T}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{class_step_activation_function_a2b243dae27dd2ba5458acc5a32d4c542}
+\-Funkcja sprawdzająca czy dana wartość jest większa od podanego progu. 
+\begin{DoxyParams}{\-Parameters}
+{\em x} & \-Sprawdzana wartość. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+1 jeśli sprawdzana waratość jest większa, 0 w przeciwnym wypadku. 
+\end{DoxyReturn}
+
+
+\-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/tomko/moje\-\_\-dziela/\-S\-S\-N/\-Neuron/\-Step\-Activation\-Function.\-h\end{DoxyCompactItemize}

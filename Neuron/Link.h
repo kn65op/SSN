@@ -12,7 +12,7 @@
 #include "Output.h"
 
 /**
- * @class Klasa Link odpowiada połączaniu między neuronami oraz między neuronami i wejściem/wyjściem.
+ * Klasa Link odpowiada połączaniu między neuronami oraz między neuronami i wejściem/wyjściem.
  */
 template <class T> class Link
 {

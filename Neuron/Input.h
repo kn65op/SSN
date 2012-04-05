@@ -12,7 +12,7 @@ template <class T> class Link;
 
 #include <list>
 /**
- * @class Klasa Input jest interfejsem wejścia do klasy Link.
+ * Klasa Input jest interfejsem wejścia do klasy Link.
  */
 template <class T> class Input
 {

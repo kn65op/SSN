@@ -1,0 +1,94 @@
+.TH "Link< T >" 3 "Thu Apr 5 2012" "SSN" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Link< T > \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <Link\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLink\fP (const \fBLink\fP &orig)"
+.br
+.ti -1c
+.RI "T \fBgetValue\fP () const "
+.br
+.ti -1c
+.RI "void \fBsetValue\fP (const T v)"
+.br
+.ti -1c
+.RI "void \fBsetIn\fP (\fBInput\fP< T > *i)"
+.br
+.ti -1c
+.RI "void \fBsetOut\fP (\fBOutput\fP< T > *o)"
+.br
+.ti -1c
+.RI "T \fBgetAnswer\fP () const "
+.br
+.ti -1c
+.RI "void \fBsetAnswer\fP (T answer)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<class T>class Link< T >"
+Klasa \fBLink\fP odpowiada połączaniu między neuronami oraz między neuronami i wejściem/wyjściem\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class T> T \fBLink\fP< T >::\fBgetAnswer\fP () const\fC [inline]\fP"Pobranie odpowiedzi z linku\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Zapisana odpowiedź\&. 
+.RE
+.PP
+
+.SS "template<class T> T \fBLink\fP< T >::\fBgetValue\fP () const\fC [inline]\fP"Funkcja zwracająca wartość aktualnie przetrzymywana na połączeniu\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Wartość przyjęta ostatnio na wejściu do połączenia\&. 
+.RE
+.PP
+
+.SS "template<class T> void \fBLink\fP< T >::\fBsetAnswer\fP (Tanswer)\fC [inline]\fP"Zapisanie odpowiedzi do linku\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIanswer\fP Przekazywana odpowiedź\&. 
+.RE
+.PP
+
+.SS "template<class T> void \fBLink\fP< T >::\fBsetIn\fP (\fBInput\fP< T > *i)\fC [inline]\fP"Funkcja ustawiająca wejście do linku\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP Ustawiane wejście\&. 
+.RE
+.PP
+
+.SS "template<class T> void \fBLink\fP< T >::\fBsetOut\fP (\fBOutput\fP< T > *o)\fC [inline]\fP"Funkcja ustawiająca wyjście z linku\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIout\fP Ustawiane wyjście\&. 
+.RE
+.PP
+
+.SS "template<class T> void \fBLink\fP< T >::\fBsetValue\fP (const Tv)\fC [inline]\fP"Funckja pobierająca wartość z wejścia do połączenia i zapisująca wartość w połączeniu\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIWartość,która\fP będzie dostępna na wyjściu z połączenia\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SSN from the source code\&.

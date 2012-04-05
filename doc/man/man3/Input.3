@@ -1,0 +1,67 @@
+.TH "Input< T >" 3 "Thu Apr 5 2012" "SSN" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Input< T > \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <Input\&.h>\fP
+.PP
+Inherited by \fBBias< T >\fP, \fBEntry< T >\fP, and \fBNeuron< T, ActivationFunction >\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual T \fBgetValue\fP () const "
+.br
+.ti -1c
+.RI "void \fBsetLinkOut\fP (\fBLink\fP< T > *link)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBsetValToAuts\fP () const "
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "T \fBinput_value\fP"
+.br
+.ti -1c
+.RI "std::list< \fBLink\fP< T > * > \fBouts\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<class T>class Input< T >"
+Klasa \fBInput\fP jest interfejsem wejścia do klasy \fBLink\fP\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class T> virtual T \fBInput\fP< T >::\fBgetValue\fP () const\fC [inline, virtual]\fP"Funkcja zwracająca przechowywaną wartość do połączeń\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Przechowywana wartość\&. 
+.RE
+.PP
+
+.SS "template<class T> void \fBInput\fP< T >::\fBsetLinkOut\fP (\fBLink\fP< T > *link)\fC [inline]\fP"Funkcja dodająca połączenie do wejścia do połączenia\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlink\fP Dodawane połączenie\&. 
+.RE
+.PP
+
+.SS "template<class T> void \fBInput\fP< T >::\fBsetValToAuts\fP () const\fC [inline, protected]\fP"Wysłanie wartości przechowywanej w danym obiekcie do wszystkich podłączonych linków\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SSN from the source code\&.

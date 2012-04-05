@@ -1,0 +1,169 @@
+.TH "NeuralNetwork< T, ActivationFunction >" 3 "Thu Apr 5 2012" "SSN" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NeuralNetwork< T, ActivationFunction > \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <NeuralNetwork\&.h>\fP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBWrongArgument\fP"
+.br
+.ti -1c
+.RI "class \fBWrongState\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBNeuralNetwork\fP (const \fBNeuralNetwork\fP &orig)"
+.br
+.ti -1c
+.RI "void \fBstop\fP ()  throw (WrongState)"
+.br
+.ti -1c
+.RI "void \fBinit\fP ()  throw (WrongState)"
+.br
+.ti -1c
+.RI "void \fBsetActivationfunction\fP (\fBActivationFunction\fP activationfunction)  throw (WrongState)"
+.br
+.ti -1c
+.RI "void \fBsetEntries\fP (int entries_count)  throw (WrongState)"
+.br
+.ti -1c
+.RI "void \fBsetExits\fP (int exits_count)  throw (WrongState)"
+.br
+.ti -1c
+.RI "void \fBsetNeurons\fP (int layer, int neurons_count)  throw (WrongState, WrongArgument)"
+.br
+.ti -1c
+.RI "void \fBsetInput\fP ()"
+.br
+.ti -1c
+.RI "template<class InputIterator > void \fBsetInput\fP (InputIterator start, InputIterator end)  throw (WrongState, WrongArgument)"
+.br
+.ti -1c
+.RI "void \fBcalcOutput\fP ()  throw (WrongState)"
+.br
+.ti -1c
+.RI "void \fBlearn\fP ()  throw (WrongState)"
+.br
+.ti -1c
+.RI "void \fBsetLayersCount\fP (int layers_count)  throw (WrongState, WrongArgument)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<class T, class ActivationFunction>class NeuralNetwork< T, ActivationFunction >"
+Klasa odwzorująca sieć neuronową\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class T , class ActivationFunction > void \fBNeuralNetwork\fP< T, \fBActivationFunction\fP >::\fBcalcOutput\fP ()  throw (\fBWrongState\fP)\fC [inline]\fP"Funkcja licząca odpowiedź sieci na zadane wcześniej wejście\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBNeuralNetwork::WrongState\fP\fP W przypadku, gdy nie można wyliczyć odpowiedzi 
+.RE
+.PP
+
+.SS "template<class T , class ActivationFunction > void \fBNeuralNetwork\fP< T, \fBActivationFunction\fP >::\fBinit\fP ()  throw (\fBWrongState\fP)\fC [inline]\fP"Funkcja tworząca siec z podanych parametrów\&. Pozwala na wykorzystanie sieci\&. 
+.SS "template<class T , class ActivationFunction > void \fBNeuralNetwork\fP< T, \fBActivationFunction\fP >::\fBsetActivationfunction\fP (\fBActivationFunction\fPactivationfunction)  throw (\fBWrongState\fP)\fC [inline]\fP"Funkcja ustawiająca funkcję aktywacji\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIactivationfunction\fP Ustawiana funkcja aktywacji\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBNeuralNetwork::WrongState\fP\fP W przypadku, gdy nie można zmienić funkcji aktywacji w tym moemencie, 
+.RE
+.PP
+
+.SS "template<class T , class ActivationFunction > void \fBNeuralNetwork\fP< T, \fBActivationFunction\fP >::\fBsetEntries\fP (intentries_count)  throw (\fBWrongState\fP)\fC [inline]\fP"Ustawnienie liczby wejść\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentries_count\fP Liczba wejść ile chcemy mieć w sieci\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBNeuralNetwork::WrongState\fP\fP W przypadku, gdy nie można zmienić w tym momencie liczby wejść 
+.RE
+.PP
+
+.SS "template<class T , class ActivationFunction > void \fBNeuralNetwork\fP< T, \fBActivationFunction\fP >::\fBsetExits\fP (intexits_count)  throw (\fBWrongState\fP)\fC [inline]\fP"Ustawnienie liczby wyjść\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexits_count\fP Liczba wyjść ile chcemy mieć w sieci\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBNeuralNetwork::WrongState\fP\fP W przypadku, gdy nie można zmienić w tym momencie liczby wyjść 
+.RE
+.PP
+
+.SS "template<class T , class ActivationFunction > template<class InputIterator > void \fBNeuralNetwork\fP< T, \fBActivationFunction\fP >::setInput (InputIteratorstart, InputIteratorend)  throw (\fBWrongState\fP, \fBWrongArgument\fP)\fC [inline]\fP"Funkcja ustawiająca wejście\&. Przyjmuje jako argumenty dwa iteratory, do pierwszego elementu wejścia oraz do pierwszego za ostatnim elementem wejścia\&. Jeśli liczba elementów wejściowych jest dłuższa niż liczba wejść, to elementy po skończeniu wejścia są ignorowane\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstart\fP Interator wskazujący na pierwszy element\&. 
+.br
+\fIend\fP Iterator wskazujący na element za ostatnim 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fINeuralNetwork::WrognState\fP W przypadku, gdy nie można ustawić wejścia 
+.br
+\fINeuralNetwork::WrognArgument\fP W przypadku, gdy zostanie podanych za mało elementów wejściowych\&. 
+.RE
+.PP
+
+.SS "template<class T , class ActivationFunction > void \fBNeuralNetwork\fP< T, \fBActivationFunction\fP >::\fBsetLayersCount\fP (intlayers_count)  throw (\fBWrongState\fP, \fBWrongArgument\fP)\fC [inline]\fP"Ustawnie liczby warstw\&. Ustawienie 1 oznacza, że sieć posiada tylko jedną warstwę\&. Wyższe wartości dodają warstwy ukryte\&. Maksymalna liczba warstw, które można ustawić to 3\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlayers_count\fP Liczba warstw, którą chcemy ustawić 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBNeuralNetwork::WrongState\fP\fP Gdy w danym momencie nie można ustawić liczby warstw 
+.br
+\fI\fBNeuralNetwork::WrongArgument\fP\fP Gdy liczba warstw jest nieprawidłowa (np\&. ujemna) 
+.RE
+.PP
+
+.SS "template<class T , class ActivationFunction > void \fBNeuralNetwork\fP< T, \fBActivationFunction\fP >::\fBsetNeurons\fP (intlayer, intneurons_count)  throw (\fBWrongState\fP, \fBWrongArgument\fP)\fC [inline]\fP"Ustawienie liczby neuronów w danej warstwie ukrytej\&. Neurony warstwy wyjściowej są ustawiane zgodnie z liczbą wyjść\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlayer\fP Warstwa, której liczbę neruonów chcemy ustawić\&. 
+.br
+\fIneurons_count\fP Liczba neuronów, które chcemy ustawić 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBNeuralNetwork::WrongState\fP\fP Gdy nie można w danym momencie ustawić liczby neuronów 
+.br
+\fI\fBNeuralNetwork::WrongArgument\fP\fP Gdy chcemy ustawić neurony dla warstwy, która nie istnieje\&. 
+.RE
+.PP
+
+.SS "template<class T , class ActivationFunction > void \fBNeuralNetwork\fP< T, \fBActivationFunction\fP >::\fBstop\fP ()  throw (\fBWrongState\fP)\fC [inline]\fP"Funkcja zatrzymująca działanie sieci, dzięki czemu można zmienić parametry sieci\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for SSN from the source code\&.

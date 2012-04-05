@@ -11,7 +11,7 @@
 #include "Input.h"
 
 /**
- * @class Klasa Bias odpowiada przesunięciu w sieciach neuronowych. Po podłączeniu linku należy przekazać wartość do łącz lub użyć metody setBias(T).
+ * Odpowiada przesunięciu w sieciach neuronowych. Po podłączeniu linku należy przekazać wartość do łącz lub użyć metody setBias(T).
  */
 template <class T> class Bias : public Input<T>
 {
