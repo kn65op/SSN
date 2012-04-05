@@ -11,7 +11,7 @@
 #include "Input.h"
 
 /**
- * Odpowiada przesunięciu w sieciach neuronowych. Po podłączeniu linku należy przekazać wartość do łącz lub użyć metody setBias(T).
+ * Odpowiada przesunięciu w sieciach neuronowych. Po podłączeniu linku należy przekazać wartość do łącz lub użyć metody setBiasAndSend(T).
  */
 template <class T> class Bias : public Input<T>
 {
@@ -42,7 +42,7 @@ public:
    */
   void setBiasAndSend(T i)
   {
-    bias_value = i;
+    setBias(i);
     sendBiasToLinks();
   }
   /**
