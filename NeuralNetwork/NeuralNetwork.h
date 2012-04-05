@@ -202,7 +202,7 @@ public:
     }
     for (auto e : entries)
     {
-      e->setInput(*start);
+      e->setEntry(*start);
       start++;
       if (start == end)
       {
@@ -217,7 +217,7 @@ public:
     {
       throw WrongState();
     }
-    //TODO: dopisać
+    for 
   }
 
   void learn() throw (WrongState)
