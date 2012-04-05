@@ -20,20 +20,31 @@
 //TODO: Dopisać Bias
 
 /**
- * Klasa odwzorująca sieć neuronową.
+ * Klasa odwzorująca sieć neuronową. Najpierw należy ustawić parametry sieci, a następnie uruchomić sieć. Jeśli wystąpi konieczność zmiany parametrów to należy zatrzymać sieć.
  */
 template <class T, class ActivationFunction> class NeuralNetwork
 {
 public:
 
+  /**
+   * Klasa wyjątku w sytuacji, gdy podany argument do funkcji jest niezgodny z aktualnie ustawionymi parametrami sieci (np. ustawienie ilości nuronów w 3 warstwie, jeśli sieć posiada 2 warstwy)
+   */
   class WrongArgument
   {
   public:
 
+    /**
+     * Konstrutkor z ustawieniem wiadomości.
+     * @param m Wiadomość do ustawienia.
+     */
     WrongArgument(std::string m) : message(m)
     {
     }
 
+    /**
+     * Pobranie wiadomości przekazywanej przez wyjątek.
+     * @return Wiadomość przekazana przez wyjątek.
+     */
     std::string GetMessage() const
     {
       return message;
@@ -44,10 +55,16 @@ public:
     std::string message;
   };
 
+  /**
+   * Klasa wyjątku w sytuacji, gdy próbujemy operować na sieci w sytuacji gdy jest to niemożliwe (np. zmienić parametry w momencie gdy sieć działa).
+   */
   class WrongState
   {
   };
 
+  /**
+   * Kontruktor domyślny, tworzy prostą sieć z jednym wejściem i jednym wyjściem.
+   */
   NeuralNetwork()
   {
     valid = false;
@@ -58,6 +75,9 @@ public:
     setExits(1);
   }
 
+  /**
+   * Destruktor, czyści sieć.
+   */
   ~NeuralNetwork()
   {
     clearNetwork();
@@ -234,14 +254,6 @@ public:
       throw WrongArgument("You cannot set layer 0 or negative");
     }
     this->neurons_count[layer - 1] = neurons_count;
-  }
-
-  void setInput()
-  {
-    if (!valid)
-    {
-      throw WrongState();
-    }
   }
 
   /**
