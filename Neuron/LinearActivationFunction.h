@@ -21,7 +21,7 @@ public:
   /**
    * Konstrutor domyślny ustawiający za parametr wartość 1.
    */
-  LinearActivationFunction() : LinearActivationFunction(1)
+  LinearActivationFunction() : parameter(1)
   {
   }
   

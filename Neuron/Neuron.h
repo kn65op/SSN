@@ -16,6 +16,7 @@
 #include <random>
 #include <cmath>
 
+//TODO usunać
 #include <iostream>
 
 /**
@@ -31,7 +32,7 @@ public:
    * Konstruktor domyślny z ustawieniem współczynnika uczenia z funkcją aktywacji, która jest funkcją skokową i skoku w punkcie 0. Współczynnik uczenie ustawiony jest na 0.7.
    * @param lf Współczynnik uczenia.
    */
-  Neuron() : activate_function(ActivationFunction()), learn_factor(0.7)
+  Neuron() : activate_function(ActivationFunction()), learn_factor(0.2)
   {
 
   }
@@ -84,16 +85,16 @@ public:
     for (T* t : wages)
     {
       output += (*t) * (*it)->getValue();
-   // Qstd::cout << "Waga: " << (*t) << " wartość:" << (*it)->getValue() << "\n";
+      // Qstd::cout << "Waga: " << (*t) << " wartość:" << (*it)->getValue() << "\n";
       it++;
     }
- // Qstd::cout << output << "\n";
+    // Qstd::cout << output << "\n";
     this->input_value = activate_function(output);
     this->setValToAuts();
   }
 
   /**
-   * Funkcja ucząca wg reguły delta. Stosowana tylko dla sieci jednowarstwowych.
+   * Funkcja ucząca wg reguły delta. Stosowana tylko dla sieci jednowarstwowych i warstwy wyjściowej sieci wielowarstwowej.
    * @param answer Wymagana odpowiedź dla danego neuronu.
    */
   void learnDelta()
@@ -105,7 +106,7 @@ public:
       /*std::cout << learn_factor  <<"\n";**/
       //std::cout << (*it)->getValue()  << " wartość pobudzenia dla wagi" <<"\n";
       //std::cout << this->outs.front()->getAnswer() <<"odpowiedz ";
-   // Qstd::cout << learn_factor * (*it)->getValue() * (this->outs.front()->getAnswer()) * activate_function.deriterative(output) << " zmiana wag ostatniego neuronu\n";
+      // Qstd::cout << learn_factor * (*it)->getValue() * (this->outs.front()->getAnswer()) * activate_function.deriterative(output) << " zmiana wag ostatniego neuronu\n";
 
       it++;
     }
@@ -128,7 +129,7 @@ public:
     for (auto in : this->ins)
     {
       in->setAnswer(error * (**it));
-      it++;
+      ++it;
     }
   }
 
@@ -140,19 +141,18 @@ public:
     T delta = 0;
     for (auto out : this->outs)
     {
-      delta += out->getAnswer();
+      delta += out->getAnswer() * activate_function.deriterative(output);
     }
     typename std::list<Link<T>*>::iterator it = this->ins.begin();
     for (auto w : wages)
     {
-      *w = *w + learn_factor * (*it)->getValue() * (delta) * activate_function.deriterative(output);
-   // Qstd::cout << learn_factor * (*it)->getValue() * (delta) * activate_function.deriterative(output) << " zmiana wag neuronu\n";
-      it++;
+      *w = *w + learn_factor * (*it)->getValue() * (delta);
+      // Qstd::cout << learn_factor * (*it)->getValue() * (delta) * activate_function.deriterative(output) << " zmiana wag neuronu\n";
+      ++it;
     }
     checkWages();
   }
 
-  
   void checkWages()
   {
     for (auto w : wages)
@@ -176,20 +176,23 @@ public:
   {
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_real_distribution<> dis(-1, 1);
+    std::uniform_real_distribution<> dis(0, 1.0);
     Output<T>::setLinkIn(link);
     wages.push_back(new T(dis(gen))); //TODO: początkowe wagi 0 lub losowe
   }
 
-  /***/
-//  void printWages()
-//  {
-//    for (auto w : wages)
-//    {
-//   // Qstd::cout << *w << " ";
-//    }
-// // Qstd::cout << "that was wages!\n";
-//  }
+  //TODO usunąć
+  /**
+   * Wagi
+   */
+  void printWages()
+  {
+    for (auto w : wages)
+    {
+      std::cout << *w << " ";
+    }
+    std::cout << "that was wages!\n";
+  }
 private:
   T output;
   std::list<T*> wages; //THINK: Może zmienić na samo T

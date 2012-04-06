@@ -18,6 +18,9 @@
 
 #include <list>
 
+//TODO usunąć
+#include <iostream>
+
 /**
  * Klasa odwzorująca sieć neuronową. Najpierw należy ustawić parametry sieci, a następnie uruchomić sieć. Jeśli wystąpi konieczność zmiany parametrów to należy zatrzymać sieć.
  */
@@ -377,6 +380,24 @@ public:
 
     this->layers_count = layers_count;
     neurons_count.resize(layers_count);
+  }
+
+  //TODO usunąć
+
+  void printWages()
+  {
+    int i = 1;
+    for (auto l : layers) // l -wskaźnik do listy warstw
+    {
+      std::cout << "wastwa: " << i++ << "\n";
+      int j = 1;
+      for (auto n : *l) // n - wskaźnik do neuronu
+      {
+        std::cout << "neuron: " << j++ << " wagi: \n";
+        n->printWages();
+        std::cout << "\n";
+      }
+    }
   }
 
 private:
