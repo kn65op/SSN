@@ -492,7 +492,7 @@ TEST(RealWordTest, LiczbyLinear)
     std::cout << o << " ";
   }
   std::cout << "\n";
-  //nn.printWages();
+  nn.printWages();
 }
 
 int main(int argc, char **argv)
