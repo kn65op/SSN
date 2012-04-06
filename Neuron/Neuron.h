@@ -88,9 +88,10 @@ public:
       // Qstd::cout << "Waga: " << (*t) << " wartość:" << (*it)->getValue() << "\n";
       it++;
     }
-    std::cout << output << "\n";
+    //std::cout << output << "\n";
     this->input_value = activate_function(output);
     this->setValToAuts();
+    //std::cout << this->input_value << " neuron input\n";
   }
 
   /**

@@ -10,6 +10,10 @@
 
 #include "Output.h"
 
+
+//TODO usunąć
+#include <iostream>
+
 /**
  * Klasa Exit odpowiada wyjściom z sieci neuronowej
  */
@@ -26,6 +30,7 @@ public:
    */
   T getExit() const
   {
+    //std::cout << this->ins.front()->getValue() << " exit\n";
     return this->ins.front()->getValue();
   }
   /**

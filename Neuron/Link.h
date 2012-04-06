@@ -11,6 +11,9 @@
 #include "Input.h"
 #include "Output.h"
 
+//TODO usunąć
+#include <iostream>
+
 /**
  * Klasa Link odpowiada połączaniu między neuronami oraz między neuronami i wejściem/wyjściem.
  */
@@ -36,6 +39,7 @@ public:
    */
   T getValue() const
   {
+    //std::cout << value << " get value\n";
     return value;
   }
   /**
@@ -45,6 +49,7 @@ public:
   void setValue(const T v)
   {
     value = v;
+    //std::cout << value << " set value\n";
   }
   
   /**

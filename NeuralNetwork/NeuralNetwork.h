@@ -185,6 +185,7 @@ public:
       (*it)->setLinkOut(tmp);
       e->setLinkIn(tmp);
       links.push_back(tmp);
+      ++it;
     }
     valid = true;
   }

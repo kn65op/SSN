@@ -11,6 +11,9 @@
 template <class T> class Link;
 
 #include <list>
+
+//TODO usunąć
+#include <iostream>
 /**
  * Klasa Input jest interfejsem wejścia do klasy Link.
  */
@@ -46,6 +49,7 @@ protected:
    */
   void setValToAuts() const
   {
+    //std::cout << input_value << " from input\n";
     for (auto o: this->outs)
     {
       o->setValue(input_value);

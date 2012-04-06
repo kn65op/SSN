@@ -387,7 +387,7 @@ TEST(RealWordTest, LiczbyLinear)
   std::vector<double> out8 = {0, 0, 0, 0, 0, 0, 0, 0, 1, 0};
   std::vector<double> out9 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 1};
   //uczenie
-  for (int i = 0; i < 0; ++i)
+  for (int i = 0; i < 1; ++i)
   {
     nn.setInput(in0.begin(), in0.end());
     nn.calcOutput();
@@ -492,7 +492,7 @@ TEST(RealWordTest, LiczbyLinear)
     std::cout << o << " ";
   }
   std::cout << "\n";
-  nn.printWages();
+  //nn.printWages();
 }
 
 int main(int argc, char **argv)
