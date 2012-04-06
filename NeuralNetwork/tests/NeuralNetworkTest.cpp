@@ -18,7 +18,7 @@
  * NeuralNetwork
  */
 
-/*
+
 TEST(StartTest, Create)
 {
   typedef NeuralNetwork<double, StepActivationFunction<double >> network;
@@ -238,7 +238,7 @@ TEST(RealWordTest, XORLinear)
   out0[0] = 0;
   out1[0] = 1;
   //uczenie
-  for (int i = 0; i < 100; ++i)
+  for (int i = 0; i < 1000; ++i)
   {
     std::vector<double> o(1);
     
@@ -291,72 +291,73 @@ TEST(RealWordTest, XORLinear)
   o[3] = out[0];
   EXPECT_LT(out[0], 0.1);
 
-  std::cout << o[0] << " " << o[1] << " " << o[2] << " " << o[3] << "\n";
+  //std::cout << o[0] << " " << o[1] << " " << o[2] << " " << o[3] << "\n";
 }
 
-TEST(RealWordTest, XORStep)
-{
-  typedef NeuralNetwork<double, StepActivationFunction<double >> network;
-  network nn;
-  nn.setEntries(2);
-  nn.setExits(1);
-  nn.setLayersCount(2);
-  nn.setNeurons(1, 2);
-  nn.init();
-  std::vector<double> in1(2);
-  std::vector<double> in2(2);
-  std::vector<double> in3(2);
-  std::vector<double> in4(2);
-  in1[0] = 0;
-  in1[1] = 0;
-  in2[0] = 1;
-  in2[1] = 0;
-  in3[0] = 0;
-  in3[1] = 1;
-  in4[0] = 1;
-  in4[1] = 1;
-  std::vector<double> out0(1);
-  std::vector<double> out1(1);
-  out0[0] = 0;
-  out1[0] = 1;
-  //uczenie
-  for (int i = 0; i < 1000; ++i)
-  {
-    nn.setInput(in1.begin(), in1.end());
-    nn.calcOutput();
-    nn.learn(out0.begin(), out0.end());
-    nn.setInput(in2.begin(), in2.end());
-    nn.calcOutput();
-    nn.learn(out1.begin(), out1.end());
-    nn.setInput(in3.begin(), in3.end());
-    nn.calcOutput();
-    nn.learn(out1.begin(), out1.end());
-    nn.setInput(in4.begin(), in4.end());
-    nn.calcOutput();
-    nn.learn(out0.begin(), out0.end());
-  }
-  //test
-  std::vector<double> out;
-  std::vector<double> o(4);
-  nn.setInput(in1.begin(), in1.end());
-  out = nn.calcOutput();
-  o[0] = out[0];
-  ASSERT_EQ(out[0], 0);
-  nn.setInput(in2.begin(), in2.end());
-  out = nn.calcOutput();
-  o[1] = out[0];
-  ASSERT_EQ(out[0], 1);
-  nn.setInput(in3.begin(), in3.end());
-  out = nn.calcOutput();
-  o[2] = out[0];
-  ASSERT_EQ(out[0], 1);
-  nn.setInput(in4.begin(), in4.end());
-  out = nn.calcOutput();
-  o[3] = out[0];
-  ASSERT_EQ(out[0], 0);
+//TEST(RealWordTest, XORStep)
+//{
+//  typedef NeuralNetwork<double, StepActivationFunction<double >> network;
+//  network nn;
+//  nn.setEntries(2);
+//  nn.setExits(1);
+//  nn.setLayersCount(2);
+//  nn.setNeurons(1, 2);
+//  nn.init();
+//  std::vector<double> in1(2);
+//  std::vector<double> in2(2);
+//  std::vector<double> in3(2);
+//  std::vector<double> in4(2);
+//  in1[0] = 0;
+//  in1[1] = 0;
+//  in2[0] = 1;
+//  in2[1] = 0;
+//  in3[0] = 0;
+//  in3[1] = 1;
+//  in4[0] = 1;
+//  in4[1] = 1;
+//  std::vector<double> out0(1);
+//  std::vector<double> out1(1);
+//  out0[0] = 0;
+//  out1[0] = 1;
+//  //uczenie
+//  for (int i = 0; i < 1000; ++i)
+//  {
+//    nn.setInput(in1.begin(), in1.end());
+//    nn.calcOutput();
+//    nn.learn(out0.begin(), out0.end());
+//    nn.setInput(in2.begin(), in2.end());
+//    nn.calcOutput();
+//    nn.learn(out1.begin(), out1.end());
+//    nn.setInput(in3.begin(), in3.end());
+//    nn.calcOutput();
+//    nn.learn(out1.begin(), out1.end());
+//    nn.setInput(in4.begin(), in4.end());
+//    nn.calcOutput();
+//    nn.learn(out0.begin(), out0.end());
+//  }
+//  //test
+//  std::vector<double> out;
+//  std::vector<double> o(4);
+//  nn.setInput(in1.begin(), in1.end());
+//  out = nn.calcOutput();
+//  o[0] = out[0];
+//  ASSERT_EQ(out[0], 0);
+//  nn.setInput(in2.begin(), in2.end());
+//  out = nn.calcOutput();
+//  o[1] = out[0];
+//  ASSERT_EQ(out[0], 1);
+//  nn.setInput(in3.begin(), in3.end());
+//  out = nn.calcOutput();
+//  o[2] = out[0];
+//  ASSERT_EQ(out[0], 1);
+//  nn.setInput(in4.begin(), in4.end());
+//  out = nn.calcOutput();
+//  o[3] = out[0];
+//  ASSERT_EQ(out[0], 0);
+//
+//  std::cout << o[0] << " " << o[1] << " " << o[2] << " " << o[3] << "\n";
+//}
 
-  std::cout << o[0] << " " << o[1] << " " << o[2] << " " << o[3] << "\n";
-}*/
 
 TEST(RealWordTest, LiczbyLinear)
 {
@@ -388,36 +389,36 @@ TEST(RealWordTest, LiczbyLinear)
   std::vector<double> out8 = {0, 0, 0, 0, 0, 0, 0, 0, 1, 0};
   std::vector<double> out9 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 1};
   //uczenie
-  for (int i = 0; i < 1; ++i)
+  for (int i = 0; i < 1000; ++i)
   {
-    nn.printWages();nn.setInput(in0.begin(), in0.end());
+    nn.setInput(in0.begin(), in0.end());
     nn.calcOutput();
     nn.learn(out0.begin(), out0.end());
-    nn.printWages();nn.setInput(in1.begin(), in1.end());
+    nn.setInput(in1.begin(), in1.end());
     nn.calcOutput();
     nn.learn(out1.begin(), out1.end());
-    nn.printWages();nn.setInput(in2.begin(), in2.end());
+    nn.setInput(in2.begin(), in2.end());
     nn.calcOutput();
     nn.learn(out2.begin(), out2.end());
-    nn.printWages();nn.setInput(in3.begin(), in3.end());
+    nn.setInput(in3.begin(), in3.end());
     nn.calcOutput();
     nn.learn(out3.begin(), out3.end());
-    nn.printWages();nn.setInput(in4.begin(), in4.end());
+    nn.setInput(in4.begin(), in4.end());
     nn.calcOutput();
     nn.learn(out4.begin(), out4.end());
-    nn.printWages();nn.setInput(in5.begin(), in5.end());
+    nn.setInput(in5.begin(), in5.end());
     nn.calcOutput();
     nn.learn(out5.begin(), out5.end());
-    nn.printWages();nn.setInput(in6.begin(), in6.end());
+    nn.setInput(in6.begin(), in6.end());
     nn.calcOutput();
     nn.learn(out6.begin(), out6.end());
-    nn.printWages();nn.setInput(in7.begin(), in7.end());
+    nn.setInput(in7.begin(), in7.end());
     nn.calcOutput();
     nn.learn(out7.begin(), out7.end());
-    nn.printWages();nn.setInput(in8.begin(), in8.end());
+    nn.setInput(in8.begin(), in8.end());
     nn.calcOutput();
     nn.learn(out8.begin(), out8.end());
-    nn.printWages();nn.setInput(in9.begin(), in9.end());
+    nn.setInput(in9.begin(), in9.end());
     nn.calcOutput();
     nn.learn(out9.begin(), out9.end());
   }
@@ -493,8 +494,93 @@ TEST(RealWordTest, LiczbyLinear)
     std::cout << o << " ";
   }
   std::cout << "\n";
-  nn.printWages();
+  //nn.printWages();
 }
+
+TEST(RealWordTest, ORLinear)
+{
+  typedef NeuralNetwork<double, LinearActivationFunction<double >> network;
+  network nn;
+  nn.setEntries(2);
+  nn.setExits(1);
+  nn.setLayersCount(1);
+  nn.init();
+  std::vector<double> in1(2);
+  std::vector<double> in2(2);
+  std::vector<double> in3(2);
+  std::vector<double> in4(2);
+  in1[0] = 0;
+  in1[1] = 0;
+  in2[0] = 1;
+  in2[1] = 0;
+  in3[0] = 0;
+  in3[1] = 1;
+  in4[0] = 1;
+  in4[1] = 1;
+  std::vector<double> out0(1);
+  std::vector<double> out1(1);
+  out0[0] = 0;
+  out1[0] = 1;
+  //uczenie
+  for (int i = 0; i < 1000; ++i)
+  {
+    std::vector<double> o;
+ //   nn.printWages();
+    nn.setInput(in1.begin(), in1.end());
+    o = nn.calcOutput();
+//    for (auto d : o)
+//    {
+//      std::cout << d << " :answer 0 0 \n";
+//    }
+    nn.learn(out0.begin(), out0.end());
+    nn.setInput(in2.begin(), in2.end());
+    o = nn.calcOutput();
+//    for (auto d : o)
+//    {
+//      std::cout << d << " :answer 1 0 \n";
+//    }
+    nn.learn(out1.begin(), out1.end());
+    nn.setInput(in3.begin(), in3.end());
+    o = nn.calcOutput();
+//    for (auto d : o)
+//    {
+//      std::cout << d << " :answer 0 1 \n";
+//    }
+    nn.learn(out1.begin(), out1.end());
+    nn.setInput(in4.begin(), in4.end());
+    o = nn.calcOutput();
+//    for (auto d : o)
+//    {
+//      std::cout << d << " :answer 1 1 \n";
+//    }
+    nn.learn(out1.begin(), out1.end());
+  }
+//  nn.printWages();
+  //test
+  std::vector<double> out;
+  nn.setInput(in1.begin(), in1.end());
+  out = nn.calcOutput();
+  ASSERT_LT(out[0], 0.1);
+  nn.setInput(in2.begin(), in2.end());
+  out = nn.calcOutput();
+  ASSERT_GT(out[0], 0.9);
+  nn.setInput(in3.begin(), in3.end());
+  out = nn.calcOutput();
+  ASSERT_GT(out[0], 0.9);
+  nn.setInput(in4.begin(), in4.end());
+  out = nn.calcOutput();
+  ASSERT_GT(out[0], 0.9);
+  
+}
+/*
+TEST(Pochod, na)
+{
+  LinearActivationFunction<double> l;
+  for (double a = -10; a<10; a += 0.1)
+  {
+    std::cout << a << " = " << l.deriterative(a) << "\n";
+  }
+}*/
 
 int main(int argc, char **argv)
 {

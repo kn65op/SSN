@@ -298,9 +298,9 @@ public:
     }
     for (auto l : layers) //l - wskaźnik na listę neuronów
     {
-      for (auto a : *l) //a -  wskaźnik  na neuron
+      for (auto n : *l) //a -  wskaźnik  na neuron
       {
-        a->calculateOutput();
+        n->calculateOutput();
       }
     }
     std::vector<T> tmp(exits_count);

@@ -80,18 +80,19 @@ public:
    */
   void calculateOutput()
   {
-    output = 0;
+    activation = 0;
     typename std::list<Link<T>*>::iterator it = this->ins.begin();
     for (T* t : wages)
     {
-      output += (*t) * (*it)->getValue();
-      // Qstd::cout << "Waga: " << (*t) << " wartość:" << (*it)->getValue() << "\n";
+      activation += (*t) * (*it)->getValue();
+//      std::cout << "Waga: " << (*t) << " wartość:" << (*it)->getValue() << "\n";
       it++;
     }
     //std::cout << output << "\n";
-    this->input_value = activate_function(output);
+    this->input_value = activate_function(activation);
     this->setValToAuts();
-    //std::cout << this->input_value << " neuron input\n";
+    activation = this->input_value;
+//    std::cout << this->input_value << " neuron out\n";
   }
 
   /**
@@ -103,17 +104,17 @@ public:
     typename std::list<Link<T>*>::iterator it = this->ins.begin();
     for (auto w : wages)
     {
-      T der = activate_function.deriterative(output);
-      T ans = this->outs.front()->getAnswer();
-      T inp = (*it)->getValue();
-      T inpw = inp * *w;
-      T del = learn_factor * (*it)->getValue() * (this->outs.front()->getAnswer()) * activate_function.deriterative(output);
-      T delw = *w * learn_factor * (*it)->getValue() * (this->outs.front()->getAnswer()) * activate_function.deriterative(output);
-      *w = *w + learn_factor * (*it)->getValue() * (this->outs.front()->getAnswer()) * activate_function.deriterative(output);
+//      T der = activate_function.deriterative(activation);
+//      T ans = this->outs.front()->getAnswer();
+//      T inp = (*it)->getValue();
+//      T inpw = inp * *w;
+//      T del = learn_factor * (*it)->getValue() * (this->outs.front()->getAnswer()) * activate_function.deriterative(activation);
+//      T delw = *w * learn_factor * (*it)->getValue() * (this->outs.front()->getAnswer()) * activate_function.deriterative(activation);
+      *w = *w + learn_factor * (this->outs.front()->getAnswer()) * activate_function.deriterative(activation) * (*it)->getValue();
       /*std::cout << learn_factor  <<"\n";**/
       //std::cout << (*it)->getValue()  << " wartość pobudzenia dla wagi" <<"\n";
-      //std::cout << this->outs.front()->getAnswer() <<"odpowiedz ";
-      // Qstd::cout << learn_factor * (*it)->getValue() * (this->outs.front()->getAnswer()) * activate_function.deriterative(output) << " zmiana wag ostatniego neuronu\n";
+//      std::cout << this->outs.front()->getAnswer() << "błąd odpowiedzi\n";
+//      std::cout << learn_factor * (this->outs.front()->getAnswer()) * activate_function.deriterative(activation) * (*it)->getValue() << " zmiana wag neuronu\n";
 
       it++;
     }
@@ -129,7 +130,7 @@ public:
     T error = 0;
     for (auto out : this->outs)
     {
-      error += (out->getAnswer()) * activate_function.deriterative(output);
+      error += (out->getAnswer());
       //error += out->getAnswer();
     }
     typename std::list<T*>::iterator it = wages.begin();
@@ -148,13 +149,13 @@ public:
     T delta = 0;
     for (auto out : this->outs)
     {
-      delta += out->getAnswer() * activate_function.deriterative(output);
+      delta += out->getAnswer();
     }
     typename std::list<Link<T>*>::iterator it = this->ins.begin();
     for (auto w : wages)
     {
       T val = (*it)->getValue();
-      *w = *w + learn_factor * (*it)->getValue() * (delta);
+      *w = *w + learn_factor * (delta) * activate_function.deriterative(activation) * (*it)->getValue();
       // Qstd::cout << learn_factor * (*it)->getValue() * (delta) * activate_function.deriterative(output) << " zmiana wag neuronu\n";
       ++it;
     }
@@ -209,7 +210,7 @@ public:
     std::cout << dis(gen) << "\n";
   }
 private:
-  T output;
+  T activation;
   std::list<T*> wages; //THINK: Może zmienić na samo T
   ActivationFunction activate_function;
   T learn_factor;
