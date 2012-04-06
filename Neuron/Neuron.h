@@ -88,7 +88,7 @@ public:
       // Qstd::cout << "Waga: " << (*t) << " wartość:" << (*it)->getValue() << "\n";
       it++;
     }
-    // Qstd::cout << output << "\n";
+    std::cout << output << "\n";
     this->input_value = activate_function(output);
     this->setValToAuts();
   }
@@ -174,14 +174,15 @@ public:
    */
   void setLinkIn(Link<T>* link)
   {
-    std::random_device rd;
+    /*std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_real_distribution<> dis(0, 1.0);
+    std::uniform_real_distribution<> dis(0, 1.0);*/
     Output<T>::setLinkIn(link);
     wages.push_back(new T(dis(gen))); //TODO: początkowe wagi 0 lub losowe
   }
 
   //TODO usunąć
+
   /**
    * Wagi
    */
@@ -193,12 +194,26 @@ public:
     }
     std::cout << "that was wages!\n";
   }
+  
+  static double startGenerator()
+  {
+    //gen = std::mt19937(rd());
+    std::cout << dis(gen) << "\n";
+  }
 private:
   T output;
   std::list<T*> wages; //THINK: Może zmienić na samo T
   ActivationFunction activate_function;
   T learn_factor;
+
+  static std::random_device rd;
+  static std::mt19937 gen;
+  static std::uniform_real_distribution<> dis;
 };
+
+template <class T, class ActivationFunction> std::random_device Neuron<T, ActivationFunction>::rd;
+template <class T, class ActivationFunction> std::mt19937 Neuron<T, ActivationFunction>::gen(rd());
+template <class T, class ActivationFunction> std::uniform_real_distribution<> Neuron<T, ActivationFunction>::dis(-1.0, 1.0);
 
 #endif	/* NEURON_H */
 
