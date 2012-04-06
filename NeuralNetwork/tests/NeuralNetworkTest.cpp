@@ -18,6 +18,7 @@
  * NeuralNetwork
  */
 
+/*
 TEST(StartTest, Create)
 {
   typedef NeuralNetwork<double, StepActivationFunction<double >> network;
@@ -355,7 +356,7 @@ TEST(RealWordTest, XORStep)
   ASSERT_EQ(out[0], 0);
 
   std::cout << o[0] << " " << o[1] << " " << o[2] << " " << o[3] << "\n";
-}
+}*/
 
 TEST(RealWordTest, LiczbyLinear)
 {
@@ -389,34 +390,34 @@ TEST(RealWordTest, LiczbyLinear)
   //uczenie
   for (int i = 0; i < 1; ++i)
   {
-    nn.setInput(in0.begin(), in0.end());
+    nn.printWages();nn.setInput(in0.begin(), in0.end());
     nn.calcOutput();
     nn.learn(out0.begin(), out0.end());
-    nn.setInput(in1.begin(), in1.end());
+    nn.printWages();nn.setInput(in1.begin(), in1.end());
     nn.calcOutput();
     nn.learn(out1.begin(), out1.end());
-    nn.setInput(in2.begin(), in2.end());
+    nn.printWages();nn.setInput(in2.begin(), in2.end());
     nn.calcOutput();
     nn.learn(out2.begin(), out2.end());
-    nn.setInput(in3.begin(), in3.end());
+    nn.printWages();nn.setInput(in3.begin(), in3.end());
     nn.calcOutput();
     nn.learn(out3.begin(), out3.end());
-    nn.setInput(in4.begin(), in4.end());
+    nn.printWages();nn.setInput(in4.begin(), in4.end());
     nn.calcOutput();
     nn.learn(out4.begin(), out4.end());
-    nn.setInput(in5.begin(), in5.end());
+    nn.printWages();nn.setInput(in5.begin(), in5.end());
     nn.calcOutput();
     nn.learn(out5.begin(), out5.end());
-    nn.setInput(in6.begin(), in6.end());
+    nn.printWages();nn.setInput(in6.begin(), in6.end());
     nn.calcOutput();
     nn.learn(out6.begin(), out6.end());
-    nn.setInput(in7.begin(), in7.end());
+    nn.printWages();nn.setInput(in7.begin(), in7.end());
     nn.calcOutput();
     nn.learn(out7.begin(), out7.end());
-    nn.setInput(in8.begin(), in8.end());
+    nn.printWages();nn.setInput(in8.begin(), in8.end());
     nn.calcOutput();
     nn.learn(out8.begin(), out8.end());
-    nn.setInput(in9.begin(), in9.end());
+    nn.printWages();nn.setInput(in9.begin(), in9.end());
     nn.calcOutput();
     nn.learn(out9.begin(), out9.end());
   }

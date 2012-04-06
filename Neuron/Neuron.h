@@ -32,7 +32,7 @@ public:
    * Konstruktor domyślny z ustawieniem współczynnika uczenia z funkcją aktywacji, która jest funkcją skokową i skoku w punkcie 0. Współczynnik uczenie ustawiony jest na 0.7.
    * @param lf Współczynnik uczenia.
    */
-  Neuron() : activate_function(ActivationFunction()), learn_factor(0.2)
+  Neuron() : activate_function(ActivationFunction()), learn_factor(0.7)
   {
 
   }
@@ -103,6 +103,12 @@ public:
     typename std::list<Link<T>*>::iterator it = this->ins.begin();
     for (auto w : wages)
     {
+      T der = activate_function.deriterative(output);
+      T ans = this->outs.front()->getAnswer();
+      T inp = (*it)->getValue();
+      T inpw = inp * *w;
+      T del = learn_factor * (*it)->getValue() * (this->outs.front()->getAnswer()) * activate_function.deriterative(output);
+      T delw = *w * learn_factor * (*it)->getValue() * (this->outs.front()->getAnswer()) * activate_function.deriterative(output);
       *w = *w + learn_factor * (*it)->getValue() * (this->outs.front()->getAnswer()) * activate_function.deriterative(output);
       /*std::cout << learn_factor  <<"\n";**/
       //std::cout << (*it)->getValue()  << " wartość pobudzenia dla wagi" <<"\n";
@@ -147,6 +153,7 @@ public:
     typename std::list<Link<T>*>::iterator it = this->ins.begin();
     for (auto w : wages)
     {
+      T val = (*it)->getValue();
       *w = *w + learn_factor * (*it)->getValue() * (delta);
       // Qstd::cout << learn_factor * (*it)->getValue() * (delta) * activate_function.deriterative(output) << " zmiana wag neuronu\n";
       ++it;
