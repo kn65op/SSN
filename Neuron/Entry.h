@@ -13,13 +13,15 @@
 /**
  * Klasa Entry odpowiada wejściom do sieci neuronowej.
  */
-template <class T> class Entry: public Input<T>
+template <class T> class Entry : public Input<T>
 {
 public:
+
   virtual ~Entry()
   {
-    
+
   }
+
   /**
    * Ustawia wejście na podaną wartość.
    * @param entry Żądana wartość.

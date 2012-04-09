@@ -11,6 +11,7 @@
 #include <cmath>
 
 #include "ActivationFunction.h"
+
 /**
  * Klasa przedstawiającą skokową funkcję aktywacji o kształcie sigmoidy parametryzowana wartością określającą w jakim zakresie jest największa zmiana wartości.
  */
@@ -24,7 +25,7 @@ public:
   LinearActivationFunction() : parameter(1)
   {
   }
-  
+
   /**
    * Konstrutor domyślny ustawiający żądany parametr.
    */
@@ -51,7 +52,7 @@ public:
   {
     return x * (1 - x);
   }
-  
+
   /**
    * Funkcja ustawiająca paramtr sigmoidy,
    * @param parameter Parametr.

@@ -84,14 +84,14 @@ public:
     for (T* t : wages)
     {
       activation += (*t) * (*it)->getValue();
-//      std::cout << "Waga: " << (*t) << " wartość:" << (*it)->getValue() << "\n";
+      //      std::cout << "Waga: " << (*t) << " wartość:" << (*it)->getValue() << "\n";
       it++;
     }
     //std::cout << output << "\n";
     this->input_value = activate_function(activation);
     this->setValToAuts();
     activation = this->input_value;
-//    std::cout << this->input_value << " neuron out\n";
+    //    std::cout << this->input_value << " neuron out\n";
   }
 
   /**
@@ -103,17 +103,17 @@ public:
     typename std::list<Link<T>*>::iterator it = this->ins.begin();
     for (auto w : wages)
     {
-//      T der = activate_function.deriterative(activation);
-//      T ans = this->outs.front()->getAnswer();
-//      T inp = (*it)->getValue();
-//      T inpw = inp * *w;
-//      T del = learn_factor * (*it)->getValue() * (this->outs.front()->getAnswer()) * activate_function.deriterative(activation);
-//      T delw = *w * learn_factor * (*it)->getValue() * (this->outs.front()->getAnswer()) * activate_function.deriterative(activation);
+      //      T der = activate_function.deriterative(activation);
+      //      T ans = this->outs.front()->getAnswer();
+      //      T inp = (*it)->getValue();
+      //      T inpw = inp * *w;
+      //      T del = learn_factor * (*it)->getValue() * (this->outs.front()->getAnswer()) * activate_function.deriterative(activation);
+      //      T delw = *w * learn_factor * (*it)->getValue() * (this->outs.front()->getAnswer()) * activate_function.deriterative(activation);
       *w = *w + learn_factor * (this->outs.front()->getAnswer()) * activate_function.deriterative(activation) * (*it)->getValue();
       /*std::cout << learn_factor  <<"\n";**/
       //std::cout << (*it)->getValue()  << " wartość pobudzenia dla wagi" <<"\n";
-//      std::cout << this->outs.front()->getAnswer() << "błąd odpowiedzi\n";
-//      std::cout << learn_factor * (this->outs.front()->getAnswer()) * activate_function.deriterative(activation) * (*it)->getValue() << " zmiana wag neuronu\n";
+      //      std::cout << this->outs.front()->getAnswer() << "błąd odpowiedzi\n";
+      //      std::cout << learn_factor * (this->outs.front()->getAnswer()) * activate_function.deriterative(activation) * (*it)->getValue() << " zmiana wag neuronu\n";
 
       it++;
     }
@@ -161,7 +161,6 @@ public:
     checkWages();
   }
 
-
   /**
    * Funkcja ustawiająca połączenie wejściowe oraz dodające nową wagę.
    * @param link Połączenie do ododania.
@@ -188,7 +187,7 @@ public:
     }
     std::cout << "that was wages!\n";
   }
-  
+
 private:
   T activation;
   std::list<T*> wages; //THINK: Może zmienić na samo T
@@ -198,7 +197,7 @@ private:
   static std::random_device rd;
   static std::mt19937 gen;
   static std::uniform_real_distribution<> dis;
-  
+
   /**
    * Funckja do zapobiegania rośnięciu wagom (prawdopodobnie nie będzie potrzebna)
    */

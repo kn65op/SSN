@@ -14,16 +14,19 @@ template <class T> class Link;
 
 //TODO usunąć
 #include <iostream>
+
 /**
  * Klasa Input jest interfejsem wejścia do klasy Link.
  */
 template <class T> class Input
 {
 public:
+
   virtual ~Input()
   {
-    
+
   }
+
   /**
    * Funkcja zwracająca przechowywaną wartość do połączeń.
    * @return Przechowywana wartość.
@@ -32,6 +35,7 @@ public:
   {
     return this->input_value;
   }
+
   /**
    * Funkcja dodająca połączenie do wejścia do połączenia.
    * @param link Dodawane połączenie.
@@ -48,13 +52,14 @@ protected:
   /** Lista wyjść z danego elementu.
    */
   std::list<Link<T>*> outs;
+
   /**
    * Wysłanie wartości przechowywanej w danym obiekcie do wszystkich podłączonych linków.
    */
   void setValToAuts() const
   {
     //std::cout << input_value << " from input\n";
-    for (auto o: this->outs)
+    for (auto o : this->outs)
     {
       o->setValue(input_value);
     }

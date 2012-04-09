@@ -20,22 +20,24 @@
 template <class T> class Link
 {
 public:
+
   /**
    * Konstruktor domyślny.
    */
   Link()
   {
-    
+
   }
   /**
    * Zabronienie kopiowania klasy Link.
    */
   Link(const Link& orig) = delete;
+
   virtual ~Link()
   {
-    
+
   }
-  
+
   /**
    * Funkcja zwracająca wartość aktualnie przetrzymywana na połączeniu.
    * @return Wartość przyjęta ostatnio na wejściu do połączenia.
@@ -45,6 +47,7 @@ public:
     //std::cout << value << " get value\n";
     return value;
   }
+
   /**
    * Funckja pobierająca wartość z wejścia do połączenia i zapisująca wartość w połączeniu.
    * @param v Wartość, która będzie dostępna na wyjściu z połączenia.
@@ -54,7 +57,7 @@ public:
     value = v;
     //std::cout << value << " set value\n";
   }
-  
+
   /**
    * Funkcja ustawiająca wejście do linku.
    * @param i Ustawiane wejście.
@@ -63,6 +66,7 @@ public:
   {
     in = i;
   }
+
   /**
    * Funkcja ustawiająca wyjście z linku.
    * @param o Ustawiane wyjście.
@@ -71,6 +75,7 @@ public:
   {
     out = o;
   }
+
   /**
    * Pobranie odpowiedzi z linku.
    * @return Zapisana odpowiedź.
@@ -79,6 +84,7 @@ public:
   {
     return answer;
   }
+
   /**
    * Zapisanie odpowiedzi do linku.
    * @param answer Przekazywana odpowiedź.

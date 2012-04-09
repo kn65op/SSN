@@ -16,18 +16,21 @@
 template <class T> class Bias : public Input<T>
 {
 public:
+
   /**
    * Konstruktor ustawiający początkową wartość przesunięcia. Po podłączeniu linku należy przekazać wartość do łącz lub użyć metody setBias(T).
    * @param i Wartość przesunięcia.
    */
-  Bias(T i): bias_value(i)
+  Bias(T i) : bias_value(i)
   {
-    
+
   }
+
   virtual ~Bias()
   {
-    
+
   }
+
   /**
    * Ustawia wartość przesunięcia i nie wysyła jej do łącz.
    * @param i Wartość przesunięcia.
@@ -36,6 +39,7 @@ public:
   {
     bias_value = i;
   }
+
   /**
    * Ustawia wartość przesunięcia i wysyła ją do łącz.
    * @param i Wartość przesunięcia.
@@ -45,11 +49,12 @@ public:
     setBias(i);
     sendBiasToLinks();
   }
+
   /**
    * Wysyła wartość przesunięcia do łącz.
    */
   void sendBiasToLinks()
-  {    
+  {
     this->input_value = bias_value;
     this->setValToAuts();
   }

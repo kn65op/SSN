@@ -16,15 +16,16 @@ template <class T> class Link;
  */
 template <class T> class Output
 {
-
 public:
+
   /**
    * Destruktor.
    */
   virtual ~Output()
   {
-    
+
   }
+
   /**
    * Funkcja dodająca połączenie do wyjścia z połączenia.
    * @param link Dodawane połączenie.
