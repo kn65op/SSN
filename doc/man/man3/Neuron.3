@@ -1,4 +1,4 @@
-.TH "Neuron< T, ActivationFunction >" 3 "Thu Apr 5 2012" "SSN" \" -*- nroff -*-
+.TH "Neuron< T, ActivationFunction >" 3 "Mon Apr 9 2012" "SSN" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -38,10 +38,10 @@ Inherits \fBInput< T >\fP, and \fBOutput< T >\fP\&.
 .RI "void \fBlearnBP\fP ()"
 .br
 .ti -1c
-.RI "void \fBcheckWages\fP ()"
+.RI "void \fBsetLinkIn\fP (\fBLink\fP< T > *link)"
 .br
 .ti -1c
-.RI "void \fBsetLinkIn\fP (\fBLink\fP< T > *link)"
+.RI "void \fBprintWages\fP ()"
 .br
 .in -1c
 .SH "Detailed Description"
@@ -52,13 +52,6 @@ Klasa \fBNeuron\fP odpowiada neuronowi w sieci neuronowej\&. Podana funkcja akty
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "template<class T , class ActivationFunction  = StepActivationFunction<T>()> \fBNeuron\fP< T, \fBActivationFunction\fP >::\fBNeuron\fP ()\fC [inline]\fP"Konstruktor domyślny z ustawieniem współczynnika uczenia z funkcją aktywacji, która jest funkcją skokową i skoku w punkcie 0\&. Współczynnik uczenie ustawiony jest na 0\&.7\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIlf\fP Współczynnik uczenia\&. 
-.RE
-.PP
-
 .SS "template<class T , class ActivationFunction  = StepActivationFunction<T>()> \fBNeuron\fP< T, \fBActivationFunction\fP >::\fBNeuron\fP (Tlf)\fC [inline]\fP"Konstruktor parametryczny z ustawieniem współczynnika uczenia oraz z funkcją aktywacji, która jest funkcją skokową i skoku w punkcie 0\&. 
 .PP
 \fBParameters:\fP
@@ -89,14 +82,8 @@ Klasa \fBNeuron\fP odpowiada neuronowi w sieci neuronowej\&. Podana funkcja akty
 .PP 
 .SS "template<class T , class ActivationFunction  = StepActivationFunction<T>()> void \fBNeuron\fP< T, \fBActivationFunction\fP >::\fBcalculateOutput\fP ()\fC [inline]\fP"Funkcja licząca wyjście neuronu w zależności od wejsć (suma ważone) a następnie przejście przez funkcję aktywacji\&. 
 .SS "template<class T , class ActivationFunction  = StepActivationFunction<T>()> void \fBNeuron\fP< T, \fBActivationFunction\fP >::\fBlearnBP\fP ()\fC [inline]\fP"Funkcja ucząca wg reguły Back Propagation dla warstw ukrytych\&. 
-.SS "template<class T , class ActivationFunction  = StepActivationFunction<T>()> void \fBNeuron\fP< T, \fBActivationFunction\fP >::\fBlearnDelta\fP ()\fC [inline]\fP"Funkcja ucząca wg reguły delta\&. Stosowana tylko dla sieci jednowarstwowych\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIanswer\fP Wymagana odpowiedź dla danego neuronu\&. 
-.RE
-.PP
-
+.SS "template<class T , class ActivationFunction  = StepActivationFunction<T>()> void \fBNeuron\fP< T, \fBActivationFunction\fP >::\fBlearnDelta\fP ()\fC [inline]\fP"Funkcja ucząca wg reguły delta\&. Stosowana tylko dla sieci jednowarstwowych i warstwy wyjściowej sieci wielowarstwowej\&. Wymaga odpowiedź jest pobierana z elementu następnego, z którym neuron jest połączony klasą \fBLink\fP\&. 
+.SS "template<class T , class ActivationFunction  = StepActivationFunction<T>()> void \fBNeuron\fP< T, \fBActivationFunction\fP >::\fBprintWages\fP ()\fC [inline]\fP"Wagi 
 .SS "template<class T , class ActivationFunction  = StepActivationFunction<T>()> void \fBNeuron\fP< T, \fBActivationFunction\fP >::\fBpropagateAnswer\fP ()\fC [inline]\fP"Funkcja propagująca błąd do głębszych warstw sieci\&. 
 .SS "template<class T , class ActivationFunction  = StepActivationFunction<T>()> void \fBNeuron\fP< T, \fBActivationFunction\fP >::\fBsetLinkIn\fP (\fBLink\fP< T > *link)\fC [inline]\fP"Funkcja ustawiająca połączenie wejściowe oraz dodające nową wagę\&. 
 .PP

@@ -8,6 +8,10 @@
 #ifndef ACTIVATIONFUNCTION_H
 #define	ACTIVATIONFUNCTION_H
 
+
+/**
+ * Interfejs klasy obsługującej funkcje aktywacji (przestarzałe)
+ */
 template <class T> class ActivationFunction
 {
 public:

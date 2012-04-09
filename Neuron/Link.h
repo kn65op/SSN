@@ -27,6 +27,9 @@ public:
   {
     
   }
+  /**
+   * Zabronienie kopiowania klasy Link.
+   */
   Link(const Link& orig) = delete;
   virtual ~Link()
   {
@@ -44,7 +47,7 @@ public:
   }
   /**
    * Funckja pobierająca wartość z wejścia do połączenia i zapisująca wartość w połączeniu.
-   * @param Wartość, która będzie dostępna na wyjściu z połączenia.
+   * @param v Wartość, która będzie dostępna na wyjściu z połączenia.
    */
   void setValue(const T v)
   {
@@ -62,7 +65,7 @@ public:
   }
   /**
    * Funkcja ustawiająca wyjście z linku.
-   * @param out Ustawiane wyjście.
+   * @param o Ustawiane wyjście.
    */
   void setOut(Output<T>* o)
   {

@@ -109,54 +109,59 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00011"></a>00011 <span class="preprocessor">#include &quot;Input.h&quot;</span>
 <a name="l00012"></a>00012 <span class="preprocessor">#include &quot;Output.h&quot;</span>
 <a name="l00013"></a>00013 
-<a name="l00017"></a><a class="code" href="class_link.html">00017</a> <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">class </span><a class="code" href="class_link.html">Link</a>
-<a name="l00018"></a>00018 {
-<a name="l00019"></a>00019 <span class="keyword">public</span>:
-<a name="l00023"></a><a class="code" href="class_link.html#a43e11e230dbd74ea650c292b637388ac">00023</a>   <a class="code" href="class_link.html#a43e11e230dbd74ea650c292b637388ac">Link</a>()
-<a name="l00024"></a>00024   {
-<a name="l00025"></a>00025     
-<a name="l00026"></a>00026   }
-<a name="l00027"></a>00027   <a class="code" href="class_link.html#a43e11e230dbd74ea650c292b637388ac">Link</a>(<span class="keyword">const</span> <a class="code" href="class_link.html">Link</a>&amp; orig) = <span class="keyword">delete</span>;
-<a name="l00028"></a>00028   <span class="keyword">virtual</span> ~<a class="code" href="class_link.html">Link</a>()
-<a name="l00029"></a>00029   {
-<a name="l00030"></a>00030     
-<a name="l00031"></a>00031   }
-<a name="l00032"></a>00032   
-<a name="l00037"></a><a class="code" href="class_link.html#aff003e24a4024d3f8b72ad43a7ca0f05">00037</a>   T <a class="code" href="class_link.html#aff003e24a4024d3f8b72ad43a7ca0f05">getValue</a>()<span class="keyword"> const</span>
-<a name="l00038"></a>00038 <span class="keyword">  </span>{
-<a name="l00039"></a>00039     <span class="keywordflow">return</span> value;
-<a name="l00040"></a>00040   }
-<a name="l00045"></a><a class="code" href="class_link.html#ac767dbf3f0e020e3f08fa4ac8bc77fcd">00045</a>   <span class="keywordtype">void</span> <a class="code" href="class_link.html#ac767dbf3f0e020e3f08fa4ac8bc77fcd">setValue</a>(<span class="keyword">const</span> T v)
-<a name="l00046"></a>00046   {
-<a name="l00047"></a>00047     value = v;
-<a name="l00048"></a>00048   }
-<a name="l00049"></a>00049   
-<a name="l00054"></a><a class="code" href="class_link.html#a7f530e21b1307f5cc361095e85ed8cfb">00054</a>   <span class="keywordtype">void</span> <a class="code" href="class_link.html#a7f530e21b1307f5cc361095e85ed8cfb">setIn</a>(<a class="code" href="class_input.html">Input&lt;T&gt;</a>* i)
-<a name="l00055"></a>00055   {
-<a name="l00056"></a>00056     in = i;
-<a name="l00057"></a>00057   }
-<a name="l00062"></a><a class="code" href="class_link.html#a0ee7aaa6776c87de94483c4db508acd7">00062</a>   <span class="keywordtype">void</span> <a class="code" href="class_link.html#a0ee7aaa6776c87de94483c4db508acd7">setOut</a>(<a class="code" href="class_output.html">Output&lt;T&gt;</a>* o)
+<a name="l00014"></a>00014 <span class="comment">//TODO usunąć</span>
+<a name="l00015"></a>00015 <span class="preprocessor">#include &lt;iostream&gt;</span>
+<a name="l00016"></a>00016 
+<a name="l00020"></a><a class="code" href="class_link.html">00020</a> <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">class </span><a class="code" href="class_link.html">Link</a>
+<a name="l00021"></a>00021 {
+<a name="l00022"></a>00022 <span class="keyword">public</span>:
+<a name="l00026"></a><a class="code" href="class_link.html#a43e11e230dbd74ea650c292b637388ac">00026</a>   <a class="code" href="class_link.html#a43e11e230dbd74ea650c292b637388ac">Link</a>()
+<a name="l00027"></a>00027   {
+<a name="l00028"></a>00028     
+<a name="l00029"></a>00029   }
+<a name="l00033"></a>00033   <a class="code" href="class_link.html#a43e11e230dbd74ea650c292b637388ac">Link</a>(<span class="keyword">const</span> <a class="code" href="class_link.html">Link</a>&amp; orig) = <span class="keyword">delete</span>;
+<a name="l00034"></a>00034   <span class="keyword">virtual</span> ~<a class="code" href="class_link.html">Link</a>()
+<a name="l00035"></a>00035   {
+<a name="l00036"></a>00036     
+<a name="l00037"></a>00037   }
+<a name="l00038"></a>00038   
+<a name="l00043"></a><a class="code" href="class_link.html#aff003e24a4024d3f8b72ad43a7ca0f05">00043</a>   T <a class="code" href="class_link.html#aff003e24a4024d3f8b72ad43a7ca0f05">getValue</a>()<span class="keyword"> const</span>
+<a name="l00044"></a>00044 <span class="keyword">  </span>{
+<a name="l00045"></a>00045     <span class="comment">//std::cout &lt;&lt; value &lt;&lt; &quot; get value\n&quot;;</span>
+<a name="l00046"></a>00046     <span class="keywordflow">return</span> value;
+<a name="l00047"></a>00047   }
+<a name="l00052"></a><a class="code" href="class_link.html#ac767dbf3f0e020e3f08fa4ac8bc77fcd">00052</a>   <span class="keywordtype">void</span> <a class="code" href="class_link.html#ac767dbf3f0e020e3f08fa4ac8bc77fcd">setValue</a>(<span class="keyword">const</span> T v)
+<a name="l00053"></a>00053   {
+<a name="l00054"></a>00054     value = v;
+<a name="l00055"></a>00055     <span class="comment">//std::cout &lt;&lt; value &lt;&lt; &quot; set value\n&quot;;</span>
+<a name="l00056"></a>00056   }
+<a name="l00057"></a>00057   
+<a name="l00062"></a><a class="code" href="class_link.html#a7f530e21b1307f5cc361095e85ed8cfb">00062</a>   <span class="keywordtype">void</span> <a class="code" href="class_link.html#a7f530e21b1307f5cc361095e85ed8cfb">setIn</a>(<a class="code" href="class_input.html">Input&lt;T&gt;</a>* i)
 <a name="l00063"></a>00063   {
-<a name="l00064"></a>00064     out = o;
+<a name="l00064"></a>00064     in = i;
 <a name="l00065"></a>00065   }
-<a name="l00070"></a><a class="code" href="class_link.html#a5a670e48e85fbf0a03ab2907f147db75">00070</a>   T <a class="code" href="class_link.html#a5a670e48e85fbf0a03ab2907f147db75">getAnswer</a>()<span class="keyword"> const</span>
-<a name="l00071"></a>00071 <span class="keyword">  </span>{
-<a name="l00072"></a>00072     <span class="keywordflow">return</span> answer;
+<a name="l00070"></a><a class="code" href="class_link.html#a0ee7aaa6776c87de94483c4db508acd7">00070</a>   <span class="keywordtype">void</span> <a class="code" href="class_link.html#a0ee7aaa6776c87de94483c4db508acd7">setOut</a>(<a class="code" href="class_output.html">Output&lt;T&gt;</a>* o)
+<a name="l00071"></a>00071   {
+<a name="l00072"></a>00072     out = o;
 <a name="l00073"></a>00073   }
-<a name="l00078"></a><a class="code" href="class_link.html#ab4c5011d91f54ff6aacc31a7d100e209">00078</a>   <span class="keywordtype">void</span> <a class="code" href="class_link.html#ab4c5011d91f54ff6aacc31a7d100e209">setAnswer</a>(T answer)
-<a name="l00079"></a>00079   {
-<a name="l00080"></a>00080     this-&gt;answer = answer;
+<a name="l00078"></a><a class="code" href="class_link.html#a5a670e48e85fbf0a03ab2907f147db75">00078</a>   T <a class="code" href="class_link.html#a5a670e48e85fbf0a03ab2907f147db75">getAnswer</a>()<span class="keyword"> const</span>
+<a name="l00079"></a>00079 <span class="keyword">  </span>{
+<a name="l00080"></a>00080     <span class="keywordflow">return</span> answer;
 <a name="l00081"></a>00081   }
-<a name="l00082"></a>00082 
-<a name="l00083"></a>00083 <span class="keyword">private</span>:
-<a name="l00084"></a>00084   <a class="code" href="class_input.html">Input&lt;T&gt;</a>* in;
-<a name="l00085"></a>00085   <a class="code" href="class_output.html">Output&lt;T&gt;</a>* out;
-<a name="l00086"></a>00086   T value;
-<a name="l00087"></a>00087   T answer;
-<a name="l00088"></a>00088 };
-<a name="l00089"></a>00089 
-<a name="l00090"></a>00090 <span class="preprocessor">#endif  </span><span class="comment">/* LINK_H */</span>
-<a name="l00091"></a>00091 
+<a name="l00086"></a><a class="code" href="class_link.html#ab4c5011d91f54ff6aacc31a7d100e209">00086</a>   <span class="keywordtype">void</span> <a class="code" href="class_link.html#ab4c5011d91f54ff6aacc31a7d100e209">setAnswer</a>(T answer)
+<a name="l00087"></a>00087   {
+<a name="l00088"></a>00088     this-&gt;answer = answer;
+<a name="l00089"></a>00089   }
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091 <span class="keyword">private</span>:
+<a name="l00092"></a>00092   <a class="code" href="class_input.html">Input&lt;T&gt;</a>* in;
+<a name="l00093"></a>00093   <a class="code" href="class_output.html">Output&lt;T&gt;</a>* out;
+<a name="l00094"></a>00094   T value;
+<a name="l00095"></a>00095   T answer;
+<a name="l00096"></a>00096 };
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098 <span class="preprocessor">#endif  </span><span class="comment">/* LINK_H */</span>
+<a name="l00099"></a>00099 
 </pre></div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->
@@ -164,7 +169,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -177,7 +182,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul>
       <li class="navelem"><b>Link.h</b>      </li>
 
-    <li class="footer">Generated on Thu Apr 5 2012 14:42:59 for SSN by
+    <li class="footer">Generated on Mon Apr 9 2012 17:15:25 for SSN by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

@@ -126,9 +126,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neuron.html#ae73a056c55311521d0e31347837109cc">learnDelta</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neuron.html#acb55ff03a770877b6afb86ed4d06896a">propagateAnswer</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neuron.html#a5e479fce295d76be68c017ab8c986f8c">learnBP</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7ab012ac0a6a20b474b6147fcdc6ea2d"></a><!-- doxytag: member="Neuron::checkWages" ref="a7ab012ac0a6a20b474b6147fcdc6ea2d" args="()" -->
-void&#160;</td><td class="memItemRight" valign="bottom"><b>checkWages</b> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neuron.html#a1a20d9ac9bf64126f8d74d8c1c7d3c58">setLinkIn</a> (<a class="el" href="class_link.html">Link</a>&lt; T &gt; *link)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neuron.html#ac112e85f169835dad11a6f7bd9e477b9">printWages</a> ()</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><h3>template&lt;class T, class ActivationFunction = StepActivationFunction&lt;T&gt;()&gt;<br/>
@@ -152,12 +151,6 @@ template&lt;class T , class ActivationFunction  = StepActivationFunction&lt;T&gt
 </div>
 <div class="memdoc">
 <p>Konstruktor domyślny z ustawieniem współczynnika uczenia z funkcją aktywacji, która jest funkcją skokową i skoku w punkcie 0. Współczynnik uczenie ustawiony jest na 0.7. </p>
-<dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">lf</td><td>Współczynnik uczenia. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
@@ -304,13 +297,26 @@ template&lt;class T , class ActivationFunction  = StepActivationFunction&lt;T&gt
       </table>
 </div>
 <div class="memdoc">
-<p>Funkcja ucząca wg reguły delta. Stosowana tylko dla sieci jednowarstwowych. </p>
-<dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">answer</td><td>Wymagana odpowiedź dla danego neuronu. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Funkcja ucząca wg reguły delta. Stosowana tylko dla sieci jednowarstwowych i warstwy wyjściowej sieci wielowarstwowej. Wymaga odpowiedź jest pobierana z elementu następnego, z którym neuron jest połączony klasą <a class="el" href="class_link.html">Link</a>. </p>
+
+</div>
+</div>
+<a class="anchor" id="ac112e85f169835dad11a6f7bd9e477b9"></a><!-- doxytag: member="Neuron::printWages" ref="ac112e85f169835dad11a6f7bd9e477b9" args="()" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , class ActivationFunction  = StepActivationFunction&lt;T&gt;()&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_neuron.html">Neuron</a>&lt; T, <a class="el" href="class_activation_function.html">ActivationFunction</a> &gt;::<a class="el" href="class_neuron.html#ac112e85f169835dad11a6f7bd9e477b9">printWages</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Wagi </p>
 
 </div>
 </div>
@@ -371,7 +377,7 @@ template&lt;class T , class ActivationFunction  = StepActivationFunction&lt;T&gt
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -384,7 +390,7 @@ template&lt;class T , class ActivationFunction  = StepActivationFunction&lt;T&gt
     <ul>
       <li class="navelem"><a class="el" href="class_neuron.html">Neuron</a>      </li>
 
-    <li class="footer">Generated on Thu Apr 5 2012 14:43:00 for SSN by
+    <li class="footer">Generated on Mon Apr 9 2012 17:15:26 for SSN by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

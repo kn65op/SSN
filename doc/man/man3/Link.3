@@ -1,4 +1,4 @@
-.TH "Link< T >" 3 "Thu Apr 5 2012" "SSN" \" -*- nroff -*-
+.TH "Link< T >" 3 "Mon Apr 9 2012" "SSN" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -44,6 +44,7 @@ Klasa \fBLink\fP odpowiada połączaniu między neuronami oraz między neuronami
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "template<class T> \fBLink\fP< T >::\fBLink\fP ()\fC [inline]\fP"Konstruktor domyślny\&. 
+.SS "template<class T> \fBLink\fP< T >::\fBLink\fP (const \fBLink\fP< T > &orig)"Zabronienie kopiowania klasy \fBLink\fP\&. 
 .SH "Member Function Documentation"
 .PP 
 .SS "template<class T> T \fBLink\fP< T >::\fBgetAnswer\fP () const\fC [inline]\fP"Pobranie odpowiedzi z linku\&. 
@@ -82,7 +83,7 @@ Wartość przyjęta ostatnio na wejściu do połączenia\&.
 .PP
 \fBParameters:\fP
 .RS 4
-\fIout\fP Ustawiane wyjście\&. 
+\fIo\fP Ustawiane wyjście\&. 
 .RE
 .PP
 
@@ -90,7 +91,7 @@ Wartość przyjęta ostatnio na wejściu do połączenia\&.
 .PP
 \fBParameters:\fP
 .RS 4
-\fIWartość,która\fP będzie dostępna na wyjściu z połączenia\&. 
+\fIv\fP Wartość, która będzie dostępna na wyjściu z połączenia\&. 
 .RE
 .PP
 

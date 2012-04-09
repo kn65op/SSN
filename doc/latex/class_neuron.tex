@@ -30,10 +30,9 @@ void \hyperlink{class_neuron_acb55ff03a770877b6afb86ed4d06896a}{propagate\-Answe
 \item 
 void \hyperlink{class_neuron_a5e479fce295d76be68c017ab8c986f8c}{learn\-B\-P} ()
 \item 
-\hypertarget{class_neuron_a7ab012ac0a6a20b474b6147fcdc6ea2d}{void {\bfseries check\-Wages} ()}\label{class_neuron_a7ab012ac0a6a20b474b6147fcdc6ea2d}
-
-\item 
 void \hyperlink{class_neuron_a1a20d9ac9bf64126f8d74d8c1c7d3c58}{set\-Link\-In} (\hyperlink{class_link}{\-Link}$<$ \-T $>$ $\ast$link)
+\item 
+void \hyperlink{class_neuron_ac112e85f169835dad11a6f7bd9e477b9}{print\-Wages} ()
 \end{DoxyCompactItemize}
 
 
@@ -50,12 +49,7 @@ void \hyperlink{class_neuron_a1a20d9ac9bf64126f8d74d8c1c7d3c58}{set\-Link\-In} (
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{class_neuron_ada8bb503f1bd56ce2596eabf8c21877e}
-\-Konstruktor domyślny z ustawieniem współczynnika uczenia z funkcją aktywacji, która jest funkcją skokową i skoku w punkcie 0. \-Współczynnik uczenie ustawiony jest na 0.\-7. 
-\begin{DoxyParams}{\-Parameters}
-{\em lf} & \-Współczynnik uczenia. \\
-\hline
-\end{DoxyParams}
-\hypertarget{class_neuron_a6145b98854c0fb6e9cfe09336952a5dc}{\index{\-Neuron@{\-Neuron}!\-Neuron@{\-Neuron}}
+\-Konstruktor domyślny z ustawieniem współczynnika uczenia z funkcją aktywacji, która jest funkcją skokową i skoku w punkcie 0. \-Współczynnik uczenie ustawiony jest na 0.\-7. \hypertarget{class_neuron_a6145b98854c0fb6e9cfe09336952a5dc}{\index{\-Neuron@{\-Neuron}!\-Neuron@{\-Neuron}}
 \index{\-Neuron@{\-Neuron}!Neuron@{\-Neuron}}
 \subsubsection[{\-Neuron}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class Activation\-Function  = \-Step\-Activation\-Function$<$\-T$>$()$>$ {\bf \-Neuron}$<$ \-T, {\bf \-Activation\-Function} $>$\-::{\bf \-Neuron} (
 \begin{DoxyParamCaption}
@@ -118,12 +112,14 @@ void \hyperlink{class_neuron_a1a20d9ac9bf64126f8d74d8c1c7d3c58}{set\-Link\-In} (
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{class_neuron_ae73a056c55311521d0e31347837109cc}
-\-Funkcja ucząca wg reguły delta. \-Stosowana tylko dla sieci jednowarstwowych. 
-\begin{DoxyParams}{\-Parameters}
-{\em answer} & \-Wymagana odpowiedź dla danego neuronu. \\
-\hline
-\end{DoxyParams}
-\hypertarget{class_neuron_acb55ff03a770877b6afb86ed4d06896a}{\index{\-Neuron@{\-Neuron}!propagate\-Answer@{propagate\-Answer}}
+\-Funkcja ucząca wg reguły delta. \-Stosowana tylko dla sieci jednowarstwowych i warstwy wyjściowej sieci wielowarstwowej. \-Wymaga odpowiedź jest pobierana z elementu następnego, z którym neuron jest połączony klasą \hyperlink{class_link}{\-Link}. \hypertarget{class_neuron_ac112e85f169835dad11a6f7bd9e477b9}{\index{\-Neuron@{\-Neuron}!print\-Wages@{print\-Wages}}
+\index{print\-Wages@{print\-Wages}!Neuron@{\-Neuron}}
+\subsubsection[{print\-Wages}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class Activation\-Function  = \-Step\-Activation\-Function$<$\-T$>$()$>$ void {\bf \-Neuron}$<$ \-T, {\bf \-Activation\-Function} $>$\-::{\bf print\-Wages} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{class_neuron_ac112e85f169835dad11a6f7bd9e477b9}
+\-Wagi \hypertarget{class_neuron_acb55ff03a770877b6afb86ed4d06896a}{\index{\-Neuron@{\-Neuron}!propagate\-Answer@{propagate\-Answer}}
 \index{propagate\-Answer@{propagate\-Answer}!Neuron@{\-Neuron}}
 \subsubsection[{propagate\-Answer}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class Activation\-Function  = \-Step\-Activation\-Function$<$\-T$>$()$>$ void {\bf \-Neuron}$<$ \-T, {\bf \-Activation\-Function} $>$\-::{\bf propagate\-Answer} (
 \begin{DoxyParamCaption}

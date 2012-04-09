@@ -30,7 +30,6 @@ public:
 
   /**
    * Konstruktor domyślny z ustawieniem współczynnika uczenia z funkcją aktywacji, która jest funkcją skokową i skoku w punkcie 0. Współczynnik uczenie ustawiony jest na 0.7.
-   * @param lf Współczynnik uczenia.
    */
   Neuron() : activate_function(ActivationFunction()), learn_factor(0.7)
   {
@@ -59,7 +58,7 @@ public:
   /**
    * Konstruktor parametryczny z ustawieniem funkcji aktywacji i współczynnika uczenia.
    * @param fun Funkcja aktywacji.
-   * @param  lf Współczynnik uczenia.
+   * @param lf Współczynnik uczenia.
    * 
    */
   Neuron(ActivationFunction fun, T lf) : activate_function(fun), learn_factor(lf)
@@ -96,8 +95,8 @@ public:
   }
 
   /**
-   * Funkcja ucząca wg reguły delta. Stosowana tylko dla sieci jednowarstwowych i warstwy wyjściowej sieci wielowarstwowej.
-   * @param answer Wymagana odpowiedź dla danego neuronu.
+   * Funkcja ucząca wg reguły delta. Stosowana tylko dla sieci jednowarstwowych i warstwy wyjściowej sieci wielowarstwowej. Wymaga odpowiedź jest pobierana z elementu następnego,
+   * z którym neuron jest połączony klasą Link.
    */
   void learnDelta()
   {
@@ -162,20 +161,6 @@ public:
     checkWages();
   }
 
-  void checkWages()
-  {
-    for (auto w : wages)
-    {
-      if (*w > 200)
-      {
-        *w = 200;
-      }
-      else if (*w < -200)
-      {
-        *w = -200;
-      }
-    }
-  }
 
   /**
    * Funkcja ustawiająca połączenie wejściowe oraz dodające nową wagę.
@@ -204,11 +189,6 @@ public:
     std::cout << "that was wages!\n";
   }
   
-  static double startGenerator()
-  {
-    //gen = std::mt19937(rd());
-    std::cout << dis(gen) << "\n";
-  }
 private:
   T activation;
   std::list<T*> wages; //THINK: Może zmienić na samo T
@@ -218,6 +198,24 @@ private:
   static std::random_device rd;
   static std::mt19937 gen;
   static std::uniform_real_distribution<> dis;
+  
+  /**
+   * Funckja do zapobiegania rośnięciu wagom (prawdopodobnie nie będzie potrzebna)
+   */
+  void checkWages()
+  {
+    for (auto w : wages)
+    {
+      if (*w > 200)
+      {
+        *w = 200;
+      }
+      else if (*w < -200)
+      {
+        *w = -200;
+      }
+    }
+  }
 };
 
 template <class T, class ActivationFunction> std::random_device Neuron<T, ActivationFunction>::rd;

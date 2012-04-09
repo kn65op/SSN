@@ -428,70 +428,70 @@ TEST(RealWordTest, LiczbyLinear)
   out = nn.calcOutput();
   for (auto o : out)
   {
-    std::cout << o << " ";
+    std::cout << (o > 0.9? "1" : (o < 0.1 ? "0" : "?")) << " ";
   }
   std::cout << "\n";
   nn.setInput(in1.begin(), in1.end());
   out = nn.calcOutput();
   for (auto o : out)
   {
-    std::cout << o << " ";
+    std::cout << (o > 0.9? "1" : (o < 0.1 ? "0" : "?")) << " ";
   }
   std::cout << "\n";
   nn.setInput(in2.begin(), in2.end());
   out = nn.calcOutput();
   for (auto o : out)
   {
-    std::cout << o << " ";
+    std::cout << (o > 0.9? "1" : (o < 0.1 ? "0" : "?")) << " ";
   }
   std::cout << "\n";
   nn.setInput(in3.begin(), in3.end());
   out = nn.calcOutput();
   for (auto o : out)
   {
-    std::cout << o << " ";
+    std::cout << (o > 0.9? "1" : (o < 0.1 ? "0" : "?")) << " ";
   }
   std::cout << "\n";
   nn.setInput(in4.begin(), in4.end());
   out = nn.calcOutput();
   for (auto o : out)
   {
-    std::cout << o << " ";
+    std::cout << (o > 0.9? "1" : (o < 0.1 ? "0" : "?")) << " ";
   }
   std::cout << "\n";
   nn.setInput(in5.begin(), in5.end());
   out = nn.calcOutput();
   for (auto o : out)
   {
-    std::cout << o << " ";
+    std::cout << (o > 0.9? "1" : (o < 0.1 ? "0" : "?")) << " ";
   }
   std::cout << "\n";
   nn.setInput(in6.begin(), in6.end());
   out = nn.calcOutput();
   for (auto o : out)
   {
-    std::cout << o << " ";
+    std::cout << (o > 0.9? "1" : (o < 0.1 ? "0" : "?")) << " ";
   }
   std::cout << "\n";
   nn.setInput(in7.begin(), in7.end());
   out = nn.calcOutput();
   for (auto o : out)
   {
-    std::cout << o << " ";
+    std::cout << (o > 0.9? "1" : (o < 0.1 ? "0" : "?")) << " ";
   }
   std::cout << "\n";
   nn.setInput(in8.begin(), in8.end());
   out = nn.calcOutput();
   for (auto o : out)
   {
-    std::cout << o << " ";
+    std::cout << (o > 0.9? "1" : (o < 0.1 ? "0" : "?")) << " ";
   }
   std::cout << "\n";
   nn.setInput(in9.begin(), in9.end());
   out = nn.calcOutput();
   for (auto o : out)
   {
-    std::cout << o << " ";
+    std::cout << (o > 0.9? "1" : (o < 0.1 ? "0" : "?")) << " ";
   }
   std::cout << "\n";
   //nn.printWages();

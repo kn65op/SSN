@@ -123,8 +123,7 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_output.html#afd26f81d178846371c17d63015f2eb9f">setLinkIn</a> (<a class="el" href="class_link.html">Link</a>&lt; T &gt; *link)</td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ade68e41659b12f8a7e31f8dc8507bb50"></a><!-- doxytag: member="Output::ins" ref="ade68e41659b12f8a7e31f8dc8507bb50" args="" -->
-std::list&lt; <a class="el" href="class_link.html">Link</a>&lt; T &gt; * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ins</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::list&lt; <a class="el" href="class_link.html">Link</a>&lt; T &gt; * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_output.html#ade68e41659b12f8a7e31f8dc8507bb50">ins</a></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><h3>template&lt;class T&gt;<br/>
@@ -168,16 +167,32 @@ template&lt;class T&gt; </div>
       </table>
 </div>
 <div class="memdoc">
-<p>Funkcja przyjmująca wartość z łącza. </p>
+<p>Funkcja dodająca połączenie do wyjścia z połączenia. </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">o</td><td>Otrzymana wartość z łącza. Funkcja dodająca połączenie do wyjścia z połączenia. </td></tr>
     <tr><td class="paramname">link</td><td>Dodawane połączenie. </td></tr>
   </table>
   </dd>
 </dl>
 
 <p>Reimplemented in <a class="el" href="class_neuron.html#a1a20d9ac9bf64126f8d74d8c1c7d3c58">Neuron&lt; T, ActivationFunction &gt;</a>.</p>
+
+</div>
+</div>
+<hr/><h2>Member Data Documentation</h2>
+<a class="anchor" id="ade68e41659b12f8a7e31f8dc8507bb50"></a><!-- doxytag: member="Output::ins" ref="ade68e41659b12f8a7e31f8dc8507bb50" args="" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::list&lt;<a class="el" href="class_link.html">Link</a>&lt;T&gt;*&gt; <a class="el" href="class_output.html">Output</a>&lt; T &gt;::<a class="el" href="class_output.html#ade68e41659b12f8a7e31f8dc8507bb50">ins</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Lista <a class="el" href="class_link.html">Link</a> wejść do danego elementu. </p>
 
 </div>
 </div>
@@ -191,7 +206,7 @@ template&lt;class T&gt; </div>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -204,7 +219,7 @@ template&lt;class T&gt; </div>
     <ul>
       <li class="navelem"><a class="el" href="class_output.html">Output</a>      </li>
 
-    <li class="footer">Generated on Thu Apr 5 2012 14:43:00 for SSN by
+    <li class="footer">Generated on Mon Apr 9 2012 17:15:26 for SSN by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

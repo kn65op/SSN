@@ -4,5 +4,5 @@ var searchData=
   ['learnbp',['learnBP',['../class_neuron.html#a5e479fce295d76be68c017ab8c986f8c',1,'Neuron']]],
   ['learndelta',['learnDelta',['../class_neuron.html#ae73a056c55311521d0e31347837109cc',1,'Neuron']]],
   ['linearactivationfunction',['LinearActivationFunction',['../class_linear_activation_function.html#a0474630a90119eb50d775b3e9aa46b30',1,'LinearActivationFunction::LinearActivationFunction()'],['../class_linear_activation_function.html#ada030e1ea55f5127fdd7455279177be1',1,'LinearActivationFunction::LinearActivationFunction(double p)']]],
-  ['link',['Link',['../class_link.html#a43e11e230dbd74ea650c292b637388ac',1,'Link']]]
+  ['link',['Link',['../class_link.html#a43e11e230dbd74ea650c292b637388ac',1,'Link::Link()'],['../class_link.html#a3db35b41536e89e49429c87ef7ae9741',1,'Link::Link(const Link &amp;orig)']]]
 ];

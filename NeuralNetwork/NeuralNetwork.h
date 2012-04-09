@@ -85,7 +85,9 @@ public:
     clearNetwork();
   }
 
-  //brak możliwości kopiowania.
+  /**
+   * Brak możliwości kopiowania.
+   */
   NeuralNetwork(const NeuralNetwork& orig) = delete;
 
   /**
@@ -384,22 +386,22 @@ public:
   }
 
   //TODO usunąć
-
-  void printWages()
-  {
-    int i = 1;
-    for (auto l : layers) // l -wskaźnik do listy warstw
-    {
-      std::cout << "wastwa: " << i++ << "\n";
-      int j = 1;
-      for (auto n : *l) // n - wskaźnik do neuronu
-      {
-        std::cout << "neuron: " << j++ << " wagi: \n";
-        n->printWages();
-        std::cout << "\n";
-      }
-    }
-  }
+//
+//  void printWages()
+//  {
+//    int i = 1;
+//    for (auto l : layers) // l -wskaźnik do listy warstw
+//    {
+//      std::cout << "wastwa: " << i++ << "\n";
+//      int j = 1;
+//      for (auto n : *l) // n - wskaźnik do neuronu
+//      {
+//        std::cout << "neuron: " << j++ << " wagi: \n";
+//        n->printWages();
+//        std::cout << "\n";
+//      }
+//    }
+//  }
 
 private:
 

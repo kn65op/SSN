@@ -42,7 +42,11 @@ public:
     link->setIn(this);
   }
 protected:
+  /** Wartość wysyłana z danego elementu.
+   */
   T input_value;
+  /** Lista wyjść z danego elementu.
+   */
   std::list<Link<T>*> outs;
   /**
    * Wysłanie wartości przechowywanej w danym obiekcie do wszystkich podłączonych linków.
