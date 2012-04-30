@@ -17,12 +17,22 @@
 #include <Bias.h>
 
 #include <list>
+#include <fstream>
 
 //TODO usunąć
 #include <iostream>
 
 /**
  * Klasa odwzorująca sieć neuronową. Najpierw należy ustawić parametry sieci, a następnie uruchomić sieć. Jeśli wystąpi konieczność zmiany parametrów to należy zatrzymać sieć.
+ * Parametrem jest typ przetwarzanych danych.
+ * Co można ustawić:
+ * <ul>
+ * <li>liczbę wejść</li>
+ * <li>liczbę wyjść (równoważne z liczbą neuronów w ostatniej warstwie)</li>
+ * <li>liczbę warstw</li>
+ * <li>liczbę neuronów w warstwach</li>
+ * <li>funkcję aktywacje</li>
+ * </ul>
  */
 template <class T, class ActivationFunction> class NeuralNetwork
 {
@@ -105,6 +115,7 @@ public:
 
   /**
    * Funkcja tworząca siec z podanych parametrów. Pozwala na wykorzystanie sieci.
+   * @throw NeuralNetwork::WrongState W przypadku, gdy sieć została już zainicjowana i nie została zatrzymana.
    */
   void init() throw (WrongState)
   {
@@ -383,6 +394,68 @@ public:
 
     this->layers_count = layers_count;
     neurons_count.resize(layers_count);
+  }
+
+  /**
+   * Funkcja zapisująca sieć do danego pliku. Zapisać sieć można w dowolnym momencie.
+   * @param filename Nazwa pliku, do którego zapisujemy.
+   */
+  void saveNetworkToFile(std::string filename)
+  {
+    std::ofstream file(filename, std::ios::out);
+    //zapis parametrów sieci
+    file << entries_count << "\n";
+    file << layers_count << "\n";
+    for (auto l: neurons_count) // l - int
+    {
+      file << l << " ";
+    }
+    file << exits_count << "\n";
+    //zapis neuronów
+    for (auto l : layers) //l - warstwa
+    {
+      for (auto n : *l) //n - neuron
+      {
+	n->saveToFile(file);
+	file << "\n";
+      }
+    }
+  }
+
+  /**
+   * Funkcja wczytująca sieć z danego pliku. Wczytać sieć można jedynie, wtedy gdy nie pracuje. Po wczytaniu sieć jest gotowa do działania.
+   * @param filename Nazwa pliku, z którego wczytujemy.
+   * @throw WrognState W przypadku, gdy sieć jest działająca.
+   */
+  void loadNetworkFromFile(std::string filename) throw(WrongState)
+  {
+    if (valid)
+    {
+      throw WrongState();
+    }
+    std::ifstream file(filename, std::ios::in);
+    //wczytanie parametórw sieci
+    int tmp;
+    file >> tmp;
+    setEntries(tmp);
+    file >> tmp;
+    setLayersCount(tmp);
+    for (auto & l : neurons_count)
+    {
+      file >> l;
+    }
+    file >> tmp;
+    setExits(tmp);
+    //stworzenie sieci, by można było wczytać do neuronów
+    init();
+    //wczytanie neuronów
+    for (auto l : layers) //l - warstwa
+    {
+      for (auto n : *l) //n - neuron
+      {
+	n->loadFromFile(file);
+      }
+    }
   }
 
   //TODO usunąć

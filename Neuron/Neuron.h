@@ -188,6 +188,30 @@ public:
     std::cout << "that was wages!\n";
   }
 
+  /**
+   * Zapis wag neuronu do pliku.
+   * @param file Plik jako std::ofstream, do którego zapisujemy.
+   */
+  void saveToFile(std::ofstream & file)
+  {
+    for (auto w : wages)
+    {
+      file << *w << " ";
+    }
+  }
+
+  /**
+   * Wczytanie wag neuronu z pliku.
+   * @param file Plik jako std::ifstream, z którego czytamy.
+   */
+  void loadFromFile(std::ifstream & file)
+  {
+    for (auto w : wages)
+    {
+      file >> *w;
+    }
+  }
+
 private:
   T activation;
   std::list<T*> wages; //THINK: Może zmienić na samo T

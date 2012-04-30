@@ -241,34 +241,34 @@ TEST(RealWordTest, XORLinear)
   for (int i = 0; i < 1000; ++i)
   {
     std::vector<double> o(1);
-    
+
     nn.setInput(in1.begin(), in1.end());
     o = nn.calcOutput();
     nn.learn(out0.begin(), out0.end());
-//
-//    std::cout << "Wynik0: " << o[0] << "\n";
-//    nn.printWages();
+    //
+    //    std::cout << "Wynik0: " << o[0] << "\n";
+    //    nn.printWages();
 
     nn.setInput(in2.begin(), in2.end());
     o = nn.calcOutput();
     nn.learn(out1.begin(), out1.end());
-//
-//    std::cout << "Wynik1: " << o[0] << "\n";
-//    nn.printWages();
+    //
+    //    std::cout << "Wynik1: " << o[0] << "\n";
+    //    nn.printWages();
 
     nn.setInput(in3.begin(), in3.end());
     o = nn.calcOutput();
     nn.learn(out1.begin(), out1.end());
-//
-//    std::cout << "Wynik1: " << o[0] << "\n";
-//    nn.printWages();
+    //
+    //    std::cout << "Wynik1: " << o[0] << "\n";
+    //    nn.printWages();
 
     nn.setInput(in4.begin(), in4.end());
     o = nn.calcOutput();
     nn.learn(out0.begin(), out0.end());
-//
-//    std::cout << "Wynik0: " << o[0] << "\n";
-//    nn.printWages();
+    //
+    //    std::cout << "Wynik0: " << o[0] << "\n";
+    //    nn.printWages();
 
   }
   //test
@@ -358,7 +358,6 @@ TEST(RealWordTest, XORLinear)
 //  std::cout << o[0] << " " << o[1] << " " << o[2] << " " << o[3] << "\n";
 //}
 
-
 TEST(RealWordTest, LiczbyLinear)
 {
   typedef NeuralNetwork<double, LinearActivationFunction<double >> network;
@@ -368,7 +367,7 @@ TEST(RealWordTest, LiczbyLinear)
   nn.setLayersCount(2);
   nn.setNeurons(1, 7);
   nn.init();
-  std::vector<double> in0 = {1, 1, 1, 1, 1 ,1 ,0};
+  std::vector<double> in0 = {1, 1, 1, 1, 1, 1, 0};
   std::vector<double> in1 = {0, 1, 1, 0, 0, 0, 0};
   std::vector<double> in2 = {1, 1, 0, 1, 1, 0, 1};
   std::vector<double> in3 = {1, 1, 1, 1, 0, 0, 1};
@@ -428,73 +427,165 @@ TEST(RealWordTest, LiczbyLinear)
   out = nn.calcOutput();
   for (auto o : out)
   {
-    std::cout << (o > 0.9? "1" : (o < 0.1 ? "0" : "?")) << " ";
+    std::cout << (o > 0.9 ? "1" : (o < 0.1 ? "0" : "?")) << " ";
   }
   std::cout << "\n";
   nn.setInput(in1.begin(), in1.end());
   out = nn.calcOutput();
   for (auto o : out)
   {
-    std::cout << (o > 0.9? "1" : (o < 0.1 ? "0" : "?")) << " ";
+    std::cout << (o > 0.9 ? "1" : (o < 0.1 ? "0" : "?")) << " ";
   }
   std::cout << "\n";
   nn.setInput(in2.begin(), in2.end());
   out = nn.calcOutput();
   for (auto o : out)
   {
-    std::cout << (o > 0.9? "1" : (o < 0.1 ? "0" : "?")) << " ";
+    std::cout << (o > 0.9 ? "1" : (o < 0.1 ? "0" : "?")) << " ";
   }
   std::cout << "\n";
   nn.setInput(in3.begin(), in3.end());
   out = nn.calcOutput();
   for (auto o : out)
   {
-    std::cout << (o > 0.9? "1" : (o < 0.1 ? "0" : "?")) << " ";
+    std::cout << (o > 0.9 ? "1" : (o < 0.1 ? "0" : "?")) << " ";
   }
   std::cout << "\n";
   nn.setInput(in4.begin(), in4.end());
   out = nn.calcOutput();
   for (auto o : out)
   {
-    std::cout << (o > 0.9? "1" : (o < 0.1 ? "0" : "?")) << " ";
+    std::cout << (o > 0.9 ? "1" : (o < 0.1 ? "0" : "?")) << " ";
   }
   std::cout << "\n";
   nn.setInput(in5.begin(), in5.end());
   out = nn.calcOutput();
   for (auto o : out)
   {
-    std::cout << (o > 0.9? "1" : (o < 0.1 ? "0" : "?")) << " ";
+    std::cout << (o > 0.9 ? "1" : (o < 0.1 ? "0" : "?")) << " ";
   }
   std::cout << "\n";
   nn.setInput(in6.begin(), in6.end());
   out = nn.calcOutput();
   for (auto o : out)
   {
-    std::cout << (o > 0.9? "1" : (o < 0.1 ? "0" : "?")) << " ";
+    std::cout << (o > 0.9 ? "1" : (o < 0.1 ? "0" : "?")) << " ";
   }
   std::cout << "\n";
   nn.setInput(in7.begin(), in7.end());
   out = nn.calcOutput();
   for (auto o : out)
   {
-    std::cout << (o > 0.9? "1" : (o < 0.1 ? "0" : "?")) << " ";
+    std::cout << (o > 0.9 ? "1" : (o < 0.1 ? "0" : "?")) << " ";
   }
   std::cout << "\n";
   nn.setInput(in8.begin(), in8.end());
   out = nn.calcOutput();
   for (auto o : out)
   {
-    std::cout << (o > 0.9? "1" : (o < 0.1 ? "0" : "?")) << " ";
+    std::cout << (o > 0.9 ? "1" : (o < 0.1 ? "0" : "?")) << " ";
   }
   std::cout << "\n";
   nn.setInput(in9.begin(), in9.end());
   out = nn.calcOutput();
   for (auto o : out)
   {
-    std::cout << (o > 0.9? "1" : (o < 0.1 ? "0" : "?")) << " ";
+    std::cout << (o > 0.9 ? "1" : (o < 0.1 ? "0" : "?")) << " ";
   }
   std::cout << "\n";
+
+  nn.saveNetworkToFile("test.ann");
   //nn.printWages();
+}
+
+TEST(LoadTest, Load)
+{
+
+  typedef NeuralNetwork<double, LinearActivationFunction<double >> network;
+  network nn;
+  nn.loadNetworkFromFile("test.ann");
+  std::vector<double> in0 = {1, 1, 1, 1, 1, 1, 0};
+  std::vector<double> in1 = {0, 1, 1, 0, 0, 0, 0};
+  std::vector<double> in2 = {1, 1, 0, 1, 1, 0, 1};
+  std::vector<double> in3 = {1, 1, 1, 1, 0, 0, 1};
+  std::vector<double> in4 = {0, 1, 1, 0, 0, 1, 1};
+  std::vector<double> in5 = {1, 0, 1, 1, 0, 1, 1};
+  std::vector<double> in6 = {1, 0, 1, 1, 1, 1, 1};
+  std::vector<double> in7 = {1, 1, 1, 0, 0, 0, 0};
+  std::vector<double> in8 = {1, 1, 1, 1, 1, 1, 1};
+  std::vector<double> in9 = {1, 1, 1, 1, 0, 1, 1};
+  std::vector<double> out;
+  nn.setInput(in0.begin(), in0.end());
+  out = nn.calcOutput();
+  for (auto o : out)
+  {
+    std::cout << (o > 0.9 ? "1" : (o < 0.1 ? "0" : "?")) << " ";
+  }
+  std::cout << "\n";
+  nn.setInput(in1.begin(), in1.end());
+  out = nn.calcOutput();
+  for (auto o : out)
+  {
+    std::cout << (o > 0.9 ? "1" : (o < 0.1 ? "0" : "?")) << " ";
+  }
+  std::cout << "\n";
+  nn.setInput(in2.begin(), in2.end());
+  out = nn.calcOutput();
+  for (auto o : out)
+  {
+    std::cout << (o > 0.9 ? "1" : (o < 0.1 ? "0" : "?")) << " ";
+  }
+  std::cout << "\n";
+  nn.setInput(in3.begin(), in3.end());
+  out = nn.calcOutput();
+  for (auto o : out)
+  {
+    std::cout << (o > 0.9 ? "1" : (o < 0.1 ? "0" : "?")) << " ";
+  }
+  std::cout << "\n";
+  nn.setInput(in4.begin(), in4.end());
+  out = nn.calcOutput();
+  for (auto o : out)
+  {
+    std::cout << (o > 0.9 ? "1" : (o < 0.1 ? "0" : "?")) << " ";
+  }
+  std::cout << "\n";
+  nn.setInput(in5.begin(), in5.end());
+  out = nn.calcOutput();
+  for (auto o : out)
+  {
+    std::cout << (o > 0.9 ? "1" : (o < 0.1 ? "0" : "?")) << " ";
+  }
+  std::cout << "\n";
+  nn.setInput(in6.begin(), in6.end());
+  out = nn.calcOutput();
+  for (auto o : out)
+  {
+    std::cout << (o > 0.9 ? "1" : (o < 0.1 ? "0" : "?")) << " ";
+  }
+  std::cout << "\n";
+  nn.setInput(in7.begin(), in7.end());
+  out = nn.calcOutput();
+  for (auto o : out)
+  {
+    std::cout << (o > 0.9 ? "1" : (o < 0.1 ? "0" : "?")) << " ";
+  }
+  std::cout << "\n";
+  nn.setInput(in8.begin(), in8.end());
+  out = nn.calcOutput();
+  for (auto o : out)
+  {
+    std::cout << (o > 0.9 ? "1" : (o < 0.1 ? "0" : "?")) << " ";
+  }
+  std::cout << "\n";
+  nn.setInput(in9.begin(), in9.end());
+  out = nn.calcOutput();
+  for (auto o : out)
+  {
+    std::cout << (o > 0.9 ? "1" : (o < 0.1 ? "0" : "?")) << " ";
+  }
+  std::cout << "\n";
+
 }
 
 TEST(RealWordTest, ORLinear)
@@ -525,37 +616,37 @@ TEST(RealWordTest, ORLinear)
   for (int i = 0; i < 1000; ++i)
   {
     std::vector<double> o;
- //   nn.printWages();
+    //   nn.printWages();
     nn.setInput(in1.begin(), in1.end());
     o = nn.calcOutput();
-//    for (auto d : o)
-//    {
-//      std::cout << d << " :answer 0 0 \n";
-//    }
+    //    for (auto d : o)
+    //    {
+    //      std::cout << d << " :answer 0 0 \n";
+    //    }
     nn.learn(out0.begin(), out0.end());
     nn.setInput(in2.begin(), in2.end());
     o = nn.calcOutput();
-//    for (auto d : o)
-//    {
-//      std::cout << d << " :answer 1 0 \n";
-//    }
+    //    for (auto d : o)
+    //    {
+    //      std::cout << d << " :answer 1 0 \n";
+    //    }
     nn.learn(out1.begin(), out1.end());
     nn.setInput(in3.begin(), in3.end());
     o = nn.calcOutput();
-//    for (auto d : o)
-//    {
-//      std::cout << d << " :answer 0 1 \n";
-//    }
+    //    for (auto d : o)
+    //    {
+    //      std::cout << d << " :answer 0 1 \n";
+    //    }
     nn.learn(out1.begin(), out1.end());
     nn.setInput(in4.begin(), in4.end());
     o = nn.calcOutput();
-//    for (auto d : o)
-//    {
-//      std::cout << d << " :answer 1 1 \n";
-//    }
+    //    for (auto d : o)
+    //    {
+    //      std::cout << d << " :answer 1 1 \n";
+    //    }
     nn.learn(out1.begin(), out1.end());
   }
-//  nn.printWages();
+  //  nn.printWages();
   //test
   std::vector<double> out;
   nn.setInput(in1.begin(), in1.end());
@@ -570,8 +661,9 @@ TEST(RealWordTest, ORLinear)
   nn.setInput(in4.begin(), in4.end());
   out = nn.calcOutput();
   ASSERT_GT(out[0], 0.9);
-  
+
 }
+
 /*
 TEST(Pochod, na)
 {
