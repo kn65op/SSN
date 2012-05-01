@@ -19,6 +19,7 @@
 #include <list>
 #include <vector>
 #include <fstream>
+#include <cmath>
 
 //TODO usunąć
 #include <iostream>
@@ -459,13 +460,44 @@ public:
     }
   }
 
-    /***/
+  /**
+   * Funkcja ucząca na podstawie przekazanych wcześniej wzorców.
+   * @param error Błąd jak chcemy osiągnąć (domyślnie 0.1).
+   * @param iterations Maksymalna liczba iteracji do przeprowadzenia (domyślnie 1000).
+   * @return true, jeśli osiągnięto zadany błąd, false w przeciwnym wypadku.
+   */
   bool learnFromPattern(double error = 0.1, int iterations = 1000) throw (WrongState)
   {
-    for (int i=0; i < iterations; ++i)
+    double err;
+    typename std::list < std::vector < T >> ::iterator in, out, iend;
+    iend = learn_input.end();
+    typename std::vector<T>::iterator istart, iend, ostart, oend;
+    std::vector<T> o;
+    for (int i = 0; i < iterations && error > err; ++i) //iteracja uczenia
     {
-     //TODO dopisać 
+      err = 0;
+      in = learn_input.begin();
+      out = learn_output.begin();
+      for ( ; in != iend; ++in, ++out) //iteracja po wzorcach
+      {
+	istart = in->begin();
+	iend = in->end();
+	ostart = out->begin();
+	oend = out->end();
+	setInput(istart, iend);
+	o = calcOutput();
+	learn(ostart, oend);
+	for (auto oo : o) //liczenie błędu
+	{
+	  err += abs(*(ostat++) - oo);
+	}
+      }
     }
+    if (err > error)
+    {
+      return false;
+    }
+    return true;
   }
 
   /**
