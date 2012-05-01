@@ -13,10 +13,11 @@
 #include <Exit.h>
 #include <ActivationFunction.h>
 #include <Link.h>
-#include <Helper.h>
 #include <Bias.h>
+#include <Helper.h>
 
 #include <list>
+#include <vector>
 #include <fstream>
 
 //TODO usunąć
@@ -326,7 +327,7 @@ public:
   }
 
   /**
-   * Funkcja ucząca sieć. Jako argumenty podawana jest odpowiedź oczekiwana w postaci pary iteratorów: pierwszy i pierwszy za ostatnim.
+   * Funkcja ucząca sieć jednorazowo. Jako argumenty podawana jest odpowiedź oczekiwana w postaci pary iteratorów: pierwszy i pierwszy za ostatnim.
    * Jeśli podana odpowiedź jest większa niż ilość wyjść, to ostatnie elementy odpowiedzi są ignorowane.
    * @param start Iterator do pierwszego składnika odpowiedzi.
    * @param end Iterator do pierwszego elementu za ostatnim składnikiem odpowiedzi.
@@ -406,7 +407,7 @@ public:
     //zapis parametrów sieci
     file << entries_count << "\n";
     file << layers_count << "\n";
-    for (auto l: neurons_count) // l - int
+    for (auto l : neurons_count) // l - int
     {
       file << l << " ";
     }
@@ -416,8 +417,8 @@ public:
     {
       for (auto n : *l) //n - neuron
       {
-	n->saveToFile(file);
-	file << "\n";
+        n->saveToFile(file);
+        file << "\n";
       }
     }
   }
@@ -427,7 +428,7 @@ public:
    * @param filename Nazwa pliku, z którego wczytujemy.
    * @throw WrognState W przypadku, gdy sieć jest działająca.
    */
-  void loadNetworkFromFile(std::string filename) throw(WrongState)
+  void loadNetworkFromFile(std::string filename) throw (WrongState)
   {
     if (valid)
     {
@@ -453,11 +454,63 @@ public:
     {
       for (auto n : *l) //n - neuron
       {
-	n->loadFromFile(file);
+        n->loadFromFile(file);
       }
     }
   }
 
+    /***/
+  bool learnFromPattern(double error = 0.1, int iterations = 1000) throw (WrongState)
+  {
+    for (int i=0; i < iterations; ++i)
+    {
+     //TODO dopisać 
+    }
+  }
+
+  /**
+   * Funkcja usuwająca wszystkie wzorce i ich odpowiedzi.
+   */
+  void clearPatterns()
+  {
+    learn_input.clear();
+    learn_output.clear();
+  }
+
+  /**
+   * Funkcja dodająca wzorzec i jego odpowiedź do zestawu uczącego.
+   * @param istart Iterator do pierwszego elementu wzorca.
+   * @param iend Iterator do ostatniego elementu wzorca.
+   * @param ostart Iterator do pierwszego elementu odpowiedzi.
+   * @param oend Iterator do ostatniego elementu odpowiedzi.
+   */
+  template <class InputIterator, class OutputIterator> void insertPattern(InputIterator istart, InputIterator iend, OutputIterator ostart, OutputIterator oend) throw (WrongState, WrongArgument)
+  {
+    if (!valid)
+    {
+      throw WrongState();
+    }
+    learn_input.push_back(std::vector<T > (entries_count));
+    typename std::vector<T>::iterator iit = learn_input.back().begin();
+    for (; istart != iend; ++istart)
+    {
+      *iit = istart;
+    }
+    if (iit != learn_input.back.end())
+    {
+      throw WrongArgument("Za mało wejść");
+    }
+    learn_output.push_back(std::vector<T > (exits_count));
+    typename std::vector<T>::iterator oit = learn_input.back().begin();
+    for (; ostart != oend; ++ostart)
+    {
+      *oit = ostart;
+    }
+    if (oit != learn_output.back.end())
+    {
+      throw WrongArgument("Za mało wyjść");
+    }
+  }
   //TODO usunąć
   //
   //  void printWages()
@@ -538,6 +591,11 @@ private:
   bool valid;
 
   static int max_layers_count;
+
+  /**Lista elementów uczących*/
+  std::list<std::vector<T >> learn_input;
+  /**Lista odpowiedzi do elementów uczących*/
+  std::list<std::vector<T >> learn_output;
 
 };
 
