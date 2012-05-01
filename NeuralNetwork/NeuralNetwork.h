@@ -497,8 +497,6 @@ public:
           err += pow(*(ostart++) - oo, 2);
         }
       }
-      std::cout << i << "\n";
-      std::cout << err << "\n";
     }
     if (err > error)
     {
