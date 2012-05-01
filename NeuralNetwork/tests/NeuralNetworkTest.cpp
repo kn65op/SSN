@@ -498,6 +498,124 @@ TEST(RealWordTest, LiczbyLinear)
   //nn.printWages();
 }
 
+TEST(EasyLearnTest, LiczbyLinear)
+{
+  typedef NeuralNetwork<double, LinearActivationFunction<double >> network;
+  network nn;
+  nn.setEntries(7);
+  nn.setExits(10);
+  nn.setLayersCount(2);
+  nn.setNeurons(1, 7);
+  nn.init();
+  std::vector<double> in0 = {1, 1, 1, 1, 1, 1, 0};
+  std::vector<double> in1 = {0, 1, 1, 0, 0, 0, 0};
+  std::vector<double> in2 = {1, 1, 0, 1, 1, 0, 1};
+  std::vector<double> in3 = {1, 1, 1, 1, 0, 0, 1};
+  std::vector<double> in4 = {0, 1, 1, 0, 0, 1, 1};
+  std::vector<double> in5 = {1, 0, 1, 1, 0, 1, 1};
+  std::vector<double> in6 = {1, 0, 1, 1, 1, 1, 1};
+  std::vector<double> in7 = {1, 1, 1, 0, 0, 0, 0};
+  std::vector<double> in8 = {1, 1, 1, 1, 1, 1, 1};
+  std::vector<double> in9 = {1, 1, 1, 1, 0, 1, 1};
+  std::vector<double> out0 = {1, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+  std::vector<double> out1 = {0, 1, 0, 0, 0, 0, 0, 0, 0, 0};
+  std::vector<double> out2 = {0, 0, 1, 0, 0, 0, 0, 0, 0, 0};
+  std::vector<double> out3 = {0, 0, 0, 1, 0, 0, 0, 0, 0, 0};
+  std::vector<double> out4 = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0};
+  std::vector<double> out5 = {0, 0, 0, 0, 0, 1, 0, 0, 0, 0};
+  std::vector<double> out6 = {0, 0, 0, 0, 0, 0, 1, 0, 0, 0};
+  std::vector<double> out7 = {0, 0, 0, 0, 0, 0, 0, 1, 0, 0};
+  std::vector<double> out8 = {0, 0, 0, 0, 0, 0, 0, 0, 1, 0};
+  std::vector<double> out9 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 1};
+  nn.insertPattern(in0.begin(), in0.end(), out0.begin(), out0.end());
+  nn.insertPattern(in1.begin(), in1.end(), out1.begin(), out1.end());
+  nn.insertPattern(in2.begin(), in2.end(), out2.begin(), out2.end());
+  nn.insertPattern(in3.begin(), in3.end(), out3.begin(), out3.end());
+  nn.insertPattern(in4.begin(), in4.end(), out4.begin(), out4.end());
+  nn.insertPattern(in5.begin(), in5.end(), out5.begin(), out5.end());
+  nn.insertPattern(in6.begin(), in6.end(), out6.begin(), out6.end());
+  nn.insertPattern(in7.begin(), in7.end(), out7.begin(), out7.end());
+  nn.insertPattern(in8.begin(), in8.end(), out8.begin(), out8.end());
+  nn.insertPattern(in9.begin(), in9.end(), out9.begin(), out9.end());
+  //uczenie
+  nn.learnFromPattern(0.1, 10000);
+  //test
+  std::vector<double> out;
+  nn.setInput(in0.begin(), in0.end());
+  out = nn.calcOutput();
+  for (auto o : out)
+  {
+    std::cout << (o > 0.9 ? "1" : (o < 0.1 ? "0" : "?")) << " ";
+  }
+  std::cout << "\n";
+  nn.setInput(in1.begin(), in1.end());
+  out = nn.calcOutput();
+  for (auto o : out)
+  {
+    std::cout << (o > 0.9 ? "1" : (o < 0.1 ? "0" : "?")) << " ";
+  }
+  std::cout << "\n";
+  nn.setInput(in2.begin(), in2.end());
+  out = nn.calcOutput();
+  for (auto o : out)
+  {
+    std::cout << (o > 0.9 ? "1" : (o < 0.1 ? "0" : "?")) << " ";
+  }
+  std::cout << "\n";
+  nn.setInput(in3.begin(), in3.end());
+  out = nn.calcOutput();
+  for (auto o : out)
+  {
+    std::cout << (o > 0.9 ? "1" : (o < 0.1 ? "0" : "?")) << " ";
+  }
+  std::cout << "\n";
+  nn.setInput(in4.begin(), in4.end());
+  out = nn.calcOutput();
+  for (auto o : out)
+  {
+    std::cout << (o > 0.9 ? "1" : (o < 0.1 ? "0" : "?")) << " ";
+  }
+  std::cout << "\n";
+  nn.setInput(in5.begin(), in5.end());
+  out = nn.calcOutput();
+  for (auto o : out)
+  {
+    std::cout << (o > 0.9 ? "1" : (o < 0.1 ? "0" : "?")) << " ";
+  }
+  std::cout << "\n";
+  nn.setInput(in6.begin(), in6.end());
+  out = nn.calcOutput();
+  for (auto o : out)
+  {
+    std::cout << (o > 0.9 ? "1" : (o < 0.1 ? "0" : "?")) << " ";
+  }
+  std::cout << "\n";
+  nn.setInput(in7.begin(), in7.end());
+  out = nn.calcOutput();
+  for (auto o : out)
+  {
+    std::cout << (o > 0.9 ? "1" : (o < 0.1 ? "0" : "?")) << " ";
+  }
+  std::cout << "\n";
+  nn.setInput(in8.begin(), in8.end());
+  out = nn.calcOutput();
+  for (auto o : out)
+  {
+    std::cout << (o > 0.9 ? "1" : (o < 0.1 ? "0" : "?")) << " ";
+  }
+  std::cout << "\n";
+  nn.setInput(in9.begin(), in9.end());
+  out = nn.calcOutput();
+  for (auto o : out)
+  {
+    std::cout << (o > 0.9 ? "1" : (o < 0.1 ? "0" : "?")) << " ";
+  }
+  std::cout << "\n";
+
+  nn.saveNetworkToFile("test.ann");
+  //nn.printWages();
+}
+
 TEST(LoadTest, Load)
 {
 

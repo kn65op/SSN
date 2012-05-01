@@ -95,6 +95,7 @@ public:
   ~NeuralNetwork()
   {
     clearNetwork();
+    clearPatterns();
   }
 
   /**
@@ -468,30 +469,36 @@ public:
    */
   bool learnFromPattern(double error = 0.1, int iterations = 1000) throw (WrongState)
   {
-    double err;
-    typename std::list < std::vector < T >> ::iterator in, out, iend;
-    iend = learn_input.end();
+    if (!valid)
+    {
+      throw WrongState();
+    }
+    double err = error + 1;
+    typename std::list < std::vector < T >> ::iterator in, out, inend;
+    inend = learn_input.end();
     typename std::vector<T>::iterator istart, iend, ostart, oend;
     std::vector<T> o;
-    for (int i = 0; i < iterations && error > err; ++i) //iteracja uczenia
+    for (int i = 0; i < iterations && err > error; ++i) //iteracja uczenia
     {
       err = 0;
       in = learn_input.begin();
       out = learn_output.begin();
-      for ( ; in != iend; ++in, ++out) //iteracja po wzorcach
+      for (; in != inend; ++in, ++out) //iteracja po wzorcach
       {
-	istart = in->begin();
-	iend = in->end();
-	ostart = out->begin();
-	oend = out->end();
-	setInput(istart, iend);
-	o = calcOutput();
-	learn(ostart, oend);
-	for (auto oo : o) //liczenie błędu
-	{
-	  err += abs(*(ostat++) - oo);
-	}
+        istart = in->begin();
+        iend = in->end();
+        ostart = out->begin();
+        oend = out->end();
+        setInput(istart, iend);
+        o = calcOutput();
+        learn(ostart, oend);
+        for (auto oo : o) //liczenie błędu
+        {
+          err += pow(*(ostart++) - oo, 2);
+        }
       }
+      std::cout << i << "\n";
+      std::cout << err << "\n";
     }
     if (err > error)
     {
@@ -526,19 +533,19 @@ public:
     typename std::vector<T>::iterator iit = learn_input.back().begin();
     for (; istart != iend; ++istart)
     {
-      *iit = istart;
+      *(iit++) = *istart;
     }
-    if (iit != learn_input.back.end())
+    if (iit != learn_input.back().end())
     {
       throw WrongArgument("Za mało wejść");
     }
     learn_output.push_back(std::vector<T > (exits_count));
-    typename std::vector<T>::iterator oit = learn_input.back().begin();
+    typename std::vector<T>::iterator oit = learn_output.back().begin();
     for (; ostart != oend; ++ostart)
     {
-      *oit = ostart;
+      *(oit++) = *ostart;
     }
-    if (oit != learn_output.back.end())
+    if (oit != learn_output.back().end())
     {
       throw WrongArgument("Za mało wyjść");
     }

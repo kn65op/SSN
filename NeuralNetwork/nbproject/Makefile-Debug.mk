@@ -85,7 +85,7 @@ ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/NeuralNetworkTest.o ${OBJECTFILES:%.o=
 ${TESTDIR}/tests/NeuralNetworkTest.o: tests/NeuralNetworkTest.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -g -I. -I. -I. -I. -I. -I. -I. -I../../gtest/gtest_src/include -I../Neuron -I../LibHelper -MMD -MP -MF $@.d -o ${TESTDIR}/tests/NeuralNetworkTest.o tests/NeuralNetworkTest.cpp
+	$(COMPILE.cc) -g -I. -I. -I. -I. -I. -I. -I. -I. -I../../gtest/gtest_src/include -I../Neuron -I../LibHelper -MMD -MP -MF $@.d -o ${TESTDIR}/tests/NeuralNetworkTest.o tests/NeuralNetworkTest.cpp
 
 
 # Run Test Targets
