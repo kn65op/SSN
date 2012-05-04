@@ -128,12 +128,30 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;class InputIterator &gt; </td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_neural_network.html#a814f14ae36ecb286923f7fff6cff7aa7">learn</a> (InputIterator start, InputIterator end)  throw (WrongState, WrongArgument)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neural_network.html#a3ef0490ade6f9efff49501132a12fd18">setLayersCount</a> (int layers_count)  throw (WrongState, WrongArgument)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neural_network.html#a60951fc1503702d98c67fa5bf10e0a7e">saveNetworkToFile</a> (std::string filename)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neural_network.html#a5270bf5e7f7fc4c9fee4c5b609af32d0">loadNetworkFromFile</a> (std::string filename)  throw (WrongState)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neural_network.html#a04cb815d8040fee18909dbb81c6d189c">learnFromPattern</a> (double error=0.1, int iterations=1000)  throw (WrongState)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_neural_network.html#ae6fcd0f55579ecf6ea9b67b5611dfe44">clearPatterns</a> ()</td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;class InputIterator , class OutputIterator &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_neural_network.html#af3a6f63b2a22719f7b5dd7e6c6abc45a">insertPattern</a> (InputIterator istart, InputIterator iend, OutputIterator ostart, OutputIterator oend)  throw (WrongState, WrongArgument)</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><h3>template&lt;class T, class ActivationFunction&gt;<br/>
 class NeuralNetwork&lt; T, ActivationFunction &gt;</h3>
 
-<p>Klasa odwzorująca sieć neuronową. Najpierw należy ustawić parametry sieci, a następnie uruchomić sieć. Jeśli wystąpi konieczność zmiany parametrów to należy zatrzymać sieć. </p>
+<p>Klasa odwzorująca sieć neuronową. Najpierw należy ustawić parametry sieci, a następnie uruchomić sieć. Jeśli wystąpi konieczność zmiany parametrów to należy zatrzymać sieć. Parametrem jest typ przetwarzanych danych. Co można ustawić: </p>
+<ul>
+<li>
+liczbę wejść </li>
+<li>
+liczbę wyjść (równoważne z liczbą neuronów w ostatniej warstwie) </li>
+<li>
+liczbę warstw </li>
+<li>
+liczbę neuronów w warstwach </li>
+<li>
+funkcję aktywacje </li>
+</ul>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ade5d1724706351407fdf6acf613ac8c8"></a><!-- doxytag: member="NeuralNetwork::NeuralNetwork" ref="ade5d1724706351407fdf6acf613ac8c8" args="()" -->
 <div class="memitem">
@@ -220,6 +238,25 @@ template&lt;class T , class ActivationFunction &gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="ae6fcd0f55579ecf6ea9b67b5611dfe44"></a><!-- doxytag: member="NeuralNetwork::clearPatterns" ref="ae6fcd0f55579ecf6ea9b67b5611dfe44" args="()" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , class ActivationFunction &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_neural_network.html">NeuralNetwork</a>&lt; T, <a class="el" href="class_activation_function.html">ActivationFunction</a> &gt;::<a class="el" href="class_neural_network.html#ae6fcd0f55579ecf6ea9b67b5611dfe44">clearPatterns</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Funkcja usuwająca wszystkie wzorce i ich odpowiedzi. </p>
+
+</div>
+</div>
 <a class="anchor" id="aa83131836c86cd3e60ddb46a17b164a5"></a><!-- doxytag: member="NeuralNetwork::init" ref="aa83131836c86cd3e60ddb46a17b164a5" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -236,6 +273,65 @@ template&lt;class T , class ActivationFunction &gt; </div>
 </div>
 <div class="memdoc">
 <p>Funkcja tworząca siec z podanych parametrów. Pozwala na wykorzystanie sieci. </p>
+<dl class="exception"><dt><b>Exceptions:</b></dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="class_neural_network_1_1_wrong_state.html">NeuralNetwork::WrongState</a></td><td>W przypadku, gdy sieć została już zainicjowana i nie została zatrzymana. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="af3a6f63b2a22719f7b5dd7e6c6abc45a"></a><!-- doxytag: member="NeuralNetwork::insertPattern" ref="af3a6f63b2a22719f7b5dd7e6c6abc45a" args="(InputIterator istart, InputIterator iend, OutputIterator ostart, OutputIterator oend)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , class ActivationFunction &gt; </div>
+<div class="memtemplate">
+template&lt;class InputIterator , class OutputIterator &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_neural_network.html">NeuralNetwork</a>&lt; T, <a class="el" href="class_activation_function.html">ActivationFunction</a> &gt;::<a class="el" href="class_neural_network.html#af3a6f63b2a22719f7b5dd7e6c6abc45a">insertPattern</a> </td>
+          <td>(</td>
+          <td class="paramtype">InputIterator&#160;</td>
+          <td class="paramname"><em>istart</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">InputIterator&#160;</td>
+          <td class="paramname"><em>iend</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">OutputIterator&#160;</td>
+          <td class="paramname"><em>ostart</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">OutputIterator&#160;</td>
+          <td class="paramname"><em>oend</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>  throw (<a class="el" href="class_neural_network_1_1_wrong_state.html">WrongState</a>, <a class="el" href="class_neural_network_1_1_wrong_argument.html">WrongArgument</a>)<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Funkcja dodająca wzorzec i jego odpowiedź do zestawu uczącego. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">istart</td><td>Iterator do pierwszego elementu wzorca. </td></tr>
+    <tr><td class="paramname">iend</td><td>Iterator do ostatniego elementu wzorca. </td></tr>
+    <tr><td class="paramname">ostart</td><td>Iterator do pierwszego elementu odpowiedzi. </td></tr>
+    <tr><td class="paramname">oend</td><td>Iterator do ostatniego elementu odpowiedzi. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -267,7 +363,7 @@ template&lt;class InputIterator &gt; </div>
       </table>
 </div>
 <div class="memdoc">
-<p>Funkcja ucząca sieć. Jako argumenty podawana jest odpowiedź oczekiwana w postaci pary iteratorów: pierwszy i pierwszy za ostatnim. Jeśli podana odpowiedź jest większa niż ilość wyjść, to ostatnie elementy odpowiedzi są ignorowane. </p>
+<p>Funkcja ucząca sieć jednorazowo. Jako argumenty podawana jest odpowiedź oczekiwana w postaci pary iteratorów: pierwszy i pierwszy za ostatnim. Jeśli podana odpowiedź jest większa niż ilość wyjść, to ostatnie elementy odpowiedzi są ignorowane. </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">start</td><td>Iterator do pierwszego składnika odpowiedzi. </td></tr>
@@ -279,6 +375,102 @@ template&lt;class InputIterator &gt; </div>
   <table class="exception">
     <tr><td class="paramname"><a class="el" href="class_neural_network_1_1_wrong_state.html">NeuralNetwork::WrongState</a></td><td>W przypadku, gdy nie jest możliwe w danenym momencie uczenie sieci. </td></tr>
     <tr><td class="paramname"><a class="el" href="class_neural_network_1_1_wrong_argument.html">NeuralNetwork::WrongArgument</a></td><td>W przypadku, gdy podana odpowiedź jest za mała. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a04cb815d8040fee18909dbb81c6d189c"></a><!-- doxytag: member="NeuralNetwork::learnFromPattern" ref="a04cb815d8040fee18909dbb81c6d189c" args="(double error=0.1, int iterations=1000)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , class ActivationFunction &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_neural_network.html">NeuralNetwork</a>&lt; T, <a class="el" href="class_activation_function.html">ActivationFunction</a> &gt;::<a class="el" href="class_neural_network.html#a04cb815d8040fee18909dbb81c6d189c">learnFromPattern</a> </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>error</em> = <code>0.1</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iterations</em> = <code>1000</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>  throw (<a class="el" href="class_neural_network_1_1_wrong_state.html">WrongState</a>)<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Funkcja ucząca na podstawie przekazanych wcześniej wzorców. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">error</td><td>Błąd jak chcemy osiągnąć (domyślnie 0.1). </td></tr>
+    <tr><td class="paramname">iterations</td><td>Maksymalna liczba iteracji do przeprowadzenia (domyślnie 1000). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>true, jeśli osiągnięto zadany błąd, false w przeciwnym wypadku. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a5270bf5e7f7fc4c9fee4c5b609af32d0"></a><!-- doxytag: member="NeuralNetwork::loadNetworkFromFile" ref="a5270bf5e7f7fc4c9fee4c5b609af32d0" args="(std::string filename)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , class ActivationFunction &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_neural_network.html">NeuralNetwork</a>&lt; T, <a class="el" href="class_activation_function.html">ActivationFunction</a> &gt;::<a class="el" href="class_neural_network.html#a5270bf5e7f7fc4c9fee4c5b609af32d0">loadNetworkFromFile</a> </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td>  throw (<a class="el" href="class_neural_network_1_1_wrong_state.html">WrongState</a>)<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Funkcja wczytująca sieć z danego pliku. Wczytać sieć można jedynie, wtedy gdy nie pracuje. Po wczytaniu sieć jest gotowa do działania. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>Nazwa pliku, z którego wczytujemy. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt><b>Exceptions:</b></dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">WrognState</td><td>W przypadku, gdy sieć jest działająca. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a60951fc1503702d98c67fa5bf10e0a7e"></a><!-- doxytag: member="NeuralNetwork::saveNetworkToFile" ref="a60951fc1503702d98c67fa5bf10e0a7e" args="(std::string filename)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , class ActivationFunction &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_neural_network.html">NeuralNetwork</a>&lt; T, <a class="el" href="class_activation_function.html">ActivationFunction</a> &gt;::<a class="el" href="class_neural_network.html#a60951fc1503702d98c67fa5bf10e0a7e">saveNetworkToFile</a> </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Funkcja zapisująca sieć do danego pliku. Zapisać sieć można w dowolnym momencie. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>Nazwa pliku, do którego zapisujemy. </td></tr>
   </table>
   </dd>
 </dl>
@@ -546,7 +738,7 @@ template&lt;class T , class ActivationFunction &gt; </div>
     <ul>
       <li class="navelem"><a class="el" href="class_neural_network.html">NeuralNetwork</a>      </li>
 
-    <li class="footer">Generated on Mon Apr 9 2012 17:15:26 for SSN by
+    <li class="footer">Generated on Tue May 1 2012 18:46:20 for SSN by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

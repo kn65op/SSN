@@ -8,7 +8,9 @@ var class_neuron =
     [ "calculateOutput", "class_neuron.html#a36c60982cb604f2fa6a1765177a9c2e7", null ],
     [ "learnBP", "class_neuron.html#a5e479fce295d76be68c017ab8c986f8c", null ],
     [ "learnDelta", "class_neuron.html#ae73a056c55311521d0e31347837109cc", null ],
+    [ "loadFromFile", "class_neuron.html#a6471332d3b91b31988c861b96b23ddf1", null ],
     [ "printWages", "class_neuron.html#ac112e85f169835dad11a6f7bd9e477b9", null ],
     [ "propagateAnswer", "class_neuron.html#acb55ff03a770877b6afb86ed4d06896a", null ],
+    [ "saveToFile", "class_neuron.html#a335b33e8c65ce8975472ff577a12dce5", null ],
     [ "setLinkIn", "class_neuron.html#a1a20d9ac9bf64126f8d74d8c1c7d3c58", null ]
 ];

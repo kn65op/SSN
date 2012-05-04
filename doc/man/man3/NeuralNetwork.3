@@ -1,4 +1,4 @@
-.TH "NeuralNetwork< T, ActivationFunction >" 3 "Mon Apr 9 2012" "SSN" \" -*- nroff -*-
+.TH "NeuralNetwork< T, ActivationFunction >" 3 "Tue May 1 2012" "SSN" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -60,12 +60,41 @@ NeuralNetwork< T, ActivationFunction > \-
 .ti -1c
 .RI "void \fBsetLayersCount\fP (int layers_count)  throw (WrongState, WrongArgument)"
 .br
+.ti -1c
+.RI "void \fBsaveNetworkToFile\fP (std::string filename)"
+.br
+.ti -1c
+.RI "void \fBloadNetworkFromFile\fP (std::string filename)  throw (WrongState)"
+.br
+.ti -1c
+.RI "bool \fBlearnFromPattern\fP (double error=0\&.1, int iterations=1000)  throw (WrongState)"
+.br
+.ti -1c
+.RI "void \fBclearPatterns\fP ()"
+.br
+.ti -1c
+.RI "template<class InputIterator , class OutputIterator > void \fBinsertPattern\fP (InputIterator istart, InputIterator iend, OutputIterator ostart, OutputIterator oend)  throw (WrongState, WrongArgument)"
+.br
 .in -1c
 .SH "Detailed Description"
 .PP 
 
 .SS "template<class T, class ActivationFunction>class NeuralNetwork< T, ActivationFunction >"
-Klasa odwzorująca sieć neuronową\&. Najpierw należy ustawić parametry sieci, a następnie uruchomić sieć\&. Jeśli wystąpi konieczność zmiany parametrów to należy zatrzymać sieć\&. 
+Klasa odwzorująca sieć neuronową\&. Najpierw należy ustawić parametry sieci, a następnie uruchomić sieć\&. Jeśli wystąpi konieczność zmiany parametrów to należy zatrzymać sieć\&. Parametrem jest typ przetwarzanych danych\&. Co można ustawić: 
+.PD 0
+
+.IP "\(bu" 2
+liczbę wejść 
+.IP "\(bu" 2
+liczbę wyjść (równoważne z liczbą neuronów w ostatniej warstwie) 
+.IP "\(bu" 2
+liczbę warstw 
+.IP "\(bu" 2
+liczbę neuronów w warstwach 
+.IP "\(bu" 2
+funkcję aktywacje 
+.PP
+
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "template<class T , class ActivationFunction > \fBNeuralNetwork\fP< T, \fBActivationFunction\fP >::\fBNeuralNetwork\fP ()\fC [inline]\fP"Kontruktor domyślny, tworzy prostą sieć z jednym wejściem i jednym wyjściem\&. 
@@ -86,8 +115,30 @@ Wektor wartości wyjściowych\&.
 .RE
 .PP
 
+.SS "template<class T , class ActivationFunction > void \fBNeuralNetwork\fP< T, \fBActivationFunction\fP >::\fBclearPatterns\fP ()\fC [inline]\fP"Funkcja usuwająca wszystkie wzorce i ich odpowiedzi\&. 
 .SS "template<class T , class ActivationFunction > void \fBNeuralNetwork\fP< T, \fBActivationFunction\fP >::\fBinit\fP ()  throw (\fBWrongState\fP)\fC [inline]\fP"Funkcja tworząca siec z podanych parametrów\&. Pozwala na wykorzystanie sieci\&. 
-.SS "template<class T , class ActivationFunction > template<class InputIterator > void \fBNeuralNetwork\fP< T, \fBActivationFunction\fP >::\fBlearn\fP (InputIteratorstart, InputIteratorend)  throw (\fBWrongState\fP, \fBWrongArgument\fP)\fC [inline]\fP"Funkcja ucząca sieć\&. Jako argumenty podawana jest odpowiedź oczekiwana w postaci pary iteratorów: pierwszy i pierwszy za ostatnim\&. Jeśli podana odpowiedź jest większa niż ilość wyjść, to ostatnie elementy odpowiedzi są ignorowane\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBNeuralNetwork::WrongState\fP\fP W przypadku, gdy sieć została już zainicjowana i nie została zatrzymana\&. 
+.RE
+.PP
+
+.SS "template<class T , class ActivationFunction > template<class InputIterator , class OutputIterator > void \fBNeuralNetwork\fP< T, \fBActivationFunction\fP >::\fBinsertPattern\fP (InputIteratoristart, InputIteratoriend, OutputIteratorostart, OutputIteratoroend)  throw (\fBWrongState\fP, \fBWrongArgument\fP)\fC [inline]\fP"Funkcja dodająca wzorzec i jego odpowiedź do zestawu uczącego\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIistart\fP Iterator do pierwszego elementu wzorca\&. 
+.br
+\fIiend\fP Iterator do ostatniego elementu wzorca\&. 
+.br
+\fIostart\fP Iterator do pierwszego elementu odpowiedzi\&. 
+.br
+\fIoend\fP Iterator do ostatniego elementu odpowiedzi\&. 
+.RE
+.PP
+
+.SS "template<class T , class ActivationFunction > template<class InputIterator > void \fBNeuralNetwork\fP< T, \fBActivationFunction\fP >::\fBlearn\fP (InputIteratorstart, InputIteratorend)  throw (\fBWrongState\fP, \fBWrongArgument\fP)\fC [inline]\fP"Funkcja ucząca sieć jednorazowo\&. Jako argumenty podawana jest odpowiedź oczekiwana w postaci pary iteratorów: pierwszy i pierwszy za ostatnim\&. Jeśli podana odpowiedź jest większa niż ilość wyjść, to ostatnie elementy odpowiedzi są ignorowane\&. 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -101,6 +152,42 @@ Wektor wartości wyjściowych\&.
 \fI\fBNeuralNetwork::WrongState\fP\fP W przypadku, gdy nie jest możliwe w danenym momencie uczenie sieci\&. 
 .br
 \fI\fBNeuralNetwork::WrongArgument\fP\fP W przypadku, gdy podana odpowiedź jest za mała\&. 
+.RE
+.PP
+
+.SS "template<class T , class ActivationFunction > bool \fBNeuralNetwork\fP< T, \fBActivationFunction\fP >::\fBlearnFromPattern\fP (doubleerror = \fC0\&.1\fP, intiterations = \fC1000\fP)  throw (\fBWrongState\fP)\fC [inline]\fP"Funkcja ucząca na podstawie przekazanych wcześniej wzorców\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIerror\fP Błąd jak chcemy osiągnąć (domyślnie 0\&.1)\&. 
+.br
+\fIiterations\fP Maksymalna liczba iteracji do przeprowadzenia (domyślnie 1000)\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true, jeśli osiągnięto zadany błąd, false w przeciwnym wypadku\&. 
+.RE
+.PP
+
+.SS "template<class T , class ActivationFunction > void \fBNeuralNetwork\fP< T, \fBActivationFunction\fP >::\fBloadNetworkFromFile\fP (std::stringfilename)  throw (\fBWrongState\fP)\fC [inline]\fP"Funkcja wczytująca sieć z danego pliku\&. Wczytać sieć można jedynie, wtedy gdy nie pracuje\&. Po wczytaniu sieć jest gotowa do działania\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP Nazwa pliku, z którego wczytujemy\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIWrognState\fP W przypadku, gdy sieć jest działająca\&. 
+.RE
+.PP
+
+.SS "template<class T , class ActivationFunction > void \fBNeuralNetwork\fP< T, \fBActivationFunction\fP >::\fBsaveNetworkToFile\fP (std::stringfilename)\fC [inline]\fP"Funkcja zapisująca sieć do danego pliku\&. Zapisać sieć można w dowolnym momencie\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP Nazwa pliku, do którego zapisujemy\&. 
 .RE
 .PP
 

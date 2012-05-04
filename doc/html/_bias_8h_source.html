@@ -111,34 +111,39 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00016"></a><a class="code" href="class_bias.html">00016</a> <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">class </span><a class="code" href="class_bias.html">Bias</a> : <span class="keyword">public</span> <a class="code" href="class_input.html">Input</a>&lt;T&gt;
 <a name="l00017"></a>00017 {
 <a name="l00018"></a>00018 <span class="keyword">public</span>:
-<a name="l00023"></a><a class="code" href="class_bias.html#abb349bc7ef3317db4a7ce75c96dbb533">00023</a>   <a class="code" href="class_bias.html#abb349bc7ef3317db4a7ce75c96dbb533">Bias</a>(T i): bias_value(i)
-<a name="l00024"></a>00024   {
-<a name="l00025"></a>00025     
-<a name="l00026"></a>00026   }
-<a name="l00027"></a>00027   <span class="keyword">virtual</span> ~<a class="code" href="class_bias.html">Bias</a>()
-<a name="l00028"></a>00028   {
-<a name="l00029"></a>00029     
-<a name="l00030"></a>00030   }
-<a name="l00035"></a><a class="code" href="class_bias.html#ab6df47ae8047f915cfa1fb77683b0eb7">00035</a>   <span class="keywordtype">void</span> <a class="code" href="class_bias.html#ab6df47ae8047f915cfa1fb77683b0eb7">setBias</a>(T i)
-<a name="l00036"></a>00036   {
-<a name="l00037"></a>00037     bias_value = i;
-<a name="l00038"></a>00038   }
-<a name="l00043"></a><a class="code" href="class_bias.html#a5489ed8d5ecb5bd14e21532968bb3027">00043</a>   <span class="keywordtype">void</span> <a class="code" href="class_bias.html#a5489ed8d5ecb5bd14e21532968bb3027">setBiasAndSend</a>(T i)
-<a name="l00044"></a>00044   {
-<a name="l00045"></a>00045     <a class="code" href="class_bias.html#ab6df47ae8047f915cfa1fb77683b0eb7">setBias</a>(i);
-<a name="l00046"></a>00046     <a class="code" href="class_bias.html#a3bf2cdb0a52508399df31b9f7dcf358b">sendBiasToLinks</a>();
-<a name="l00047"></a>00047   }
-<a name="l00051"></a><a class="code" href="class_bias.html#a3bf2cdb0a52508399df31b9f7dcf358b">00051</a>   <span class="keywordtype">void</span> <a class="code" href="class_bias.html#a3bf2cdb0a52508399df31b9f7dcf358b">sendBiasToLinks</a>()
-<a name="l00052"></a>00052   {    
-<a name="l00053"></a>00053     this-&gt;<a class="code" href="class_input.html#aa2eb098d4f45d4ff4fcd2206fab7f3e5">input_value</a> = bias_value;
-<a name="l00054"></a>00054     this-&gt;<a class="code" href="class_input.html#afa18c71eae21a7233fd6865e44c25df0">setValToAuts</a>();
-<a name="l00055"></a>00055   }
-<a name="l00056"></a>00056 <span class="keyword">private</span>:
-<a name="l00057"></a>00057   T bias_value;
-<a name="l00058"></a>00058 };
-<a name="l00059"></a>00059 
-<a name="l00060"></a>00060 <span class="preprocessor">#endif  </span><span class="comment">/* BIAS_H */</span>
-<a name="l00061"></a>00061 
+<a name="l00019"></a>00019 
+<a name="l00024"></a><a class="code" href="class_bias.html#abb349bc7ef3317db4a7ce75c96dbb533">00024</a>   <a class="code" href="class_bias.html#abb349bc7ef3317db4a7ce75c96dbb533">Bias</a>(T i) : bias_value(i)
+<a name="l00025"></a>00025   {
+<a name="l00026"></a>00026 
+<a name="l00027"></a>00027   }
+<a name="l00028"></a>00028 
+<a name="l00029"></a>00029   <span class="keyword">virtual</span> ~<a class="code" href="class_bias.html">Bias</a>()
+<a name="l00030"></a>00030   {
+<a name="l00031"></a>00031 
+<a name="l00032"></a>00032   }
+<a name="l00033"></a>00033 
+<a name="l00038"></a><a class="code" href="class_bias.html#ab6df47ae8047f915cfa1fb77683b0eb7">00038</a>   <span class="keywordtype">void</span> <a class="code" href="class_bias.html#ab6df47ae8047f915cfa1fb77683b0eb7">setBias</a>(T i)
+<a name="l00039"></a>00039   {
+<a name="l00040"></a>00040     bias_value = i;
+<a name="l00041"></a>00041   }
+<a name="l00042"></a>00042 
+<a name="l00047"></a><a class="code" href="class_bias.html#a5489ed8d5ecb5bd14e21532968bb3027">00047</a>   <span class="keywordtype">void</span> <a class="code" href="class_bias.html#a5489ed8d5ecb5bd14e21532968bb3027">setBiasAndSend</a>(T i)
+<a name="l00048"></a>00048   {
+<a name="l00049"></a>00049     <a class="code" href="class_bias.html#ab6df47ae8047f915cfa1fb77683b0eb7">setBias</a>(i);
+<a name="l00050"></a>00050     <a class="code" href="class_bias.html#a3bf2cdb0a52508399df31b9f7dcf358b">sendBiasToLinks</a>();
+<a name="l00051"></a>00051   }
+<a name="l00052"></a>00052 
+<a name="l00056"></a><a class="code" href="class_bias.html#a3bf2cdb0a52508399df31b9f7dcf358b">00056</a>   <span class="keywordtype">void</span> <a class="code" href="class_bias.html#a3bf2cdb0a52508399df31b9f7dcf358b">sendBiasToLinks</a>()
+<a name="l00057"></a>00057   {
+<a name="l00058"></a>00058     this-&gt;<a class="code" href="class_input.html#aa2eb098d4f45d4ff4fcd2206fab7f3e5">input_value</a> = bias_value;
+<a name="l00059"></a>00059     this-&gt;<a class="code" href="class_input.html#afa18c71eae21a7233fd6865e44c25df0">setValToAuts</a>();
+<a name="l00060"></a>00060   }
+<a name="l00061"></a>00061 <span class="keyword">private</span>:
+<a name="l00062"></a>00062   T bias_value;
+<a name="l00063"></a>00063 };
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065 <span class="preprocessor">#endif  </span><span class="comment">/* BIAS_H */</span>
+<a name="l00066"></a>00066 
 </pre></div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->
@@ -159,7 +164,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul>
       <li class="navelem"><b>Bias.h</b>      </li>
 
-    <li class="footer">Generated on Mon Apr 9 2012 17:15:25 for SSN by
+    <li class="footer">Generated on Tue May 1 2012 18:46:19 for SSN by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

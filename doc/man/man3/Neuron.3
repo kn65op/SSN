@@ -1,4 +1,4 @@
-.TH "Neuron< T, ActivationFunction >" 3 "Mon Apr 9 2012" "SSN" \" -*- nroff -*-
+.TH "Neuron< T, ActivationFunction >" 3 "Tue May 1 2012" "SSN" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -43,6 +43,12 @@ Inherits \fBInput< T >\fP, and \fBOutput< T >\fP\&.
 .ti -1c
 .RI "void \fBprintWages\fP ()"
 .br
+.ti -1c
+.RI "void \fBsaveToFile\fP (std::ofstream &file)"
+.br
+.ti -1c
+.RI "void \fBloadFromFile\fP (std::ifstream &file)"
+.br
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -83,8 +89,24 @@ Klasa \fBNeuron\fP odpowiada neuronowi w sieci neuronowej\&. Podana funkcja akty
 .SS "template<class T , class ActivationFunction  = StepActivationFunction<T>()> void \fBNeuron\fP< T, \fBActivationFunction\fP >::\fBcalculateOutput\fP ()\fC [inline]\fP"Funkcja licząca wyjście neuronu w zależności od wejsć (suma ważone) a następnie przejście przez funkcję aktywacji\&. 
 .SS "template<class T , class ActivationFunction  = StepActivationFunction<T>()> void \fBNeuron\fP< T, \fBActivationFunction\fP >::\fBlearnBP\fP ()\fC [inline]\fP"Funkcja ucząca wg reguły Back Propagation dla warstw ukrytych\&. 
 .SS "template<class T , class ActivationFunction  = StepActivationFunction<T>()> void \fBNeuron\fP< T, \fBActivationFunction\fP >::\fBlearnDelta\fP ()\fC [inline]\fP"Funkcja ucząca wg reguły delta\&. Stosowana tylko dla sieci jednowarstwowych i warstwy wyjściowej sieci wielowarstwowej\&. Wymaga odpowiedź jest pobierana z elementu następnego, z którym neuron jest połączony klasą \fBLink\fP\&. 
+.SS "template<class T , class ActivationFunction  = StepActivationFunction<T>()> void \fBNeuron\fP< T, \fBActivationFunction\fP >::\fBloadFromFile\fP (std::ifstream &file)\fC [inline]\fP"Wczytanie wag neuronu z pliku\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile\fP Plik jako std::ifstream, z którego czytamy\&. 
+.RE
+.PP
+
 .SS "template<class T , class ActivationFunction  = StepActivationFunction<T>()> void \fBNeuron\fP< T, \fBActivationFunction\fP >::\fBprintWages\fP ()\fC [inline]\fP"Wagi 
 .SS "template<class T , class ActivationFunction  = StepActivationFunction<T>()> void \fBNeuron\fP< T, \fBActivationFunction\fP >::\fBpropagateAnswer\fP ()\fC [inline]\fP"Funkcja propagująca błąd do głębszych warstw sieci\&. 
+.SS "template<class T , class ActivationFunction  = StepActivationFunction<T>()> void \fBNeuron\fP< T, \fBActivationFunction\fP >::\fBsaveToFile\fP (std::ofstream &file)\fC [inline]\fP"Zapis wag neuronu do pliku\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile\fP Plik jako std::ofstream, do którego zapisujemy\&. 
+.RE
+.PP
+
 .SS "template<class T , class ActivationFunction  = StepActivationFunction<T>()> void \fBNeuron\fP< T, \fBActivationFunction\fP >::\fBsetLinkIn\fP (\fBLink\fP< T > *link)\fC [inline]\fP"Funkcja ustawiająca połączenie wejściowe oraz dodające nową wagę\&. 
 .PP
 \fBParameters:\fP

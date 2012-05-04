@@ -101,10 +101,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 This is the complete list of members for <a class="el" href="class_neural_network.html">NeuralNetwork&lt; T, ActivationFunction &gt;</a>, including all inherited members.<table>
   <tr class="memlist"><td><a class="el" href="class_neural_network.html#af7c28ad226f6d32d8c578159f0d03ae9">calcOutput</a>()</td><td><a class="el" href="class_neural_network.html">NeuralNetwork&lt; T, ActivationFunction &gt;</a></td><td><code> [inline]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_neural_network.html#ae6fcd0f55579ecf6ea9b67b5611dfe44">clearPatterns</a>()</td><td><a class="el" href="class_neural_network.html">NeuralNetwork&lt; T, ActivationFunction &gt;</a></td><td><code> [inline]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_neural_network.html#aa83131836c86cd3e60ddb46a17b164a5">init</a>()</td><td><a class="el" href="class_neural_network.html">NeuralNetwork&lt; T, ActivationFunction &gt;</a></td><td><code> [inline]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_neural_network.html#af3a6f63b2a22719f7b5dd7e6c6abc45a">insertPattern</a>(InputIterator istart, InputIterator iend, OutputIterator ostart, OutputIterator oend)</td><td><a class="el" href="class_neural_network.html">NeuralNetwork&lt; T, ActivationFunction &gt;</a></td><td><code> [inline]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_neural_network.html#a814f14ae36ecb286923f7fff6cff7aa7">learn</a>(InputIterator start, InputIterator end)</td><td><a class="el" href="class_neural_network.html">NeuralNetwork&lt; T, ActivationFunction &gt;</a></td><td><code> [inline]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_neural_network.html#a04cb815d8040fee18909dbb81c6d189c">learnFromPattern</a>(double error=0.1, int iterations=1000)</td><td><a class="el" href="class_neural_network.html">NeuralNetwork&lt; T, ActivationFunction &gt;</a></td><td><code> [inline]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_neural_network.html#a5270bf5e7f7fc4c9fee4c5b609af32d0">loadNetworkFromFile</a>(std::string filename)</td><td><a class="el" href="class_neural_network.html">NeuralNetwork&lt; T, ActivationFunction &gt;</a></td><td><code> [inline]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_neural_network.html#ade5d1724706351407fdf6acf613ac8c8">NeuralNetwork</a>()</td><td><a class="el" href="class_neural_network.html">NeuralNetwork&lt; T, ActivationFunction &gt;</a></td><td><code> [inline]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_neural_network.html#a4ce7e819f755461926a92668aab811e2">NeuralNetwork</a>(const NeuralNetwork &amp;orig)</td><td><a class="el" href="class_neural_network.html">NeuralNetwork&lt; T, ActivationFunction &gt;</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_neural_network.html#a60951fc1503702d98c67fa5bf10e0a7e">saveNetworkToFile</a>(std::string filename)</td><td><a class="el" href="class_neural_network.html">NeuralNetwork&lt; T, ActivationFunction &gt;</a></td><td><code> [inline]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_neural_network.html#acfdd9905e047fff1b40e4cd358160f6e">setActivationfunction</a>(ActivationFunction activationfunction)</td><td><a class="el" href="class_neural_network.html">NeuralNetwork&lt; T, ActivationFunction &gt;</a></td><td><code> [inline]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_neural_network.html#a705286b62e4d1d11310f997dadd31fa8">setEntries</a>(int entries_count)</td><td><a class="el" href="class_neural_network.html">NeuralNetwork&lt; T, ActivationFunction &gt;</a></td><td><code> [inline]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_neural_network.html#a18912fbb8068bfb301d6e2462c9f8a31">setExits</a>(int exits_count)</td><td><a class="el" href="class_neural_network.html">NeuralNetwork&lt; T, ActivationFunction &gt;</a></td><td><code> [inline]</code></td></tr>
@@ -132,7 +137,7 @@ This is the complete list of members for <a class="el" href="class_neural_networ
   <div id="nav-path" class="navpath">
     <ul>
 
-    <li class="footer">Generated on Mon Apr 9 2012 17:15:26 for SSN by
+    <li class="footer">Generated on Tue May 1 2012 18:46:20 for SSN by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

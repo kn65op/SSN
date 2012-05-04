@@ -48,8 +48,10 @@
           <commandLine>-std=c++0x</commandLine>
         </ccTool>
         <linkerTool>
+          <linkerAddLib>
+            <pElem>../Neuron/dist/Debug/GNU-Linux-x86</pElem>
+          </linkerAddLib>
           <linkerLibItems>
-            <linkerLibFileItem>../Neuron/dist/Debug/GNU-Linux-x86/libNeuron.so</linkerLibFileItem>
             <linkerLibFileItem>../LibHelper/dist/Debug/GNU-Linux-x86/libHelper.so</linkerLibFileItem>
           </linkerLibItems>
           <commandLine>-std=c++0x</commandLine>
@@ -81,11 +83,12 @@
         <ccTool>
           <incDir>
             <pElem>../../gtest/gtest_src/include</pElem>
+            <pElem>../../../gtest/gtest_src/include</pElem>
           </incDir>
         </ccTool>
         <linkerTool>
           <linkerLibItems>
-            <linkerLibFileItem>../../gtest/libgtest.a</linkerLibFileItem>
+            <linkerLibFileItem>../../../gtest/libgtest.a</linkerLibFileItem>
           </linkerLibItems>
           <commandLine>-lpthread</commandLine>
         </linkerTool>
@@ -101,10 +104,14 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
           </incDir>
         </cTool>
         <ccTool>
           <incDir>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
@@ -150,10 +157,14 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
           </incDir>
         </cTool>
         <ccTool>
           <incDir>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>
             <pElem>.</pElem>

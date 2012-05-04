@@ -108,22 +108,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00010"></a>00010 <span class="preprocessor"></span>
 <a name="l00011"></a>00011 <span class="preprocessor">#include &quot;Input.h&quot;</span>
 <a name="l00012"></a>00012 
-<a name="l00016"></a><a class="code" href="class_entry.html">00016</a> <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">class </span><a class="code" href="class_entry.html">Entry</a>: <span class="keyword">public</span> <a class="code" href="class_input.html">Input</a>&lt;T&gt;
+<a name="l00016"></a><a class="code" href="class_entry.html">00016</a> <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">class </span><a class="code" href="class_entry.html">Entry</a> : <span class="keyword">public</span> <a class="code" href="class_input.html">Input</a>&lt;T&gt;
 <a name="l00017"></a>00017 {
 <a name="l00018"></a>00018 <span class="keyword">public</span>:
-<a name="l00019"></a>00019   <span class="keyword">virtual</span> ~<a class="code" href="class_entry.html">Entry</a>()
-<a name="l00020"></a>00020   {
-<a name="l00021"></a>00021     
-<a name="l00022"></a>00022   }
-<a name="l00027"></a><a class="code" href="class_entry.html#afdde8cf7183ac5a343fbe993f361be4f">00027</a>   <span class="keywordtype">void</span> <a class="code" href="class_entry.html#afdde8cf7183ac5a343fbe993f361be4f">setEntry</a>(T entry)
-<a name="l00028"></a>00028   {
-<a name="l00029"></a>00029     this-&gt;<a class="code" href="class_input.html#aa2eb098d4f45d4ff4fcd2206fab7f3e5">input_value</a> = entry;
-<a name="l00030"></a>00030     this-&gt;<a class="code" href="class_input.html#afa18c71eae21a7233fd6865e44c25df0">setValToAuts</a>();
-<a name="l00031"></a>00031   }
-<a name="l00032"></a>00032 };
-<a name="l00033"></a>00033 
-<a name="l00034"></a>00034 <span class="preprocessor">#endif  </span><span class="comment">/* ENTRY_H */</span>
+<a name="l00019"></a>00019 
+<a name="l00020"></a>00020   <span class="keyword">virtual</span> ~<a class="code" href="class_entry.html">Entry</a>()
+<a name="l00021"></a>00021   {
+<a name="l00022"></a>00022 
+<a name="l00023"></a>00023   }
+<a name="l00024"></a>00024 
+<a name="l00029"></a><a class="code" href="class_entry.html#afdde8cf7183ac5a343fbe993f361be4f">00029</a>   <span class="keywordtype">void</span> <a class="code" href="class_entry.html#afdde8cf7183ac5a343fbe993f361be4f">setEntry</a>(T entry)
+<a name="l00030"></a>00030   {
+<a name="l00031"></a>00031     this-&gt;<a class="code" href="class_input.html#aa2eb098d4f45d4ff4fcd2206fab7f3e5">input_value</a> = entry;
+<a name="l00032"></a>00032     this-&gt;<a class="code" href="class_input.html#afa18c71eae21a7233fd6865e44c25df0">setValToAuts</a>();
+<a name="l00033"></a>00033   }
+<a name="l00034"></a>00034 };
 <a name="l00035"></a>00035 
+<a name="l00036"></a>00036 <span class="preprocessor">#endif  </span><span class="comment">/* ENTRY_H */</span>
+<a name="l00037"></a>00037 
 </pre></div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->
@@ -144,7 +146,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul>
       <li class="navelem"><b>Entry.h</b>      </li>
 
-    <li class="footer">Generated on Mon Apr 9 2012 17:15:25 for SSN by
+    <li class="footer">Generated on Tue May 1 2012 18:46:19 for SSN by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

@@ -1,5 +1,7 @@
 var searchData=
 [
+  ['savenetworktofile',['saveNetworkToFile',['../class_neural_network.html#a60951fc1503702d98c67fa5bf10e0a7e',1,'NeuralNetwork']]],
+  ['savetofile',['saveToFile',['../class_neuron.html#a335b33e8c65ce8975472ff577a12dce5',1,'Neuron']]],
   ['sendbiastolinks',['sendBiasToLinks',['../class_bias.html#a3bf2cdb0a52508399df31b9f7dcf358b',1,'Bias']]],
   ['setactivationfunction',['setActivationfunction',['../class_neural_network.html#acfdd9905e047fff1b40e4cd358160f6e',1,'NeuralNetwork']]],
   ['setanswer',['setAnswer',['../class_link.html#ab4c5011d91f54ff6aacc31a7d100e209',1,'Link']]],

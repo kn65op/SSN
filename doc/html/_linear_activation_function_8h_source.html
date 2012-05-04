@@ -109,40 +109,41 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00011"></a>00011 <span class="preprocessor">#include &lt;cmath&gt;</span>
 <a name="l00012"></a>00012 
 <a name="l00013"></a>00013 <span class="preprocessor">#include &quot;ActivationFunction.h&quot;</span>
-<a name="l00017"></a><a class="code" href="class_linear_activation_function.html">00017</a> <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">class </span><a class="code" href="class_linear_activation_function.html">LinearActivationFunction</a>
-<a name="l00018"></a>00018 {
-<a name="l00019"></a>00019 <span class="keyword">public</span>:
-<a name="l00020"></a>00020 
-<a name="l00024"></a><a class="code" href="class_linear_activation_function.html#a0474630a90119eb50d775b3e9aa46b30">00024</a>   <a class="code" href="class_linear_activation_function.html#a0474630a90119eb50d775b3e9aa46b30">LinearActivationFunction</a>() : parameter(1)
-<a name="l00025"></a>00025   {
-<a name="l00026"></a>00026   }
-<a name="l00027"></a>00027   
-<a name="l00031"></a><a class="code" href="class_linear_activation_function.html#ada030e1ea55f5127fdd7455279177be1">00031</a>   <a class="code" href="class_linear_activation_function.html#a0474630a90119eb50d775b3e9aa46b30">LinearActivationFunction</a>(<span class="keywordtype">double</span> p) : parameter(p)
-<a name="l00032"></a>00032   {
-<a name="l00033"></a>00033   }
-<a name="l00034"></a>00034 
-<a name="l00040"></a><a class="code" href="class_linear_activation_function.html#a97e4c739f6cfb4b8b639e5921f6d4733">00040</a>   T <a class="code" href="class_linear_activation_function.html#a97e4c739f6cfb4b8b639e5921f6d4733">operator()</a>(T x)
-<a name="l00041"></a>00041   {
-<a name="l00042"></a>00042     <span class="keywordflow">return</span> 1 / (1 + pow(M_E, -parameter * x));
-<a name="l00043"></a>00043   }
-<a name="l00044"></a>00044 
-<a name="l00050"></a><a class="code" href="class_linear_activation_function.html#aed111abd3fbc37e8a0faff788258a97d">00050</a>   T <a class="code" href="class_linear_activation_function.html#aed111abd3fbc37e8a0faff788258a97d">deriterative</a>(T x)
-<a name="l00051"></a>00051   {
-<a name="l00052"></a>00052     <span class="keywordflow">return</span> x * (1 - x);
-<a name="l00053"></a>00053   }
-<a name="l00054"></a>00054   
-<a name="l00059"></a><a class="code" href="class_linear_activation_function.html#ad7a5e2511224ce15c616e1aac7f95706">00059</a>   <span class="keywordtype">void</span> <a class="code" href="class_linear_activation_function.html#ad7a5e2511224ce15c616e1aac7f95706">setParameter</a>(<span class="keywordtype">double</span> parameter)
-<a name="l00060"></a>00060   {
-<a name="l00061"></a>00061     this-&gt;parameter = parameter;
-<a name="l00062"></a>00062   }
-<a name="l00063"></a>00063 
+<a name="l00014"></a>00014 
+<a name="l00018"></a><a class="code" href="class_linear_activation_function.html">00018</a> <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">class </span><a class="code" href="class_linear_activation_function.html">LinearActivationFunction</a>
+<a name="l00019"></a>00019 {
+<a name="l00020"></a>00020 <span class="keyword">public</span>:
+<a name="l00021"></a>00021 
+<a name="l00025"></a><a class="code" href="class_linear_activation_function.html#a0474630a90119eb50d775b3e9aa46b30">00025</a>   <a class="code" href="class_linear_activation_function.html#a0474630a90119eb50d775b3e9aa46b30">LinearActivationFunction</a>() : parameter(1)
+<a name="l00026"></a>00026   {
+<a name="l00027"></a>00027   }
+<a name="l00028"></a>00028 
+<a name="l00032"></a><a class="code" href="class_linear_activation_function.html#ada030e1ea55f5127fdd7455279177be1">00032</a>   <a class="code" href="class_linear_activation_function.html#a0474630a90119eb50d775b3e9aa46b30">LinearActivationFunction</a>(<span class="keywordtype">double</span> p) : parameter(p)
+<a name="l00033"></a>00033   {
+<a name="l00034"></a>00034   }
+<a name="l00035"></a>00035 
+<a name="l00041"></a><a class="code" href="class_linear_activation_function.html#a97e4c739f6cfb4b8b639e5921f6d4733">00041</a>   T <a class="code" href="class_linear_activation_function.html#a97e4c739f6cfb4b8b639e5921f6d4733">operator()</a>(T x)
+<a name="l00042"></a>00042   {
+<a name="l00043"></a>00043     <span class="keywordflow">return</span> 1 / (1 + pow(M_E, -parameter * x));
+<a name="l00044"></a>00044   }
+<a name="l00045"></a>00045 
+<a name="l00051"></a><a class="code" href="class_linear_activation_function.html#aed111abd3fbc37e8a0faff788258a97d">00051</a>   T <a class="code" href="class_linear_activation_function.html#aed111abd3fbc37e8a0faff788258a97d">deriterative</a>(T x)
+<a name="l00052"></a>00052   {
+<a name="l00053"></a>00053     <span class="keywordflow">return</span> x * (1 - x);
+<a name="l00054"></a>00054   }
+<a name="l00055"></a>00055 
+<a name="l00060"></a><a class="code" href="class_linear_activation_function.html#ad7a5e2511224ce15c616e1aac7f95706">00060</a>   <span class="keywordtype">void</span> <a class="code" href="class_linear_activation_function.html#ad7a5e2511224ce15c616e1aac7f95706">setParameter</a>(<span class="keywordtype">double</span> parameter)
+<a name="l00061"></a>00061   {
+<a name="l00062"></a>00062     this-&gt;parameter = parameter;
+<a name="l00063"></a>00063   }
 <a name="l00064"></a>00064 
-<a name="l00065"></a>00065 <span class="keyword">private</span>:
-<a name="l00066"></a>00066   <span class="keywordtype">double</span> parameter;
-<a name="l00067"></a>00067 };
-<a name="l00068"></a>00068 
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066 <span class="keyword">private</span>:
+<a name="l00067"></a>00067   <span class="keywordtype">double</span> parameter;
+<a name="l00068"></a>00068 };
 <a name="l00069"></a>00069 
-<a name="l00070"></a>00070 <span class="preprocessor">#endif  </span><span class="comment">/* LINEARACTIVATIONFUNCTION_H */</span>
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071 <span class="preprocessor">#endif  </span><span class="comment">/* LINEARACTIVATIONFUNCTION_H */</span>
 </pre></div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->
@@ -163,7 +164,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul>
       <li class="navelem"><b>LinearActivationFunction.h</b>      </li>
 
-    <li class="footer">Generated on Mon Apr 9 2012 17:15:25 for SSN by
+    <li class="footer">Generated on Tue May 1 2012 18:46:19 for SSN by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

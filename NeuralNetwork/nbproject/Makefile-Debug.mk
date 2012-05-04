@@ -56,13 +56,11 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=../Neuron/dist/Debug/GNU-Linux-x86/libNeuron.so ../LibHelper/dist/Debug/GNU-Linux-x86/libHelper.so
+LDLIBSOPTIONS=-L../Neuron/dist/Debug/GNU-Linux-x86 ../LibHelper/dist/Debug/GNU-Linux-x86/libHelper.so
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libNeuralNetwork.so
-
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libNeuralNetwork.so: ../Neuron/dist/Debug/GNU-Linux-x86/libNeuron.so
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libNeuralNetwork.so: ../LibHelper/dist/Debug/GNU-Linux-x86/libHelper.so
 
@@ -79,13 +77,13 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libNeuralNetwork.so: ${OBJECTFILES}
 .build-tests-conf: .build-conf ${TESTFILES}
 ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/NeuralNetworkTest.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.cc}  -lpthread -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} ../../gtest/libgtest.a 
+	${LINK.cc}  -lpthread -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} ../../../gtest/libgtest.a 
 
 
 ${TESTDIR}/tests/NeuralNetworkTest.o: tests/NeuralNetworkTest.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -g -I. -I. -I. -I. -I. -I. -I. -I. -I../../gtest/gtest_src/include -I../Neuron -I../LibHelper -MMD -MP -MF $@.d -o ${TESTDIR}/tests/NeuralNetworkTest.o tests/NeuralNetworkTest.cpp
+	$(COMPILE.cc) -g -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -I. -I../../gtest/gtest_src/include -I../../../gtest/gtest_src/include -I../Neuron -I../LibHelper -MMD -MP -MF $@.d -o ${TESTDIR}/tests/NeuralNetworkTest.o tests/NeuralNetworkTest.cpp
 
 
 # Run Test Targets

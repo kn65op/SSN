@@ -33,6 +33,10 @@ void \hyperlink{class_neuron_a5e479fce295d76be68c017ab8c986f8c}{learn\-B\-P} ()
 void \hyperlink{class_neuron_a1a20d9ac9bf64126f8d74d8c1c7d3c58}{set\-Link\-In} (\hyperlink{class_link}{\-Link}$<$ \-T $>$ $\ast$link)
 \item 
 void \hyperlink{class_neuron_ac112e85f169835dad11a6f7bd9e477b9}{print\-Wages} ()
+\item 
+void \hyperlink{class_neuron_a335b33e8c65ce8975472ff577a12dce5}{save\-To\-File} (std\-::ofstream \&file)
+\item 
+void \hyperlink{class_neuron_a6471332d3b91b31988c861b96b23ddf1}{load\-From\-File} (std\-::ifstream \&file)
 \end{DoxyCompactItemize}
 
 
@@ -112,7 +116,19 @@ void \hyperlink{class_neuron_ac112e85f169835dad11a6f7bd9e477b9}{print\-Wages} ()
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{class_neuron_ae73a056c55311521d0e31347837109cc}
-\-Funkcja ucząca wg reguły delta. \-Stosowana tylko dla sieci jednowarstwowych i warstwy wyjściowej sieci wielowarstwowej. \-Wymaga odpowiedź jest pobierana z elementu następnego, z którym neuron jest połączony klasą \hyperlink{class_link}{\-Link}. \hypertarget{class_neuron_ac112e85f169835dad11a6f7bd9e477b9}{\index{\-Neuron@{\-Neuron}!print\-Wages@{print\-Wages}}
+\-Funkcja ucząca wg reguły delta. \-Stosowana tylko dla sieci jednowarstwowych i warstwy wyjściowej sieci wielowarstwowej. \-Wymaga odpowiedź jest pobierana z elementu następnego, z którym neuron jest połączony klasą \hyperlink{class_link}{\-Link}. \hypertarget{class_neuron_a6471332d3b91b31988c861b96b23ddf1}{\index{\-Neuron@{\-Neuron}!load\-From\-File@{load\-From\-File}}
+\index{load\-From\-File@{load\-From\-File}!Neuron@{\-Neuron}}
+\subsubsection[{load\-From\-File}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class Activation\-Function  = \-Step\-Activation\-Function$<$\-T$>$()$>$ void {\bf \-Neuron}$<$ \-T, {\bf \-Activation\-Function} $>$\-::{\bf load\-From\-File} (
+\begin{DoxyParamCaption}
+\item[{std\-::ifstream \&}]{file}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{class_neuron_a6471332d3b91b31988c861b96b23ddf1}
+\-Wczytanie wag neuronu z pliku. 
+\begin{DoxyParams}{\-Parameters}
+{\em file} & \-Plik jako std\-::ifstream, z którego czytamy. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_neuron_ac112e85f169835dad11a6f7bd9e477b9}{\index{\-Neuron@{\-Neuron}!print\-Wages@{print\-Wages}}
 \index{print\-Wages@{print\-Wages}!Neuron@{\-Neuron}}
 \subsubsection[{print\-Wages}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class Activation\-Function  = \-Step\-Activation\-Function$<$\-T$>$()$>$ void {\bf \-Neuron}$<$ \-T, {\bf \-Activation\-Function} $>$\-::{\bf print\-Wages} (
 \begin{DoxyParamCaption}
@@ -126,7 +142,19 @@ void \hyperlink{class_neuron_ac112e85f169835dad11a6f7bd9e477b9}{print\-Wages} ()
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{class_neuron_acb55ff03a770877b6afb86ed4d06896a}
-\-Funkcja propagująca błąd do głębszych warstw sieci. \hypertarget{class_neuron_a1a20d9ac9bf64126f8d74d8c1c7d3c58}{\index{\-Neuron@{\-Neuron}!set\-Link\-In@{set\-Link\-In}}
+\-Funkcja propagująca błąd do głębszych warstw sieci. \hypertarget{class_neuron_a335b33e8c65ce8975472ff577a12dce5}{\index{\-Neuron@{\-Neuron}!save\-To\-File@{save\-To\-File}}
+\index{save\-To\-File@{save\-To\-File}!Neuron@{\-Neuron}}
+\subsubsection[{save\-To\-File}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class Activation\-Function  = \-Step\-Activation\-Function$<$\-T$>$()$>$ void {\bf \-Neuron}$<$ \-T, {\bf \-Activation\-Function} $>$\-::{\bf save\-To\-File} (
+\begin{DoxyParamCaption}
+\item[{std\-::ofstream \&}]{file}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}\label{class_neuron_a335b33e8c65ce8975472ff577a12dce5}
+\-Zapis wag neuronu do pliku. 
+\begin{DoxyParams}{\-Parameters}
+{\em file} & \-Plik jako std\-::ofstream, do którego zapisujemy. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_neuron_a1a20d9ac9bf64126f8d74d8c1c7d3c58}{\index{\-Neuron@{\-Neuron}!set\-Link\-In@{set\-Link\-In}}
 \index{set\-Link\-In@{set\-Link\-In}!Neuron@{\-Neuron}}
 \subsubsection[{set\-Link\-In}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class Activation\-Function  = \-Step\-Activation\-Function$<$\-T$>$()$>$ void {\bf \-Neuron}$<$ \-T, {\bf \-Activation\-Function} $>$\-::{\bf set\-Link\-In} (
 \begin{DoxyParamCaption}
