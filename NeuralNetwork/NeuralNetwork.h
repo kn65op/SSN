@@ -469,6 +469,7 @@ public:
    */
   bool learnFromPattern(double error = 0.1, int iterations = 1000) throw (WrongState)
   {
+    double max_err = 1000;
     if (!valid)
     {
       throw WrongState();
@@ -480,6 +481,10 @@ public:
     std::vector<T> o;
     for (int i = 0; i < iterations && err > error; ++i) //iteracja uczenia
     {
+      if (i % 10 == 0)
+      {
+        std::cout << i << ": " << err << "\n";
+      }
       err = 0;
       in = learn_input.begin();
       out = learn_output.begin();
@@ -496,6 +501,12 @@ public:
         {
           err += pow(*(ostart++) - oo, 2);
         }
+      }
+      if (err < max_err)
+      {
+        max_err = err;
+        saveNetworkToFile("bestnew2.net");
+        std::cout << max_err << "\n";
       }
     }
     if (err > error)
