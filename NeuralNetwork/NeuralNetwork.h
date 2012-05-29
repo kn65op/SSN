@@ -20,6 +20,7 @@
 #include <vector>
 #include <fstream>
 #include <cmath>
+#include <parallel/algorithm>
 
 //TODO usunąć
 #include <iostream>
@@ -354,23 +355,38 @@ public:
     //przekazywanie odpowiedzi do warst ukrytych (jeśli są)
     for (int i = layers_count - 1; i != 0; --i)
     {
-      for (auto n : *(layers[i])) //n - wskaźnik do neuronu
+
+      __gnu_parallel::for_each(layers[i]->begin(), layers[i]->end(), [](Neuron<double, ActivationFunction>* n)
       {
-        n->propagateAnswer();
-      }
+                               n->propagateAnswer();
+      });
+      //      for (auto n : *(layers[i])) //n - wskaźnik do neuronu
+      //    {
+      //    n->propagateAnswer();
+      //    }
     }
     //uczenie warstwy najwyższej
-    for (auto n : *(layers[layers_count - 1])) // n - wskaźnik do neuronu
+    //   for (auto n : *(layers[layers_count - 1])) // n - wskaźnik do neuronu
+    // {
+
+    __gnu_parallel::for_each(layers[layers_count - 1]->begin(), layers[layers_count - 1]->end(), [](Neuron<double, ActivationFunction>* n)
     {
-      n->learnDelta();
-    }
+                             n->learnDelta();
+    });
+    //      n->learnDelta();
+    //}
     //uczenie niższych warstw
     for (int i = layers_count - 2; i >= 0; --i)
     {
-      for (auto n : *(layers[i])) //n - wskaźnik do neuronu
+
+      __gnu_parallel::for_each(layers[i]->begin(), layers[i]->end(), [](Neuron<double, ActivationFunction>* n)
       {
-        n->learnBP();
-      }
+                               n->learnBP();
+      });
+      //  for (auto n : *(layers[i])) //n - wskaźnik do neuronu
+      //{
+      // n->learnBP();
+      //}
     }
   }
 
@@ -505,7 +521,7 @@ public:
       if (err < max_err)
       {
         max_err = err;
-        saveNetworkToFile("bestnew2.net");
+        saveNetworkToFile("best_parameters.net");
         std::cout << max_err << "\n";
       }
     }
