@@ -77,7 +77,7 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libNeuralNetwork.so: ${OBJECTFILES}
 .build-tests-conf: .build-conf ${TESTFILES}
 ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/NeuralNetworkTest.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.cc}  -lpthread -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} ../../../gtest/libgtest.a 
+	${LINK.cc} -lpthread  -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} ../../../gtest/libgtest.a 
 
 
 ${TESTDIR}/tests/NeuralNetworkTest.o: tests/NeuralNetworkTest.cpp 
