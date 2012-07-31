@@ -227,17 +227,18 @@ private:
    */
   void checkWages()
   {
-    for (auto w : wages)
+   /* for (auto w : wages)
     {
-      if (*w > 200)
+      if (*w > 20000)
       {
-        *w = 200;
+        *w = 20000;
       }
-      else if (*w < -200)
+      else if (*w < -20000)
       {
-        *w = -200;
+        *w = -20000;
       }
     }
+    * **/
   }
 };
 

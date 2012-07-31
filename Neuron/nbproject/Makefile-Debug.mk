@@ -79,7 +79,7 @@ ${OBJECTDIR}/nic.o: nic.cpp
 .build-tests-conf: .build-conf ${TESTFILES}
 ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/NeuronTest.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.cc}  -lpthread -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} ../../gtest/libgtest.a 
+	${LINK.cc} -lpthread  -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} ../../gtest/libgtest.a 
 
 
 ${TESTDIR}/tests/NeuronTest.o: tests/NeuronTest.cpp 
