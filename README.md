@@ -1,5 +1,7 @@
 # SSN
 Repozytorium stworzone w celu pracy na zajęciach z SSN
 
-Do not compile due to:
-- missing makefiles
+Compilation instructions:
++ Download submodules
++ Go to directory Neuron / NeuralNetwork
++ make
