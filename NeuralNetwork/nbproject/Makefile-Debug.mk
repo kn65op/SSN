@@ -72,20 +72,20 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libNeuralNetwork.so: ${OBJECTFILES}
 
 # Subprojects
 .build-subprojects:
-	cd /home/tomko/moje_dziela/SSN/Neuron && ${MAKE}  -f Makefile CONF=Debug
+	cd `pwd`/../Neuron && ${MAKE}  -f Makefile CONF=Debug
 	cd ../LibHelper && ${MAKE}  -f Makefile CONF=Debug
 
 # Build Test Targets
 .build-tests-conf: .build-conf ${TESTFILES}
 ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/NeuralNetworkTest.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.cc} -lpthread  -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} ../../gtest/libgtest.a 
+	${LINK.cc} -lpthread  -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} ../../googletest/build/googlemock/gtest/libgtest.a
 
 
 ${TESTDIR}/tests/NeuralNetworkTest.o: tests/NeuralNetworkTest.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -g -I. -I. -I. -I. -I. -I. -I. -I. -I. -I../../gtest/gtest_src/include -I../Neuron -I../LibHelper -MMD -MP -MF $@.d -o ${TESTDIR}/tests/NeuralNetworkTest.o tests/NeuralNetworkTest.cpp
+	$(COMPILE.cc) -g -I. -I. -I. -I. -I. -I. -I. -I. -I. -I../../googletest/googletest/include -I../Neuron -I../LibHelper/include -MMD -MP -MF $@.d -o ${TESTDIR}/tests/NeuralNetworkTest.o tests/NeuralNetworkTest.cpp
 
 
 # Run Test Targets
@@ -104,7 +104,7 @@ ${TESTDIR}/tests/NeuralNetworkTest.o: tests/NeuralNetworkTest.cpp
 
 # Subprojects
 .clean-subprojects:
-	cd /home/tomko/moje_dziela/SSN/Neuron && ${MAKE}  -f Makefile CONF=Debug clean
+	cd `pwd`/../Neuron && ${MAKE}  -f Makefile CONF=Debug clean
 	cd ../LibHelper && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking

@@ -7,7 +7,7 @@
 
 #include <stdlib.h>
 #include <iostream>
-#include "../../../gtest/gtest_src/include/gtest/gtest.h"
+#include "gtest/gtest.h"
 #include "NeuralNetwork.h"
 #include "StepActivationFunction.h"
 #include "LinearActivationFunction.h"
